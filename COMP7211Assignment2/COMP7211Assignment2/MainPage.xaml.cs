@@ -18,6 +18,8 @@ namespace COMP7211Assignment2
             InitializeComponent();
             string test = "github test";
             test = "more test";
+
+            string test2 = "another line to test";
         }
     }
 }
