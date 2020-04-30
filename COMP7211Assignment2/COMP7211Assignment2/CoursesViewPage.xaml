@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="COMP7211Assignment2.CoursesViewPage">
+    <!-- Created by Min 30003457, to be later edited by Agassi -->
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Top Header -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Text="Courses" Grid.Column="1" HorizontalTextAlignment="Center"
+                       Padding="0,20,0,0" FontSize="24" TextColor="Black"/>
+                <Button Grid.Column="2" TranslationY="12" TranslationX="-10"
+                        WidthRequest="100" HorizontalOptions="End" Text="LOGOUT"
+                        ></Button>
+            </Grid>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
