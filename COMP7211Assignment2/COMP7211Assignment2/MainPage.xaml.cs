@@ -21,5 +21,10 @@ namespace COMP7211Assignment2
             test = "more test";
         }
 
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CoursesViewPage());
+        }
+
     }
 }

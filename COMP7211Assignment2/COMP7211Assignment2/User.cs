@@ -19,6 +19,7 @@ namespace COMP7211Assignment2
             FName = fn;
             LName = ln;
             StudentID = studentId;
+            EnrolledCourses = new List<Course>();
             EnrolledCourses.Add(new Course("Routing and Switching", 6201));
             EnrolledCourses.Add(new Course("Professional Practice", 6205));
             EnrolledCourses.Add(new Course("Advanced GUI", 7211));
