@@ -16,8 +16,14 @@ namespace COMP7211Assignment2
         public MainPage()
         {
             InitializeComponent();
+
             string test = "github test";
             test = "more test";
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CoursesViewPage());
         }
     }
 }
