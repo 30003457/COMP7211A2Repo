@@ -69,12 +69,13 @@ namespace COMP7211Assignment2
                 Grid grid = new Grid();
                 grid.RowDefinitions.Add(new RowDefinition());
                 grid.RowDefinitions.Add(new RowDefinition());
+                
+                //inser tap gesture recognizer here
                 grid.Children.Add(new Image());
 
-                StackLayout childStackLayout = new StackLayout { Padding = new Thickness(10, 10, 10, 15) };
+                StackLayout childStackLayout = new StackLayout { Padding = 10 };
                 childStackLayout.Children.Add(new Label { Text = $"COMP{cd.ReturnCourses()[i].ID}", FontSize = 36, TextColor = Color.White });
                 childStackLayout.Children.Add(new Label { Text = cd.ReturnCourses()[i].Name, TextColor = Color.White });
-                courseCards[i].Children.Add(childStackLayout);
                 grid.Children.Add(childStackLayout);
                 courseCards[i].Children.Add(grid);
                 stackLayout.Children.Add(courseCards[i]);
