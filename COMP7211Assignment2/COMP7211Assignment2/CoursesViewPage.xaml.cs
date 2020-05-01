@@ -58,14 +58,28 @@ namespace COMP7211Assignment2
 
             for (int i = 0; i < cd.ReturnCourses().Count; i++)
             {
-                courseCards.Add(new StackLayout
+                //attempt to correct bug
+                if(i == cd.ReturnCourses().Count-1)
                 {
-                    BackgroundColor = Color.Gray,
-                    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                    WidthRequest = 300,
-                    HeightRequest = 100
-                });
-
+                    courseCards.Add(new StackLayout
+                    {
+                        BackgroundColor = Color.Gray,
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        WidthRequest = 300,
+                        HeightRequest = 120
+                    });
+                }
+                else
+                {
+                    courseCards.Add(new StackLayout
+                    {
+                        BackgroundColor = Color.Gray,
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        WidthRequest = 300,
+                        HeightRequest = 100
+                    });
+                }
+                
                 Grid grid = new Grid();
                 grid.RowDefinitions.Add(new RowDefinition());
                 grid.RowDefinitions.Add(new RowDefinition());
