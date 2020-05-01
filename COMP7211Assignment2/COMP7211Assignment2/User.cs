@@ -23,7 +23,7 @@ namespace COMP7211Assignment2
             EnrolledCourses.Add(new Course("Routing and Switching", 6201));
             EnrolledCourses.Add(new Course("Professional Practice", 6205));
             EnrolledCourses.Add(new Course("Advanced GUI", 7211));
-            EnrolledCourses.Add(new Course("AI", 7212));
+            EnrolledCourses.Add(new Course("Artificial Intelligence", 7212));
             IsRep = isRep;
         }
     }
