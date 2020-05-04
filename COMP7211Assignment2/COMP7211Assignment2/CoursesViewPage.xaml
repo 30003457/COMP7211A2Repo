@@ -123,12 +123,12 @@
                                     <Label Text="COMP1234" TextColor="White"
                                        FontSize="24"/>
                                     <Label Text="Subject name here" TextColor="White"/>
-                                </StackLayout>
-                            </Grid>
-                        </StackLayout>
-                    </Grid>
-                </StackLayout>
+                                </StackLayout> <!-- child stacklayout -->
+                            </Grid> <!-- coursecard text layout -->
+                        </StackLayout> <!-- coursecards[i] -->
+                    </Grid> <!-- coursecard row -->
+                </StackLayout> <!-- stacklayout -->
             </ScrollView>
-        </StackLayout>
+        </StackLayout> <!-- master stacklayout -->
     </ContentPage.Content>
 </ContentPage>

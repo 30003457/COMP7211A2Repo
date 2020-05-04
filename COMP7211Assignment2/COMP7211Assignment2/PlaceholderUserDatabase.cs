@@ -5,11 +5,11 @@ using System.Text;
 namespace COMP7211Assignment2
 {
     //Code by Min 30003457
-    class PlaceholderDatabase
+    class PlaceholderUserDatabase
     {
         public static List<User> Records = new List<User>();
 
-        public PlaceholderDatabase()
+        public PlaceholderUserDatabase()
         {
             Records.Add(new User("Bob", "Smith", 00000001, false));
             Records.Add(new User("Jack", "Johnson", 12341234, false));
