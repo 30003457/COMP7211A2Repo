@@ -7,5 +7,128 @@
              x:Class="COMP7211Assignment2.CoursesViewPage">
     <!-- Created by Min 30003457, to be later edited by Agassi -->
     <ContentPage.Content>
+        <StackLayout>
+            <!-- header -->
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Courses" HorizontalOptions="Center" Grid.Column="1"
+                       VerticalOptions="Center" TextColor="Black" FontSize="24"/>
+                    <Button Text="LOGOUT" Grid.Column="2" HorizontalOptions="End"
+                        TranslationX="-5"/>
+                </Grid>
+            </StackLayout>
+            <!-- course cards start here -->
+            <ScrollView>
+                <StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout BackgroundColor="Gray" HorizontalOptions="End"
+                             WidthRequest="150" HeightRequest="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackLayout HorizontalOptions="Center" TranslationY="30">
+                                    <Label Text="COMP1234" TextColor="White"
+                                       FontSize="24"/>
+                                    <Label Text="Subject name here" TextColor="White"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout BackgroundColor="Gray" HorizontalOptions="Start"
+                             WidthRequest="150" HeightRequest="150" Grid.Column="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackLayout HorizontalOptions="Center" TranslationY="30">
+                                    <Label Text="COMP1234" TextColor="White"
+                                       FontSize="24"/>
+                                    <Label Text="Subject name here" TextColor="White"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout BackgroundColor="Gray" HorizontalOptions="End"
+                             WidthRequest="150" HeightRequest="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackLayout HorizontalOptions="Center" TranslationY="30">
+                                    <Label Text="COMP1234" TextColor="White"
+                                       FontSize="24"/>
+                                    <Label Text="Subject name here" TextColor="White"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout BackgroundColor="Gray" HorizontalOptions="Start"
+                             WidthRequest="150" HeightRequest="150" Grid.Column="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackLayout HorizontalOptions="Center" TranslationY="30">
+                                    <Label Text="COMP1234" TextColor="White"
+                                       FontSize="24"/>
+                                    <Label Text="Subject name here" TextColor="White"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout BackgroundColor="Gray" HorizontalOptions="End"
+                             WidthRequest="150" HeightRequest="150">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackLayout HorizontalOptions="Center" TranslationY="30">
+                                    <Label Text="COMP1234" TextColor="White"
+                                       FontSize="24"/>
+                                    <Label Text="Subject name here" TextColor="White"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout BackgroundColor="Gray" HorizontalOptions="Start"
+                             WidthRequest="150" HeightRequest="150" Grid.Column="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackLayout HorizontalOptions="Center" TranslationY="30">
+                                    <Label Text="COMP1234" TextColor="White"
+                                       FontSize="24"/>
+                                    <Label Text="Subject name here" TextColor="White"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

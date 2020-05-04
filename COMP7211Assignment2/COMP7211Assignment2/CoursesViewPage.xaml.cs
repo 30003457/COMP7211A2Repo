@@ -44,61 +44,111 @@ namespace COMP7211Assignment2
             };
             headerGrid.Children.Add(midCol, 1, 0);
             headerGrid.Children.Add(rightCol, 2, 0);
-            masterStackLayout.Children.Add(headerGrid);
+
+            //masterStackLayout.Children.Add(headerGrid);
+            StackLayout headerStackLayout = new StackLayout();
+            headerStackLayout.Children.Add(headerGrid);
+            masterStackLayout.Children.Add(headerStackLayout);
         }
 
         private void CreateCourseCardsView()
         {
-            StackLayout stackLayout = new StackLayout();
-            stackLayout.TranslationY = 20;
-
-            SimulateLoginUser();
-
-            List<StackLayout> courseCards = new List<StackLayout>();
-
-            for (int i = 0; i < cd.ReturnCourses().Count; i++)
-            {
-                //attempt to correct bug
-                if(i == cd.ReturnCourses().Count-1)
-                {
-                    courseCards.Add(new StackLayout
-                    {
-                        BackgroundColor = Color.Gray,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        WidthRequest = 300,
-                        HeightRequest = 120
-                    });
-                }
-                else
-                {
-                    courseCards.Add(new StackLayout
-                    {
-                        BackgroundColor = Color.Gray,
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        WidthRequest = 300,
-                        HeightRequest = 100
-                    });
-                }
-                
-                Grid grid = new Grid();
-                grid.RowDefinitions.Add(new RowDefinition());
-                grid.RowDefinitions.Add(new RowDefinition());
-                
-                //inser tap gesture recognizer here
-                grid.Children.Add(new Image());
-
-                StackLayout childStackLayout = new StackLayout { Padding = 10 };
-                childStackLayout.Children.Add(new Label { Text = $"COMP{cd.ReturnCourses()[i].ID}", FontSize = 36, TextColor = Color.White });
-                childStackLayout.Children.Add(new Label { Text = cd.ReturnCourses()[i].Name, TextColor = Color.White });
-                grid.Children.Add(childStackLayout);
-                courseCards[i].Children.Add(grid);
-                stackLayout.Children.Add(courseCards[i]);
-            }
+            StackLayout stackLayout = CreateCourseCardRow();
 
             ScrollView scrollView = new ScrollView();
             scrollView.Content = stackLayout;
             masterStackLayout.Children.Add(scrollView);
             //Content = scrollView;
+        }
+
+        private StackLayout CreateCourseCardRow()
+        {
+            //initial stacklayout
+            StackLayout stackLayout = new StackLayout();
+            stackLayout.TranslationY = 20;
+
+            SimulateLoginUser();
+
+            //collection of course cards as stacklayouts
+            List<StackLayout> courseCards = new List<StackLayout>();
+
+            //create course card layout
+            Grid courseCardRow = new Grid();
+            courseCardRow.ColumnDefinitions.Add(new ColumnDefinition());
+            courseCardRow.ColumnDefinitions.Add(new ColumnDefinition());
+
+            //variables to create 2 columns
+            bool isLeftSide = true;
+            int rowCounter = 0;
+            //int row = 0;
+
+            StackLayout rowStackLayout = new StackLayout();
+
+            for (int i = 0; i < cd.ReturnCourses().Count; i++)
+            {
+                courseCards.Add(new StackLayout
+                {
+                    BackgroundColor = Color.Gray,
+                    WidthRequest = 200,
+                    HeightRequest = 200
+                });
+
+                //add to grid to split columns
+                if (isLeftSide == true)
+                {
+                    courseCardRow.Children.Add(courseCards[i], 0, 0);
+                    courseCardRow.HorizontalOptions = LayoutOptions.End;
+                    isLeftSide = false;
+                    rowCounter++;
+                }
+                else
+                {
+                    courseCardRow.Children.Add(courseCards[i], 1, 0);
+                    courseCardRow.HorizontalOptions = LayoutOptions.Start;
+                    isLeftSide = true;
+                    rowCounter++;
+                }
+
+                //separate rows
+                if (rowCounter >= 2)
+                {
+                    rowStackLayout.Children.Add(courseCardRow);
+                    //row++;
+                    rowCounter = 0;
+                }
+
+                //for the text within each course card
+                Grid courseCardTextLayout = new Grid();
+                courseCardTextLayout.RowDefinitions.Add(new RowDefinition());
+                courseCardTextLayout.RowDefinitions.Add(new RowDefinition());
+
+                //insert tap gesture recognizer here
+                var tapGestureRecognizer = new TapGestureRecognizer();
+                tapGestureRecognizer.Tapped += (s, e) =>
+                {
+                    // handle the tap
+
+                };
+
+                //course card in the form of an image
+                Image courseCardBg = new Image();
+                courseCardBg.GestureRecognizers.Add(tapGestureRecognizer);
+
+                courseCardTextLayout.Children.Add(courseCardBg);
+
+                //text for each course card
+                StackLayout childStackLayout = new StackLayout { Padding = 10 };
+                childStackLayout.Children.Add(new Label { Text = $"COMP{cd.ReturnCourses()[i].ID}", FontSize = 24, TextColor = Color.White, InputTransparent = true });
+                childStackLayout.Children.Add(new Label { Text = cd.ReturnCourses()[i].Name, TextColor = Color.White, InputTransparent = true });
+
+                //order of xaml elements
+                courseCardTextLayout.Children.Add(childStackLayout);
+                courseCards[i].Children.Add(courseCardTextLayout);
+                courseCardRow.Children.Add(courseCards[i]);
+                stackLayout.Children.Add(courseCardRow);
+            }
+
+            return stackLayout;
         }
 
         private void SimulateLoginUser()
