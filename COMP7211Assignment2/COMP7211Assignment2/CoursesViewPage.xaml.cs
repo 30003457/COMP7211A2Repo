@@ -11,149 +11,150 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CoursesViewPage : ContentPage
     {
-        PlaceholderDatabase db = new PlaceholderDatabase();
-        CourseDetector cd;
-        StackLayout masterStackLayout;
+        //PlaceholderDatabase db = new PlaceholderDatabase();
+        //CourseDetector cd;
+        //StackLayout masterStackLayout;
         public CoursesViewPage()
         {
-            masterStackLayout = new StackLayout();
+            //masterStackLayout = new StackLayout();
 
             InitializeComponent();
-            CreateHeaderView();
-            CreateCourseCardsView();
+            //CreateHeaderView();
+            //CreateCourseCardsView();
             
-            Content = masterStackLayout;
+            //Content = masterStackLayout;
         }
 
-        private void CreateHeaderView()
-        {
-            Grid headerGrid = new Grid();
-            headerGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            headerGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            headerGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            var midCol = new Label {
-                Text = "Courses", HorizontalTextAlignment = TextAlignment.Center,
-                Padding = new Thickness(0,20,0,0), FontSize = 24, TextColor = Color.Black};
-            var rightCol = new Button
-            {
-                TranslationY = 12,
-                TranslationX = -10,
-                WidthRequest = 100,
-                HorizontalOptions = LayoutOptions.End,
-                Text = "LOGOUT"
-            };
-            headerGrid.Children.Add(midCol, 1, 0);
-            headerGrid.Children.Add(rightCol, 2, 0);
+        //private void CreateHeaderView()
+        //{
+        //    Grid headerGrid = new Grid();
+        //    headerGrid.ColumnDefinitions.Add(new ColumnDefinition());
+        //    headerGrid.ColumnDefinitions.Add(new ColumnDefinition());
+        //    headerGrid.ColumnDefinitions.Add(new ColumnDefinition());
+        //    var midCol = new Label {
+        //        Text = "Courses", HorizontalTextAlignment = TextAlignment.Center,
+        //        Padding = new Thickness(0,20,0,0), FontSize = 24, TextColor = Color.Black};
+        //    var rightCol = new Button
+        //    {
+        //        TranslationY = 12,
+        //        TranslationX = -10,
+        //        WidthRequest = 100,
+        //        HorizontalOptions = LayoutOptions.End,
+        //        Text = "LOGOUT"
+        //    };
+        //    headerGrid.Children.Add(midCol, 1, 0);
+        //    headerGrid.Children.Add(rightCol, 2, 0);
 
-            //masterStackLayout.Children.Add(headerGrid);
-            StackLayout headerStackLayout = new StackLayout();
-            headerStackLayout.Children.Add(headerGrid);
-            masterStackLayout.Children.Add(headerStackLayout);
-        }
+        //    //masterStackLayout.Children.Add(headerGrid);
+        //    StackLayout headerStackLayout = new StackLayout();
+        //    headerStackLayout.Children.Add(headerGrid);
+        //    masterStackLayout.Children.Add(headerStackLayout);
+        //}
 
-        private void CreateCourseCardsView()
-        {
-            StackLayout stackLayout = CreateCourseCardRow();
+        //private void CreateCourseCardsView()
+        //{
+        //    StackLayout stackLayout = CreateCourseCardRow();
 
-            ScrollView scrollView = new ScrollView();
-            scrollView.Content = stackLayout;
-            masterStackLayout.Children.Add(scrollView);
-            //Content = scrollView;
-        }
+        //    ScrollView scrollView = new ScrollView();
+        //    scrollView.Content = stackLayout;
+        //    masterStackLayout.Children.Add(scrollView);
+        //    //Content = scrollView;
+        //}
 
-        private StackLayout CreateCourseCardRow()
-        {
-            //initial stacklayout
-            StackLayout stackLayout = new StackLayout();
-            stackLayout.TranslationY = 20;
+        //private StackLayout CreateCourseCardRow()
+        //{
+        //    //initial stacklayout
+        //    StackLayout stackLayout = new StackLayout();
+        //    stackLayout.TranslationY = 20;
 
-            SimulateLoginUser();
+        //    SimulateLoginUser();
 
-            //collection of course cards as stacklayouts
-            List<StackLayout> courseCards = new List<StackLayout>();
+        //    //collection of course cards as stacklayouts
+        //    List<StackLayout> courseCards = new List<StackLayout>();
 
-            //create course card layout
-            Grid courseCardRow = new Grid();
-            courseCardRow.ColumnDefinitions.Add(new ColumnDefinition());
-            courseCardRow.ColumnDefinitions.Add(new ColumnDefinition());
+        //    //create course card layout
+        //    Grid courseCardRow = new Grid();
+        //    courseCardRow.ColumnDefinitions.Add(new ColumnDefinition());
+        //    courseCardRow.ColumnDefinitions.Add(new ColumnDefinition());
 
-            //variables to create 2 columns
-            bool isLeftSide = true;
-            int rowCounter = 0;
-            //int row = 0;
+        //    //variables to create 2 columns
+        //    bool isLeftSide = true;
+        //    int rowCounter = 0;
+        //    //int row = 0;
 
-            StackLayout rowStackLayout = new StackLayout();
+        //    //StackLayout rowStackLayout = new StackLayout();
 
-            for (int i = 0; i < cd.ReturnCourses().Count; i++)
-            {
-                courseCards.Add(new StackLayout
-                {
-                    BackgroundColor = Color.Gray,
-                    WidthRequest = 200,
-                    HeightRequest = 200
-                });
+        //    for (int i = 0; i < cd.ReturnCourses().Count; i++)
+        //    {
+        //        courseCards.Add(new StackLayout
+        //        {
+        //            BackgroundColor = Color.Gray,
+        //            WidthRequest = 200,
+        //            HeightRequest = 200
+        //        });
 
-                //add to grid to split columns
-                if (isLeftSide == true)
-                {
-                    courseCardRow.Children.Add(courseCards[i], 0, 0);
-                    courseCardRow.HorizontalOptions = LayoutOptions.End;
-                    isLeftSide = false;
-                    rowCounter++;
-                }
-                else
-                {
-                    courseCardRow.Children.Add(courseCards[i], 1, 0);
-                    courseCardRow.HorizontalOptions = LayoutOptions.Start;
-                    isLeftSide = true;
-                    rowCounter++;
-                }
+        //        //add to grid to split columns
+        //        if (isLeftSide == true)
+        //        {
+        //            courseCardRow.Children.Add(courseCards[i], 0, 0);
+        //            courseCardRow.HorizontalOptions = LayoutOptions.End;
+        //            isLeftSide = false;
+        //            rowCounter++;
+        //        }
+        //        else
+        //        {
+        //            courseCardRow.Children.Add(courseCards[i], 1, 0);
+        //            courseCardRow.HorizontalOptions = LayoutOptions.Start;
+        //            isLeftSide = true;
+        //            rowCounter++;
+        //        }
 
-                //separate rows
-                if (rowCounter >= 2)
-                {
-                    rowStackLayout.Children.Add(courseCardRow);
-                    //row++;
-                    rowCounter = 0;
-                }
+        //        //for the text within each course card
+        //        Grid courseCardTextLayout = new Grid();
+        //        courseCardTextLayout.RowDefinitions.Add(new RowDefinition());
+        //        courseCardTextLayout.RowDefinitions.Add(new RowDefinition());
 
-                //for the text within each course card
-                Grid courseCardTextLayout = new Grid();
-                courseCardTextLayout.RowDefinitions.Add(new RowDefinition());
-                courseCardTextLayout.RowDefinitions.Add(new RowDefinition());
+        //        //insert tap gesture recognizer here
+        //        var tapGestureRecognizer = new TapGestureRecognizer();
+        //        tapGestureRecognizer.Tapped += (s, e) =>
+        //        {
+        //            // handle the tap
 
-                //insert tap gesture recognizer here
-                var tapGestureRecognizer = new TapGestureRecognizer();
-                tapGestureRecognizer.Tapped += (s, e) =>
-                {
-                    // handle the tap
+        //        };
 
-                };
+        //        //course card in the form of an image
+        //        Image courseCardBg = new Image();
+        //        courseCardBg.GestureRecognizers.Add(tapGestureRecognizer);
 
-                //course card in the form of an image
-                Image courseCardBg = new Image();
-                courseCardBg.GestureRecognizers.Add(tapGestureRecognizer);
+        //        courseCardTextLayout.Children.Add(courseCardBg);
 
-                courseCardTextLayout.Children.Add(courseCardBg);
+        //        //text for each course card
+        //        StackLayout childStackLayout = new StackLayout { Padding = 10 };
+        //        childStackLayout.Children.Add(new Label { Text = $"COMP{cd.ReturnCourses()[i].ID}", FontSize = 24, TextColor = Color.White, InputTransparent = true });
+        //        childStackLayout.Children.Add(new Label { Text = cd.ReturnCourses()[i].Name, TextColor = Color.White, InputTransparent = true });
 
-                //text for each course card
-                StackLayout childStackLayout = new StackLayout { Padding = 10 };
-                childStackLayout.Children.Add(new Label { Text = $"COMP{cd.ReturnCourses()[i].ID}", FontSize = 24, TextColor = Color.White, InputTransparent = true });
-                childStackLayout.Children.Add(new Label { Text = cd.ReturnCourses()[i].Name, TextColor = Color.White, InputTransparent = true });
 
-                //order of xaml elements
-                courseCardTextLayout.Children.Add(childStackLayout);
-                courseCards[i].Children.Add(courseCardTextLayout);
-                courseCardRow.Children.Add(courseCards[i]);
-                stackLayout.Children.Add(courseCardRow);
-            }
 
-            return stackLayout;
-        }
+        //        //order of xaml elements
+        //        courseCardTextLayout.Children.Add(childStackLayout);
+        //        courseCards[i].Children.Add(courseCardTextLayout);
+        //        courseCardRow.Children.Add(courseCards[i]);
+        //        //separate rows
+        //        if (rowCounter >= 2)
+        //        {
+        //            stackLayout.Children.Add(courseCardRow);
+        //            //row++;
+        //            rowCounter = 0;
+        //        }
+        //        //stackLayout.Children.Add(courseCardRow);
+        //    }
 
-        private void SimulateLoginUser()
-        {
-            cd = new CourseDetector(45677654);
-        }
+        //    return stackLayout;
+        //}
+
+        //private void SimulateLoginUser()
+        //{
+        //    cd = new CourseDetector(45677654);
+        //}
     }
 }

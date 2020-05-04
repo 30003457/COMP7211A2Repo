@@ -9,7 +9,7 @@ namespace COMP7211Assignment2
         List<Course> DetectedCourses = new List<Course>();
         public CourseDetector(int id)
         {
-            foreach (var item in PlaceholderDatabase.Records)
+            foreach (var item in PlaceholderUserDatabase.Records)
             {
                 if(item.StudentID == id)
                 {
