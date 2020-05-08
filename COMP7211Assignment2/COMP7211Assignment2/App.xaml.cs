@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using DLToolkit.Forms.Controls;
 
 namespace COMP7211Assignment2
 {
@@ -9,6 +10,7 @@ namespace COMP7211Assignment2
         public App()
         {
             InitializeComponent();
+            FlowListView.Init();
 
             MainPage = new NavigationPage(new MainPage());
         }
