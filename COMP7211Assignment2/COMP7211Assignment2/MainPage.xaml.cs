@@ -13,11 +13,25 @@ namespace COMP7211Assignment2
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        public PostArchive posts = new PostArchive();
+
         public MainPage()
         {
             InitializeComponent();
-            string test = "github test";
-            test = "more test";
+            BindingContext = posts;
+        }
+
+
+
+        private void BtnDwnVote_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUpVote_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }
+

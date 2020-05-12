@@ -6,11 +6,38 @@
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+<StackLayout>
+        <StackLayout>
+            <ListView ItemsSource="{Binding GetPostList}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Post">
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                   
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="Subjectlbl" Grid.Row="1"  Text="{Binding Subject}"/>
+                                <Label x:Name="UserPostlbl" Grid.Row="2"  Text="{Binding Userpost}"/>
+                                <Label x:Name="DateTimelbl" Grid.Row="3" Text="{Binding Date}"/>
+                                <Label x:Name="TotalUpVotelbl" Grid.Row="4" Text="{Binding Upvote}"/>
+                                <Label x:Name="TotalDwnVotelb" Grid.Row="5" Text="{Binding Dwnvote}"/>
+
+                                <Button x:Name="BtnUpVote" Text="Upvote" Grid.Row="6" Clicked="BtnUpVote_Clicked"/>
+                                <Button x:Name="BtnDwnVote" Text="DownVote" Grid.Row="7" Clicked="BtnDwnVote_Clicked"/>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>
+
