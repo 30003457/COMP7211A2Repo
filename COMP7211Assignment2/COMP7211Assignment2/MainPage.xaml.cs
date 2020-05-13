@@ -16,10 +16,12 @@ namespace COMP7211Assignment2
         public MainPage()
         {
             InitializeComponent();
+
             string test = "github test";
             test = "more test";
 
             string test2 = "another line to test";
         }
+
     }
 }
