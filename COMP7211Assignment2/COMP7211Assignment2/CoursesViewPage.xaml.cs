@@ -12,17 +12,36 @@ namespace COMP7211Assignment2
     public partial class CoursesViewPage : ContentPage
     {
         //PlaceholderDatabase db = new PlaceholderDatabase();
-        //CourseDetector cd;
+        CourseDetector cd;
         //StackLayout masterStackLayout;
+        PlaceholderUserDatabase userDb;
         public CoursesViewPage()
         {
             //masterStackLayout = new StackLayout();
 
             InitializeComponent();
+            userDb = new PlaceholderUserDatabase();
+            cd = new CourseDetector(45677654);
+            BindingContext = cd;
             //CreateHeaderView();
             //CreateCourseCardsView();
             
             //Content = masterStackLayout;
+        }
+
+        private void FlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
         }
 
         //private void CreateHeaderView()

@@ -7,7 +7,7 @@ namespace COMP7211Assignment2
     //Code by Min 30003457
     class PlaceholderUserDatabase
     {
-        public static List<User> Records = new List<User>();
+        public List<User> Records = new List<User>();
 
         public PlaceholderUserDatabase()
         {

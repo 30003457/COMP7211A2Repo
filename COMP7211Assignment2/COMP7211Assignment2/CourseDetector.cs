@@ -6,10 +6,13 @@ namespace COMP7211Assignment2
 {
     class CourseDetector
     {
-        List<Course> DetectedCourses = new List<Course>();
+        public List<Course> DetectedCourses { get; set; }
+        PlaceholderUserDatabase userDb;
         public CourseDetector(int id)
         {
-            foreach (var item in PlaceholderUserDatabase.Records)
+            DetectedCourses = new List<Course>();
+            userDb = new PlaceholderUserDatabase();
+            foreach (var item in userDb.Records)
             {
                 if(item.StudentID == id)
                 {
@@ -17,11 +20,6 @@ namespace COMP7211Assignment2
                     break;
                 }
             }
-        }
-
-        public List<Course> ReturnCourses()
-        {
-            return DetectedCourses;
         }
     }
 }

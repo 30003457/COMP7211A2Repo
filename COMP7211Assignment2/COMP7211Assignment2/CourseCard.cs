@@ -31,7 +31,7 @@ namespace COMP7211Assignment2
             //courseDetector = new CourseDetector(PlaceholderUserDatabase.Records[0].StudentID);
         }
 
-        public StackLayout CreateLayout(int col, int courseId, string courseName)
+        public StackLayout CreateLayout(int col, string courseId, string courseName)
         {
             //course card stack
             courseCardStack.BackgroundColor = Color.Gray;

@@ -21,7 +21,7 @@ namespace COMP7211Assignment2
             cd = new CourseDetector(id);
             ccList = new CourseCards();
             cc = new CourseCard(); //creates the two columns from constructor
-            courseCount = cd.ReturnCourses().Count;
+            courseCount = cd.DetectedCourses.Count;
 
             CreateAll();
         }
@@ -64,7 +64,7 @@ namespace COMP7211Assignment2
 
         private void AddCourseCard()
         {
-            cc.rowGrid.Children.Add(cc.CreateLayout(col, cd.ReturnCourses()[totalCount].ID, cd.ReturnCourses()[totalCount].Name));
+            cc.rowGrid.Children.Add(cc.CreateLayout(col, cd.DetectedCourses[totalCount].ID, cd.DetectedCourses[totalCount].Name));
         }
 
         private int CalculateRows()
