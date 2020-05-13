@@ -17,6 +17,14 @@ namespace COMP7211Assignment2
         {
             InitializeComponent();
         }
+        private async void ForgotClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ForgotPasswordPage());
+        }
+        private async void CreateClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FirstLoginPage());
+        }
         void SignInClicked(object sender, EventArgs e)
         {
 
