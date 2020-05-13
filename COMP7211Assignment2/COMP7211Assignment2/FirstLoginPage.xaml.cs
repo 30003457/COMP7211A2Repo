@@ -16,5 +16,23 @@ namespace COMP7211Assignment2
         {
             InitializeComponent();
         }
+        void SignInClicked(object sender, EventArgs e)
+        {
+
+
+            if (StudentIDEntry.Text == null)
+            {
+                DisplayAlert("Error", "No Student ID Entered please try again", "OK");
+            }
+            else if (PasswordEntry.Text == null)
+            {
+                DisplayAlert("Error", "No Password Entered please try again", "OK");
+            }
+            else
+            {
+                DisplayAlert("Success", "You have successfully logged in", "OK");
+            }
+
+        }
     }
 }
