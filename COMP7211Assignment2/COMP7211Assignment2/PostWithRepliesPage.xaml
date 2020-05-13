@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="COMP7211Assignment2.PostWithRepliesPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Text="BACK" VerticalOptions="Start" HorizontalOptions="Start" BorderWidth="1" BorderColor="Black" Clicked="BackButton"></Button>
+                    <Button Text="HOME" VerticalOptions="Start" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="HomeButton"></Button>
+
+                </Grid>
+
+                <Label Text="Subject Name 1" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Body"></Label>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Blah's Accent" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
+                </Grid>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="   1/1/2020" TextColor="Black" VerticalOptions="Start"></Label>
+                        <Label Text="   1:00pm" TextColor="Black" VerticalOptions="Start"></Label>
+                    </StackLayout>
+                </Grid>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium imperdiet pretium. Nunc bibendum, nunc quis porttitor pharetra, sem eros fermentum ipsum, ac rutrum nisl odio id enim." VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
+                </Grid>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="0" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
+                    <Label Text="                           123" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
+                    <Label Text="Posted by Bob" VerticalOptions="End" HorizontalOptions="EndAndExpand"></Label>
+
+                </StackLayout>
+
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Horizontal">
+
+                        <Button Text="Downvote" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
+                        <Button Text="Upvote" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
+
+                    </StackLayout>
+                    <Button Text="Reply" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="ReplyButton1"></Button>
+
+                </Grid>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="   1/1/2020" TextColor="Black" VerticalOptions="Start"></Label>
+                        <Label Text="   1:01pm" TextColor="Black" VerticalOptions="Start"></Label>
+                    </StackLayout>
+                </Grid>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Aenean erat nulla, iaculis in ipsum sit amet, varius gravida tortor!" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
+                </Grid>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="0" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
+                    <Label Text="                           21" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
+                    <Label Text="Posted by Bob" VerticalOptions="End" HorizontalOptions="EndAndExpand"></Label>
+
+                </StackLayout>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Horizontal">
+
+                        <Button Text="Downvote" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
+                        <Button Text="Upvote" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
+
+                    </StackLayout>
+                    <Button Text="Reply" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="ReplyButton2"></Button>
+
+                </Grid>
+
+                <Label Text="Signed in as Bob" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" TextColor="Black"></Label>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

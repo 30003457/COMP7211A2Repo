@@ -16,8 +16,26 @@ namespace COMP7211Assignment2
         public MainPage()
         {
             InitializeComponent();
-            string test = "github test";
-            test = "more test";
+        }
+
+        private async void NewPostButton(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CreatePostPage());
+        }
+
+        private async void HomeButton(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+
+        private async void BackButton(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+
+        private async void FirstPostButton(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PostWithRepliesPage());
         }
     }
 }

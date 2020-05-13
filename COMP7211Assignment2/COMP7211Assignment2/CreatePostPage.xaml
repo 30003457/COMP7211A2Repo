@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="COMP7211Assignment2.CreatePostPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Button Text="BACK" VerticalOptions="Start" HorizontalOptions="Start" BorderWidth="1" BorderColor="Black" Clicked="BackButton"></Button>
+                <Button Text="HOME" VerticalOptions="Start" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="HomeButton"></Button>
+                <Label Text="COMP1231" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Title" Padding="10"></Label>
+
+            </Grid>
+
+            <Label Text="Subject Name 1" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Body"></Label>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="Opinion on Blah's teaching" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium imperdiet pretium. Nunc bibendum, nunc quis porttitor pharetra, sem eros fermentum ipsum, ac rutrum nisl odio id enim." VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Button Text="Create" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="CreateButton"></Button>
+
+            </Grid>
+
+            <Label Text="Signed in as Bob" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" TextColor="Black"></Label>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
