@@ -19,16 +19,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="CoursesViewPage.xaml">
+    <EmbeddedResource Update="View Folder\CoursesViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FirstLoginPage.xaml">
+    <EmbeddedResource Update="View Folder\FirstLoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ForgotPasswordPage.xaml">
+    <EmbeddedResource Update="View Folder\ForgotPasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="LogInPage.xaml">
+    <EmbeddedResource Update="View Folder\LogInPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
