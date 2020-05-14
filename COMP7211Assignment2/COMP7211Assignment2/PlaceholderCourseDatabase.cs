@@ -6,7 +6,7 @@ namespace COMP7211Assignment2
 {
     class PlaceholderCourseDatabase
     {
-        public static List<Course> records = new List<Course>();
+        public List<Course> records = new List<Course>();
         public PlaceholderCourseDatabase()
         {
             records.Add(new Course("Routing and Switching", 6201));
