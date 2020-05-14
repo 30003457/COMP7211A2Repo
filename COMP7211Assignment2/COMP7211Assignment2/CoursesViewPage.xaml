@@ -29,8 +29,8 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="{Binding ID}" FontSize="16" TextColor="White"/>
-                                <Label Text="{Binding Name}" TextColor="White"/>
+                                <Label Text="{Binding ID}" FontSize="16" TextColor="Black"/>
+                                <Label Text="{Binding Name}" TextColor="Black"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
