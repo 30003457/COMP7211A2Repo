@@ -12,7 +12,7 @@ namespace COMP7211Assignment2
         {
             DetectedCourses = new List<Course>();
             userDb = new PlaceholderUserDatabase();
-            foreach (var item in userDb.Records)
+            foreach (var item in userDb.records)
             {
                 if(item.StudentID == id)
                 {

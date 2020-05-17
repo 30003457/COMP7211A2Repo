@@ -12,6 +12,7 @@ namespace COMP7211Assignment2
         public int StudentID { get; set; }
         public List<Course> EnrolledCourses { get; set; }
         public bool IsRep { get; set; }
+        public List<int> VotedPosts { get; set; } //add post id to this list and check this list of id's before voting so users can only vote once on same post
         PlaceholderCourseDatabase cdb;
 
         //All students enrolled in same courses for now...
