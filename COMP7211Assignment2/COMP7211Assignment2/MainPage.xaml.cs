@@ -25,5 +25,9 @@ namespace COMP7211Assignment2
         {
             await Navigation.PushAsync(new CoursesViewPage());
         }
+        private async void Button(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ResetPassword());
+        }
     }
 }
