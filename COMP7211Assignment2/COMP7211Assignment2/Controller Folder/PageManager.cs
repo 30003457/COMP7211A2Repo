@@ -8,12 +8,13 @@ namespace COMP7211Assignment2.Controller_Folder
     class PageManager
     {
         public string CurrentTitle { get; set; }
+        public string CurrentSubtext { get; set; }
         public int CurrentCourseID { get; set; }
-        public List<User> UserRecords { get; set; }
+        public List<User> UserRecords { get; set; } //Have to have lists here from the DB's for bindings
         public List<Post> PostRecords { get; set; }
         public List<Post> DetectedPostRecords { get; set; }
         public CourseDetector CDetector { get; set; }
-        //public PostDetector PDetector { get; set; }
+        public PostDetector PDetector { get; set; }
         PlaceholderUserDatabase userDb;
         PlaceholderPostDatabase postDb;
         public PageManager()
@@ -21,25 +22,24 @@ namespace COMP7211Assignment2.Controller_Folder
             userDb = new PlaceholderUserDatabase();
             postDb = new PlaceholderPostDatabase();
 
-            UserRecords = PageData.UserRecords = userDb.records;
-            PostRecords = PageData.PostRecords = postDb.records;
-            CurrentCourseID = PageData.CurrentCourseID;
-            //DetectedPostRecords = PageData.PDetector.DetectedPosts;
-            CDetector = PageData.CDetector;
-            CurrentTitle = GetTitle();
+            UserRecords = UserRecords = userDb.records;
+            PostRecords = PostRecords = postDb.records;
+
+            //CurrentCourseID = PageData.CurrentCourseID;
+            //DetectedPostRecords = PDetector.DetectedPosts;
+            //CDetector = PageData.CDetector;
+            //CurrentTitle = PageData.CurrentTitle;
+            //CurrentSubtext = PageData.CurrentSubtext;
         }
         public void DetectPosts()
         {
-            DetectedPostRecords = PageData.PDetector.DetectedPosts;
-        }
-        public string GetTitle()
-        {
-            return PageData.CurrentTitle;
+            //DetectedPostRecords = PageData.PDetector.DetectedPosts;
+            DetectedPostRecords = PDetector.DetectedPosts;
         }
 
-        public void SetTitle(string title)
-        {
-            PageData.CurrentTitle = title;
-        }
+        //public void SetTitle(string title)
+        //{
+        //    PageData.CurrentTitle = title;
+        //}
     }
 }

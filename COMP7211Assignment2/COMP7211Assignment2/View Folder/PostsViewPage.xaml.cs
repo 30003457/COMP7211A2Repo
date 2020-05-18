@@ -14,15 +14,15 @@ namespace COMP7211Assignment2.View_Folder
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PostsViewPage : ContentPage
     {
-        PageManager pm;
+        //PageManager pm;
 
         public PostsViewPage()
         {
             InitializeComponent();
-            pm = new PageManager();
-            PageData.PDetector = new PostDetector(PageData.CurrentCourseID);
-            pm.DetectPosts();
-            BindingContext = pm;
+            //pm = new PageManager();
+            PageData.PManager.PDetector = new PostDetector(PageData.PManager.CurrentCourseID);
+            PageData.PManager.DetectPosts();
+            BindingContext = PageData.PManager;
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)

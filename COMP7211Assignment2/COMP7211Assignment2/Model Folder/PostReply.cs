@@ -12,6 +12,8 @@ namespace COMP7211Assignment2.Model_Folder
         public int PostId { get; set; }
         public string Time { get; set; }
         public int Upvotes { get; set; }
+        public string UpvotesTxt { get; set; }
+        public string DownvotesTxt { get; set; }
 
         public PostReply(int id, int postId, DateTime time, string content)
         {

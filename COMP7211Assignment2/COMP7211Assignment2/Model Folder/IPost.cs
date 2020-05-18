@@ -9,5 +9,7 @@ namespace COMP7211Assignment2.Model_Folder
         int Id { get; set; }
         string Time { get; set; }
         int Upvotes { get; set; }
+        string UpvotesTxt { get; set; }
+        string DownvotesTxt { get; set; }
     }
 }

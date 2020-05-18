@@ -13,6 +13,8 @@ namespace COMP7211Assignment2.Model_Folder
         public string Content { get; set; }
         public int Upvotes { get; set; }
         public int Downvotes { get; set; }
+        public string UpvotesTxt { get; set; }
+        public string DownvotesTxt { get; set; }
         public List<PostReply> Replies { get; set; }
 
         public Post(int id, int courseId, DateTime time, string title, string content)

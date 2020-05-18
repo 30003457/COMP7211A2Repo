@@ -16,7 +16,7 @@ namespace COMP7211Assignment2
             DetectedCourses = new List<Course>();
             pm = new PageManager();
             //userDb = new PlaceholderUserDatabase();
-            foreach (var item in PageData.UserRecords)
+            foreach (var item in PageData.PManager.UserRecords)
             {
                 if(item.StudentID == id)
                 {

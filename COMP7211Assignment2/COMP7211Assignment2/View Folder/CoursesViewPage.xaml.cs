@@ -19,15 +19,18 @@ namespace COMP7211Assignment2
         //StackLayout masterStackLayout;
         //PlaceholderUserDatabase userDb;
         Course selectedCourse;
-        PageManager pm;
+        //PageManager pm;
         public CoursesViewPage()
         {
             //masterStackLayout = new StackLayout();
             InitializeComponent();
-            pm = new PageManager();
+            PageData.PManager = new PageManager();
+            //PageData.PManager.PostRecords = pm.PostRecords;
             //userDb = new PlaceholderUserDatabase();
-            PageData.CDetector = new CourseDetector(PageData.UserRecords[2].StudentID);
-            BindingContext = PageData.CDetector;
+            PageData.PManager.CDetector = new CourseDetector(PageData.PManager.UserRecords[2].StudentID);
+            BindingContext = PageData.PManager.CDetector;
+
+            TESTER.RandomVotes(); //add random votes
             //CreateHeaderView();
             //CreateCourseCardsView();
             
@@ -37,8 +40,9 @@ namespace COMP7211Assignment2
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             selectedCourse = (Course)e.Item;
-            pm.SetTitle(selectedCourse.IDName);
-            PageData.CurrentCourseID = selectedCourse.ID;
+            PageData.PManager.CurrentTitle = selectedCourse.IDName;
+            PageData.PManager.CurrentCourseID = selectedCourse.ID;
+            PageData.PManager.CurrentSubtext = selectedCourse.Name;
 
             await Navigation.PushAsync(new PostsViewPage());
         }

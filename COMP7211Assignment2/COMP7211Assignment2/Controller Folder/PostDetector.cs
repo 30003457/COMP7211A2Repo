@@ -15,7 +15,7 @@ namespace COMP7211Assignment2.Controller_Folder
             DetectedPosts = new List<Post>();
             //pm = new PageManager();
             //userDb = new PlaceholderUserDatabase();
-            foreach (var item in PageData.PostRecords)
+            foreach (var item in PageData.PManager.PostRecords)
             {
                 if (item.CourseId == id)
                 {
