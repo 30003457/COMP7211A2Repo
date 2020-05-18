@@ -7,7 +7,7 @@ namespace COMP7211Assignment2.Model_Folder
         string Content { get; set; }
         int Downvotes { get; set; }
         int Id { get; set; }
-        DateTime Time { get; set; }
+        string Time { get; set; }
         int Upvotes { get; set; }
     }
 }

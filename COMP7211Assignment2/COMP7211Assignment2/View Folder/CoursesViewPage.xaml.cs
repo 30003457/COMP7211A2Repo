@@ -1,4 +1,7 @@
-﻿using System;
+﻿using COMP7211Assignment2.Controller_Folder;
+using COMP7211Assignment2.Model_Folder;
+using COMP7211Assignment2.View_Folder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,36 +15,32 @@ namespace COMP7211Assignment2
     public partial class CoursesViewPage : ContentPage
     {
         //PlaceholderDatabase db = new PlaceholderDatabase();
-        CourseDetector cd;
+        //CourseDetector cd;
         //StackLayout masterStackLayout;
-        PlaceholderUserDatabase userDb;
+        //PlaceholderUserDatabase userDb;
+        Course selectedCourse;
+        PageManager pm;
         public CoursesViewPage()
         {
             //masterStackLayout = new StackLayout();
-
             InitializeComponent();
-            userDb = new PlaceholderUserDatabase();
-            cd = new CourseDetector(45677654);
-            BindingContext = cd;
+            pm = new PageManager();
+            //userDb = new PlaceholderUserDatabase();
+            PageData.CDetector = new CourseDetector(PageData.UserRecords[2].StudentID);
+            BindingContext = PageData.CDetector;
             //CreateHeaderView();
             //CreateCourseCardsView();
             
             //Content = masterStackLayout;
         }
 
-        private void FlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            selectedCourse = (Course)e.Item;
+            pm.SetTitle(selectedCourse.IDName);
+            PageData.CurrentCourseID = selectedCourse.ID;
 
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
+            await Navigation.PushAsync(new PostsViewPage());
         }
 
         //private void CreateHeaderView()

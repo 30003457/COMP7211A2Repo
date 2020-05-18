@@ -5,11 +5,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.View_Folder.PostsViewPage">
+    <!-- Created by Min 30003457, to be later edited by Agassi -->
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <!-- header -->
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding CurrentTitle}" HorizontalOptions="Center" Grid.Column="1"
+                       VerticalOptions="Center" TextColor="Black" FontSize="24"/>
+                    <Button Text="HOME" Grid.Column="2" HorizontalOptions="End"
+                        TranslationX="-5" TranslationY="5"/>
+                </Grid>
+            </StackLayout>
+
+            <ListView ItemsSource="{Binding DetectedPostRecords}" ItemTapped="ListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Title}" FontSize="16" TextColor="Black"/>
+                                <Label Text="{Binding Time}" TextColor="Black"/>
+                                <Label Text="{Binding Upvotes}" TextColor="Black"/>
+                                <Label Text="{Binding Downvotes}" TextColor="Black"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
+        <!-- master stacklayout -->
     </ContentPage.Content>
 </ContentPage>

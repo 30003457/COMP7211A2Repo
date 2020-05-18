@@ -1,4 +1,6 @@
-﻿using System;
+﻿using COMP7211Assignment2.Controller_Folder;
+using COMP7211Assignment2.Model_Folder;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,12 +9,14 @@ namespace COMP7211Assignment2
     class CourseDetector
     {
         public List<Course> DetectedCourses { get; set; }
-        PlaceholderUserDatabase userDb;
+        PageManager pm;
+        //PlaceholderUserDatabase userDb;
         public CourseDetector(int id)
         {
             DetectedCourses = new List<Course>();
-            userDb = new PlaceholderUserDatabase();
-            foreach (var item in userDb.records)
+            pm = new PageManager();
+            //userDb = new PlaceholderUserDatabase();
+            foreach (var item in PageData.UserRecords)
             {
                 if(item.StudentID == id)
                 {

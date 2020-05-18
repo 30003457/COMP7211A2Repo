@@ -10,14 +10,14 @@ namespace COMP7211Assignment2.Model_Folder
         public int Downvotes { get; set; }
         public int Id { get; set; }
         public int PostId { get; set; }
-        public DateTime Time { get; set; }
+        public string Time { get; set; }
         public int Upvotes { get; set; }
 
         public PostReply(int id, int postId, DateTime time, string content)
         {
             Id = id;
             PostId = postId;
-            Time = time;
+            Time = time.ToString();
             Content = content;
             Upvotes = 0;
             Downvotes = 0;

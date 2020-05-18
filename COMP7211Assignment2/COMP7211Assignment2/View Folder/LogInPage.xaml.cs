@@ -19,7 +19,7 @@ namespace COMP7211Assignment2
         }
         private async void ForgotClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ResetPassword());
+            await Navigation.PushAsync(new ForgotPasswordPage());
         }
         private async void CreateClicked(object sender, EventArgs e)
         {

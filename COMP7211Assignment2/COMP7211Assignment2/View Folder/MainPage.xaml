@@ -19,12 +19,11 @@
                    VerticalOptions="CenterAndExpand"/>
             <Button Text="Login Page" HorizontalOptions="Center" VerticalOptions="Center"
                     Clicked="Button_Clicked_1"></Button>
-            <Button Grid.Row="1" Text="Course Page" HorizontalOptions="Center" VerticalOptions="Center"
+            <Button Text="Course Page" HorizontalOptions="Center" VerticalOptions="Center"
                     Clicked="Button_Clicked"></Button>
-            <Button Grid.Row="3" Text="Forgot Password?" HorizontalOptions="Center" VerticalOptions="Center"
-                    Clicked="Button" CornerRadius="20">
-            </Button>
-        </Grid>
+            <Button Text="Forgot Password?" HorizontalOptions="Center" VerticalOptions="Center"
+                    Clicked="Button" CornerRadius="20"></Button>
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>
