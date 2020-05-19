@@ -22,14 +22,19 @@ namespace COMP7211Assignment2.Controller_Folder
             userDb = new PlaceholderUserDatabase();
             postDb = new PlaceholderPostDatabase();
 
-            UserRecords = UserRecords = userDb.records;
-            PostRecords = PostRecords = postDb.records;
+            UserRecords = userDb.records;
+            PostRecords = postDb.records;
 
             //CurrentCourseID = PageData.CurrentCourseID;
             //DetectedPostRecords = PDetector.DetectedPosts;
             //CDetector = PageData.CDetector;
             //CurrentTitle = PageData.CurrentTitle;
             //CurrentSubtext = PageData.CurrentSubtext;
+        }
+
+        public string UpdateStatusText()
+        {
+            return $"Logged in as {LoginSystem.LoggedInUser.FName} {LoginSystem.LoggedInUser.LName}";
         }
         public void DetectPosts()
         {

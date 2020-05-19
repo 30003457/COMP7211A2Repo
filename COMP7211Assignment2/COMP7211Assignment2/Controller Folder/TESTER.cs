@@ -7,10 +7,15 @@ namespace COMP7211Assignment2.Controller_Folder
 {
     class TESTER
     {
-        static Random rnd;
+        static Random rnd = new Random();
+
+        public static void Login()
+        {
+            int randomUserIndex = rnd.Next(PageData.PManager.UserRecords.Count - 1);
+            LoginSystem.LoggedInUser = PageData.PManager.UserRecords[randomUserIndex];
+        }
         public static void RandomVotes()
         {
-            rnd = new Random();
             foreach (var item in PageData.PManager.PostRecords)
             {
                 item.Upvotes = rnd.Next(501);

@@ -24,10 +24,12 @@ namespace COMP7211Assignment2
         {
             //masterStackLayout = new StackLayout();
             InitializeComponent();
-            PageData.PManager = new PageManager();
+            PageData.PManager = new PageManager(); //initiate page manager
+            TESTER.Login(); //random login
+            lblStatus.Text = PageData.PManager.UpdateStatusText(); //set footer status text
             //PageData.PManager.PostRecords = pm.PostRecords;
             //userDb = new PlaceholderUserDatabase();
-            PageData.PManager.CDetector = new CourseDetector(PageData.PManager.UserRecords[2].StudentID);
+            PageData.PManager.CDetector = new CourseDetector(LoginSystem.LoggedInUser.StudentID);
             BindingContext = PageData.PManager.CDetector;
 
             TESTER.RandomVotes(); //add random votes
@@ -45,6 +47,11 @@ namespace COMP7211Assignment2
             PageData.PManager.CurrentSubtext = selectedCourse.Name;
 
             await Navigation.PushAsync(new PostsViewPage());
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
         }
 
         //private void CreateHeaderView()
