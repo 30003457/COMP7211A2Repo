@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace COMP7211Assignment2
 {
-    public partial class PostPageTama : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class PostViewPageTama : ContentPage
     {
-        public PostPageTama()
+        public PostViewPageTama()
         {
             InitializeComponent();
         }
