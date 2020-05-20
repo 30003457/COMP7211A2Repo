@@ -142,4 +142,8 @@
       <Name>COMP7211Assignment2</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\logo.png" />
+    <None Include="Resources\wallpaper.png" />
+  </ItemGroup>
 </Project>
