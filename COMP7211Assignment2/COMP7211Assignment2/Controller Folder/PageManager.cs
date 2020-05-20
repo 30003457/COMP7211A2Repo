@@ -17,6 +17,7 @@ namespace COMP7211Assignment2.Controller_Folder
         public PostDetector PDetector { get; set; }
         PlaceholderUserDatabase userDb;
         PlaceholderPostDatabase postDb;
+        public int SortSettings { get; set; }
         public PageManager()
         {
             userDb = new PlaceholderUserDatabase();
@@ -24,6 +25,8 @@ namespace COMP7211Assignment2.Controller_Folder
 
             UserRecords = userDb.records;
             PostRecords = postDb.records;
+
+            SortSettings = 1; //default to votes
 
             //CurrentCourseID = PageData.CurrentCourseID;
             //DetectedPostRecords = PDetector.DetectedPosts;
@@ -34,12 +37,21 @@ namespace COMP7211Assignment2.Controller_Folder
 
         public string UpdateStatusText()
         {
-            return $"Logged in as {LoginSystem.LoggedInUser.FName} {LoginSystem.LoggedInUser.LName}";
+            return $"Logged in as {LoginSystem.LoggedInUser.FName} {LoginSystem.LoggedInUser.StudentID.ToString("00000000")}";
         }
         public void DetectPosts()
         {
             //DetectedPostRecords = PageData.PDetector.DetectedPosts;
             DetectedPostRecords = PDetector.DetectedPosts;
+        }
+
+        public void BackToHomePage(int currentPageIndex)
+        {
+            //for (var counter = 1; counter < BackCount; counter++)
+            //{
+            //    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+            //}
+            //await Navigation.PopAsync();
         }
 
         //public void SetTitle(string title)

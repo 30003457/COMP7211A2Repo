@@ -16,12 +16,15 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
+                    <!-- might not need a back button, since navigation pages give one
+                    <Button Text="BACK" Grid.Column="0" HorizontalOptions="Start"
+                        TranslationX="5" TranslationY="5" Clicked="Back_Button_Clicked"/> -->
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1">
                         <Label Text="{Binding CurrentTitle}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="24"/>
                         <Label Text="{Binding CurrentSubtext}" HorizontalTextAlignment="Center" TextColor="Black"/>
                     </StackLayout>
                     <Button Text="HOME" Grid.Column="2" HorizontalOptions="End"
-                        TranslationX="-5" TranslationY="5"/>
+                        TranslationX="-5" TranslationY="5" Clicked="Home_Button_Clicked"/>
                 </Grid>
             </StackLayout>
 
@@ -39,7 +42,25 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
-        <!-- master stacklayout -->
+            <!-- larger footer for this page -->
+            <StackLayout TranslationY="-10">
+                <!-- sorting function -->
+                <StackLayout>
+                    <Label Text="Sort by:" TextColor="Black" HorizontalOptions="Center" Grid.ColumnSpan="2"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Activity" HorizontalOptions="End" Clicked="Button_Clicked_Activity" HeightRequest="60" WidthRequest="90"/>
+                        <Button Text="Votes" HorizontalOptions="Start" Grid.Column="1" Clicked="Button_Clicked_Votes" HeightRequest="60" WidthRequest="90"/>
+                    </Grid>
+                </StackLayout>
+                <!-- footer status text -->
+                <StackLayout>
+                    <Label x:Name="lblStatus" Text="Placeholder" TextColor="Black" HorizontalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout><!-- master stacklayout -->
     </ContentPage.Content>
 </ContentPage>

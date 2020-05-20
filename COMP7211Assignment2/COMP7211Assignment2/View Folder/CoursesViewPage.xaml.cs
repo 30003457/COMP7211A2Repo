@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace COMP7211Assignment2
@@ -32,11 +33,13 @@ namespace COMP7211Assignment2
             PageData.PManager.CDetector = new CourseDetector(LoginSystem.LoggedInUser.StudentID);
             BindingContext = PageData.PManager.CDetector;
 
+            TESTER.AddRandomPosts(100); //add random posts
             TESTER.RandomVotes(); //add random votes
             //CreateHeaderView();
             //CreateCourseCardsView();
-            
+
             //Content = masterStackLayout;
+            lblStatus.Text = PageData.PManager.UpdateStatusText();
         }
 
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)

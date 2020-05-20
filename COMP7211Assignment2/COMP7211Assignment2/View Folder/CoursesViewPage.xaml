@@ -28,7 +28,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
+                            <StackLayout TranslationX="10">
                                 <Label Text="{Binding ID}" FontSize="16" TextColor="Black"/>
                                 <Label Text="{Binding Name}" TextColor="Black"/>
                             </StackLayout>

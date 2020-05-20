@@ -20,7 +20,6 @@ namespace COMP7211Assignment2.Controller_Folder
                 if (item.CourseId == id)
                 {
                     DetectedPosts.Add(item);
-                    break;
                 }
             }
         }
