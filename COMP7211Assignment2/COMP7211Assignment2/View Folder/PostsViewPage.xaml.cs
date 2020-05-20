@@ -82,5 +82,10 @@ namespace COMP7211Assignment2.View_Folder
         {
 
         }
+
+        private void Create_Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
