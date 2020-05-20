@@ -16,6 +16,7 @@ namespace COMP7211Assignment2
         public LogInPage()
         {
             InitializeComponent();
+            string test = "test";
         }
         private async void ForgotClicked(object sender, EventArgs e)
         {
