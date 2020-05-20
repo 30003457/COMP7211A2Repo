@@ -12,7 +12,6 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Button Text="BACK" VerticalOptions="Start" HorizontalOptions="Start" BorderWidth="1" BorderColor="Black" Clicked="BackButton"></Button>
                 <Button Text="HOME" VerticalOptions="Start" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="HomeButton"></Button>
                 <Label Text="COMP1231" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Title" Padding="10"></Label>
 
@@ -41,7 +40,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Button Text="Create" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="CreateButton"></Button>
+                <Button Text="Create" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="CreatePostButton"></Button>
 
             </Grid>
 

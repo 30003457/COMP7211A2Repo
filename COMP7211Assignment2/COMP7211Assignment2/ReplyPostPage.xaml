@@ -12,7 +12,6 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Button Text="BACK" VerticalOptions="Start" HorizontalOptions="Start" BorderWidth="1" BorderColor="Black" Clicked="BackButton"></Button>
                 <Button Text="HOME" VerticalOptions="Start" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="HomeButton"></Button>
 
             </Grid>
