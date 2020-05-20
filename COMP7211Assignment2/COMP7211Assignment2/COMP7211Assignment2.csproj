@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="PostViewPageTama.xaml">
+    <EmbeddedResource Update="View Folder\PostViewPageTama.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View Folder\CoursesViewPage.xaml">
@@ -45,13 +45,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="CreatePostPage.xaml">
+    <EmbeddedResource Update="View Folder\CreatePostPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PostWithRepliesPage.xaml">
+    <EmbeddedResource Update="View Folder\PostWithRepliesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ReplyPostPage.xaml">
+    <EmbeddedResource Update="View Folder\ReplyPostPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

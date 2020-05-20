@@ -9,28 +9,31 @@
         <Grid Margin="10,10,10,10" BackgroundColor="DarkGray" >
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition  />
+                <ColumnDefinition Width="2.5*" />
+                <ColumnDefinition  />
                 
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <Label  Text="Login" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.Row="0" TextColor="Black" FontSize="30" />
-            <Label  Text="Student ID" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.Row="1" TextColor="Black" FontSize="20" />
-            <Entry  x:Name="StudentIDEntry"  Grid.Row="2" Grid.Column="1" TextColor="Black" FontSize="17" />
-            <Label  Text="Password" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.Row="3" TextColor="Black" FontSize="20" />
-            <Entry  x:Name="PasswordEntry" Grid.Row="4" Grid.Column="1" TextColor="black" FontSize="17"/>
-            <Button Text="SIGN IN" BorderRadius="50" BackgroundColor="Gray" TextColor="#212121" FontSize="Medium" Grid.Column="1" Grid.Row="5" FontAttributes="Bold" Clicked="SignInClicked"/>
-            <Button  Text="Forgot Password?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.Row="6" TextColor="Black" FontSize="12" Clicked="ForgotClicked" />
-            <Button  Text="Create Account" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.Row="7" TextColor="Black" FontSize="12" Clicked="CreateClicked" />
+            <Image Source="wallpaper.png" Grid.ColumnSpan="3" Grid.RowSpan="3" Aspect="AspectFill"/>
+            <Image Source="logo.png" Aspect="AspectFill" Grid.ColumnSpan="3" Grid.Row="0"/>
+            <StackLayout Grid.Column="1" Grid.Row="1">
+                <Label  Text="Student ID" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1"  TextColor="White" FontSize="20" />
+                <Entry  x:Name="StudentIDEntry"   Grid.Column="1" TextColor="Black" FontSize="17" BackgroundColor="White"
+                        HeightRequest="40"/>
+                <Label  Text="Password" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1"  TextColor="White" FontSize="20" />
+                <Entry  x:Name="PasswordEntry"  Grid.Column="1" TextColor="Black" FontSize="17" BackgroundColor="White"
+                        HeightRequest="40"/>
+                <Button  Text="Forgot Password?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"  TextColor="Blue" FontSize="12" Clicked="ForgotClicked"
+                         HeightRequest="40" BackgroundColor="Black"/>
+                <Button WidthRequest="100" HeightRequest="40" Text="SIGN IN" BorderRadius="20" TextColor="#212121" FontSize="Medium" Grid.Column="1" FontAttributes="Bold" Clicked="SignInClicked"
+                        HorizontalOptions="Center" VerticalOptions="Center"/>
+            </StackLayout>
+
 
 
         </Grid>
