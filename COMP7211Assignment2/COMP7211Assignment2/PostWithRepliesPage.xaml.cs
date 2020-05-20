@@ -16,5 +16,20 @@ namespace COMP7211Assignment2
         {
             InitializeComponent();
         }
+
+        private async void HomeButton(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PostViewPageTama());
+        }
+
+        private async void ReplyButton1(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ReplyPostPage());
+        }
+
+        private async void ReplyButton2(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ReplyPostPage());
+        }
     }
 }
