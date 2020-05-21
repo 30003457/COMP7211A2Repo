@@ -24,8 +24,9 @@ namespace COMP7211Assignment2
        
         private void Button1(object sender, EventArgs e)
         {
-            var message = "Link has been send!";
-            DependencyService.Get<IMessage>().Longtime(message);
+            var message = "Link has been sent!";
+            //DependencyService.Get<IMessage>().Longtime(message);
+            DisplayAlert("Success", message, "OK");
         }
     }
 }
