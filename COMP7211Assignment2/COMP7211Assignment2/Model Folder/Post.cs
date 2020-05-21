@@ -4,10 +4,11 @@ using System.Text;
 
 namespace COMP7211Assignment2.Model_Folder
 {
-    class Post : IPost
+    public class Post : IPost
     {
         public int Id { get; set; }
         public int CourseId { get; set; }
+        public string CourseTitle { get; set; }
         public string TimeString { get; set; }
         public DateTime Time { get; set; }
         public string Title { get; set; }
@@ -22,6 +23,7 @@ namespace COMP7211Assignment2.Model_Folder
         {
             Id = id;
             CourseId = courseId;
+            CourseTitle = $"COMP{courseId}";
             Time = time;
             TimeString = time.ToString();
             Title = title;

@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.LogInPage">
     <ContentPage.Content>
-        <Grid Margin="10,10,10,10" BackgroundColor="Black">
+        <Grid>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition  />

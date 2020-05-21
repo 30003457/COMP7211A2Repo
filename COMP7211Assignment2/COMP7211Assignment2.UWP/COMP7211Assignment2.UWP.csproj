@@ -132,7 +132,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="logo.png" />
     <Content Include="Properties\Default.rd.xml" />
-    <None Include="wallpaper.png" />
+    <Content Include="wallpaper.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

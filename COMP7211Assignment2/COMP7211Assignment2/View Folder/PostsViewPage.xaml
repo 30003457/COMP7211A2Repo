@@ -7,70 +7,75 @@
              x:Class="COMP7211Assignment2.View_Folder.PostsViewPage">
     <!-- Created by Min 30003457, to be later edited by Agassi -->
     <ContentPage.Content>
-        <StackLayout>
-            <!-- header -->
+        <Grid>
+            <Image Source="wallpaper.png" Aspect="AspectFill"/>
             <StackLayout>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <!-- might not need a back button, since navigation pages give one
-                    <Button Text="BACK" Grid.Column="0" HorizontalOptions="Start"
-                        TranslationX="5" TranslationY="5" Clicked="Back_Button_Clicked"/> -->
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1">
-                        <Label Text="{Binding CurrentTitle}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="24"/>
-                        <Label Text="{Binding CurrentSubtext}" HorizontalTextAlignment="Center" TextColor="Black"/>
-                    </StackLayout>
-                    <Button Text="HOME" Grid.Column="2" HorizontalOptions="End"
-                        TranslationX="-5" TranslationY="5" Clicked="Home_Button_Clicked"/>
-
-                    <Label Text="Posts" TextColor="Black" FontSize="20" Grid.Row="1" VerticalOptions="Center"
-                           TranslationX="10" TranslationY="10"/>
-                    <Button Text="Create Post" Grid.Column="2" Grid.Row="1" HorizontalOptions="End"
-                            TranslationY="10" TranslationX="-5" Clicked="Create_Button_Clicked"/>
-                </Grid>
-            </StackLayout>
-
-            <ListView ItemsSource="{Binding DetectedPostRecords}" ItemTapped="ListView_ItemTapped"
-                      TranslationY="10">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Title}" FontSize="16" TextColor="Black"/>
-                                <Label Text="{Binding Time}" TextColor="Black"/>
-                                <Label Text="{Binding UpvotesTxt}" TextColor="Black"/>
-                                <Label Text="{Binding DownvotesTxt}" TextColor="Black"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <!-- larger footer for this page -->
-            <StackLayout TranslationY="-10">
-                <!-- sorting function -->
+                <!-- header -->
                 <StackLayout>
-                    <Label Text="Sort by:" TextColor="Black" HorizontalOptions="Center" Grid.ColumnSpan="2"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Button Text="Activity" HorizontalOptions="End" Clicked="Button_Clicked_Activity" HeightRequest="60" WidthRequest="90"/>
-                        <Button Text="Votes" HorizontalOptions="Start" Grid.Column="1" Clicked="Button_Clicked_Votes" HeightRequest="60" WidthRequest="90"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!-- might not need a back button, since navigation pages give one
+                    <Button Text="BACK" Grid.Column="0" HorizontalOptions="Start"
+                        TranslationX="5" TranslationY="5" Clicked="Back_Button_Clicked"/> -->
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1">
+                            <Label Text="{Binding CurrentTitle}" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
+                            <Label Text="{Binding CurrentSubtext}" HorizontalTextAlignment="Center" TextColor="White"/>
+                        </StackLayout>
+                        <Button Text="HOME" Grid.Column="2" HorizontalOptions="End"
+                        TranslationX="-5" TranslationY="5" Clicked="Home_Button_Clicked" BackgroundColor="LightGray"
+                            WidthRequest="70"/>
+
+                        <Label Text="Posts" TextColor="White" FontSize="20" Grid.Row="1" VerticalOptions="Center"
+                           TranslationX="10" TranslationY="10"/>
+                        <Button Text="Create Post" Grid.Column="2" Grid.Row="1" HorizontalOptions="End"
+                            TranslationY="10" TranslationX="-5" Clicked="Create_Button_Clicked"
+                            BackgroundColor="LightGray" WidthRequest="85"/>
                     </Grid>
                 </StackLayout>
-                <!-- footer status text -->
-                <StackLayout>
-                    <Label x:Name="lblStatus" Text="Placeholder" TextColor="Black" HorizontalOptions="Center"/>
+
+                <ListView ItemsSource="{Binding DetectedPostRecords}" ItemTapped="ListView_ItemTapped"
+                      TranslationY="10" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding Title}" FontSize="Body" TextColor="Black"/>
+                                    <Label Text="{Binding Time}" FontSize="Small"  TextColor="Black"/>
+                                    <Label Text="{Binding UpvotesTxt}" FontSize="Small" TextColor="Black"/>
+                                    <Label Text="{Binding DownvotesTxt}" FontSize="Small" TextColor="Black"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackLayout Margin="0,10">
+                    <StackLayout>
+                        <Label Text="Sort by:" TextColor="White" HorizontalOptions="Center" Grid.ColumnSpan="2"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Activity" HorizontalOptions="End" Clicked="Button_Clicked_Activity" HeightRequest="60" WidthRequest="90" BackgroundColor="LightGray"/>
+                            <Button Text="Votes" HorizontalOptions="Start" Grid.Column="1" Clicked="Button_Clicked_Votes" HeightRequest="60" WidthRequest="90" BackgroundColor="LightGray"/>
+                        </Grid>
+                    </StackLayout>
+                    <!-- footer status text -->
+                    <StackLayout>
+                        <Label x:Name="lblStatus" Text="Placeholder" TextColor="White" HorizontalOptions="Center"/>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
-        </StackLayout><!-- master stacklayout -->
+            <!-- master stacklayout -->
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COMP7211Assignment2.Model_Folder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace COMP7211Assignment2
 
         private async void CreatePostButton(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PostWithRepliesPage());
+            //await Navigation.PushAsync(new PostWithRepliesPage((Post)sender));
         }
     }
 }

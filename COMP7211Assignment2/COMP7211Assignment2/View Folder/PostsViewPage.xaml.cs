@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+//***************************
+//Code by Min 30003457
+//***************************
+
 namespace COMP7211Assignment2.View_Folder
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -35,9 +39,11 @@ namespace COMP7211Assignment2.View_Folder
             BindingContext = PageData.PManager;
         }
 
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            //Post clickedPost = (Post)sender;
+            //PageData.PManager.ClickedPost = (Post)sender;
+            await Navigation.PushAsync(new PostWithRepliesPage((Post)e.Item));
         }
 
         private void Button_Clicked_Activity(object sender, EventArgs e)
@@ -78,14 +84,9 @@ namespace COMP7211Assignment2.View_Folder
             //await Navigation.PopAsync();
         }
 
-        private void Back_Button_Clicked(object sender, EventArgs e)
+        private async void Create_Button_Clicked(object sender, EventArgs e)
         {
-
-        }
-
-        private void Create_Button_Clicked(object sender, EventArgs e)
-        {
-
+            await Navigation.PushAsync(new CreatePostPage());
         }
     }
 }

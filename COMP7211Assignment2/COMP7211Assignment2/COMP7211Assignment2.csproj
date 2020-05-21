@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="View Folder\PostViewPageTama.xaml">
+    <EmbeddedResource Update="Obsolete Folder\PostViewPageTama.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View Folder\CoursesViewPage.xaml">
@@ -30,7 +30,7 @@
     <EmbeddedResource Update="View Folder\FirstLoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View Folder\ForgotPasswordPage.xaml">
+    <EmbeddedResource Update="Obsolete Folder\ForgotPasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View Folder\LogInPage.xaml">

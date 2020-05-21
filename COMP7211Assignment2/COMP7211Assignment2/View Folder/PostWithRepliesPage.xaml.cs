@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COMP7211Assignment2.Model_Folder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,10 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PostWithRepliesPage : ContentPage
     {
-        public PostWithRepliesPage()
+        public PostWithRepliesPage(Post clickedPost)
         {
             InitializeComponent();
+            BindingContext = clickedPost;
         }
 
         private async void HomeButton(object sender, EventArgs e)
