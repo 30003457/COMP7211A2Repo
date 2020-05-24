@@ -67,6 +67,7 @@
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
+    <Compile Include="Message_ios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -141,5 +142,8 @@
       <Project>{01CF4770-7691-463F-BEA2-9DCB302EB960}</Project>
       <Name>COMP7211Assignment2</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wallpaper.png" />
   </ItemGroup>
 </Project>

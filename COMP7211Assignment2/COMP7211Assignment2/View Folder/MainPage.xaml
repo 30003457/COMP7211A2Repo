@@ -12,7 +12,7 @@
                 <RowDefinition Height="100"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>-->
-            <!-- Place new controls here -->
+        <!-- Place new controls here -->
         <StackLayout TranslationY="10">
             <Label Text="Welcome to Xamarin.Forms!" 
                    HorizontalOptions="Center"
@@ -24,7 +24,6 @@
             <Button Grid.Row="3" Text="Forgot Password?" HorizontalOptions="Center" VerticalOptions="Center"
                     Clicked="Button" CornerRadius="20">
             </Button>
-        </Grid>
-    </StackLayout>
-
+        </StackLayout>
+        </StackLayout>
 </ContentPage>
