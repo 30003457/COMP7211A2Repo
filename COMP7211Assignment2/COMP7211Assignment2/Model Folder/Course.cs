@@ -8,12 +8,14 @@ namespace COMP7211Assignment2
     class Course
     {
         public string Name { get; set; }
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string IDName { get; set; }
 
         public Course(string n, int id)
         {
             Name = n;
-            ID = $"COMP{id}";
+            ID = id;
+            IDName = $"COMP{id}";
         }
     }
 }

@@ -1,9 +1,13 @@
-﻿using System;
+﻿using COMP7211Assignment2.Controller_Folder;
+using COMP7211Assignment2.Model_Folder;
+using COMP7211Assignment2.View_Folder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace COMP7211Assignment2
@@ -12,36 +16,45 @@ namespace COMP7211Assignment2
     public partial class CoursesViewPage : ContentPage
     {
         //PlaceholderDatabase db = new PlaceholderDatabase();
-        CourseDetector cd;
+        //CourseDetector cd;
         //StackLayout masterStackLayout;
-        PlaceholderUserDatabase userDb;
+        //PlaceholderUserDatabase userDb;
+        Course selectedCourse;
+        //PageManager pm;
         public CoursesViewPage()
         {
             //masterStackLayout = new StackLayout();
-
             InitializeComponent();
-            userDb = new PlaceholderUserDatabase();
-            cd = new CourseDetector(45677654);
-            BindingContext = cd;
+            PageData.PManager = new PageManager(); //initiate page manager
+            TESTER.Login(); //random login
+            lblStatus.Text = PageData.PManager.UpdateStatusText(); //set footer status text
+            //PageData.PManager.PostRecords = pm.PostRecords;
+            //userDb = new PlaceholderUserDatabase();
+            PageData.PManager.CDetector = new CourseDetector(LoginSystem.LoggedInUser.StudentID);
+            BindingContext = PageData.PManager.CDetector;
+
+            TESTER.AddRandomPosts(100); //add random posts
+            TESTER.RandomVotes(); //add random votes
             //CreateHeaderView();
             //CreateCourseCardsView();
-            
+
             //Content = masterStackLayout;
+            lblStatus.Text = PageData.PManager.UpdateStatusText();
         }
 
-        private void FlowListView_FlowItemTapped(object sender, ItemTappedEventArgs e)
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            selectedCourse = (Course)e.Item;
+            PageData.PManager.CurrentTitle = selectedCourse.IDName;
+            PageData.PManager.CurrentCourseID = selectedCourse.ID;
+            PageData.PManager.CurrentSubtext = selectedCourse.Name;
 
+            await Navigation.PushAsync(new PostsViewPage());
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-
-        }
-
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
+            await Navigation.PopToRootAsync();
         }
 
         //private void CreateHeaderView()
