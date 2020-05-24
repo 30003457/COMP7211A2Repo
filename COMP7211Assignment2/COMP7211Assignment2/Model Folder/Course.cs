@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace COMP7211Assignment2
+﻿namespace COMP7211Assignment2
 {
     //By Min 30003457
-    class Course
+    internal class Course
     {
         public string Name { get; set; }
         public int ID { get; set; }

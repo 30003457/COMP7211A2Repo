@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace COMP7211Assignment2
 {
     //Code by Min 30003457
-    class User
+    internal class User
     {
         public string FName { get; set; }
         public string LName { get; set; }
@@ -14,7 +12,8 @@ namespace COMP7211Assignment2
         protected string Password { get; set; }
         public bool IsRep { get; set; }
         public List<int> VotedPosts { get; set; } //add post id to this list and check this list of id's before voting so users can only vote once on same post
-        PlaceholderCourseDatabase cdb;
+
+        private readonly PlaceholderCourseDatabase cdb;
 
         //All students enrolled in same courses for now...
         public User(string fn, string ln, int studentId, string password, bool isRep)

@@ -23,6 +23,9 @@
                     Clicked="Button_Clicked"></Button>
             <Button Text="Forgot Password?" HorizontalOptions="Center" VerticalOptions="Center"
                     Clicked="Button" CornerRadius="20"></Button>
+            <Button Text="Email" HorizontalOptions="Center" VerticalOptions="Center"
+                    Clicked="ButtonEmail" CornerRadius="20"></Button>
+
         </StackLayout>
     </StackLayout>
 

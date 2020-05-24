@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -25,7 +20,8 @@ namespace COMP7211Assignment2
         {
             await Navigation.PushAsync(new FirstLoginPage());
         }
-        void SignInClicked(object sender, EventArgs e)
+
+        private void SignInClicked(object sender, EventArgs e)
         {
 
 
@@ -79,7 +75,7 @@ namespace COMP7211Assignment2
         //    Console.WriteLine(e.ToString());
         //}
         //Console.ReadLine();
-   
+
 
     }
 }

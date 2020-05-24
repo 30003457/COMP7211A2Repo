@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace COMP7211Assignment2.Model_Folder
 {
-    class PostReply : IPost
+    internal class PostReply : IPost
     {
         public string Content { get; set; }
         public int Downvotes { get; set; }

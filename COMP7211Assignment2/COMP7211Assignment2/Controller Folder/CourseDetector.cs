@@ -1,24 +1,23 @@
 ﻿using COMP7211Assignment2.Controller_Folder;
 using COMP7211Assignment2.Model_Folder;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace COMP7211Assignment2
 {
-    class CourseDetector
+    internal class CourseDetector
     {
         public List<Course> DetectedCourses { get; set; }
-        PageManager pm;
+
+        private readonly PageManager pm;
         //PlaceholderUserDatabase userDb;
         public CourseDetector(int id)
         {
             DetectedCourses = new List<Course>();
             pm = new PageManager();
             //userDb = new PlaceholderUserDatabase();
-            foreach (var item in PageData.PManager.UserRecords)
+            foreach (User item in PageData.PManager.UserRecords)
             {
-                if(item.StudentID == id)
+                if (item.StudentID == id)
                 {
                     DetectedCourses = item.EnrolledCourses;
                     break;

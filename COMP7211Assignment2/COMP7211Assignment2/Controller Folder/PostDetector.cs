@@ -1,11 +1,9 @@
 ﻿using COMP7211Assignment2.Model_Folder;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
-    class PostDetector
+    internal class PostDetector
     {
         public List<Post> DetectedPosts { get; set; }
         //PageManager pm;
@@ -15,7 +13,7 @@ namespace COMP7211Assignment2.Controller_Folder
             DetectedPosts = new List<Post>();
             //pm = new PageManager();
             //userDb = new PlaceholderUserDatabase();
-            foreach (var item in PageData.PManager.PostRecords)
+            foreach (Post item in PageData.PManager.PostRecords)
             {
                 if (item.CourseId == id)
                 {

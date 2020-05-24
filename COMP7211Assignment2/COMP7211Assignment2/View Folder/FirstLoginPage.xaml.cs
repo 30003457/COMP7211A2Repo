@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,7 +12,8 @@ namespace COMP7211Assignment2
         {
             InitializeComponent();
         }
-        void SignInClicked(object sender, EventArgs e)
+
+        private void SignInClicked(object sender, EventArgs e)
         {
 
 

@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.IO;
-using System.Text;
-
-namespace COMP7211Assignment2
+﻿namespace COMP7211Assignment2
 {
     //by Min 30003457
-    class CourseCardCreator
+    internal class CourseCardCreator
     {
         //variables or objects
-        CourseDetector cd;
-        CourseCards ccList;
-        CourseCard cc;
-        int courseCount;
-        int col = 0, maxCols = 2, totalCount = 0; //maxCols for scalability
+        private readonly CourseDetector cd;
+        private readonly CourseCards ccList;
+        private readonly CourseCard cc;
+        private readonly int courseCount;
+        private int col = 0;
+        private readonly int maxCols = 2;
+        private int totalCount = 0;
 
         public CourseCardCreator(int id)
         {
@@ -53,7 +49,7 @@ namespace COMP7211Assignment2
                     totalCount++;
                 }
             }
-            
+
             totalCount = 0; //reset
         }
 

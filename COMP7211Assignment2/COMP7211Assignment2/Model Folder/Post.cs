@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace COMP7211Assignment2.Model_Folder
 {
-    class Post : IPost
+    internal class Post : IPost
     {
         public int Id { get; set; }
         public int CourseId { get; set; }

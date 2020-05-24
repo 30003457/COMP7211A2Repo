@@ -1,7 +1,5 @@
-﻿using System;
+﻿using DLToolkit.Forms.Controls;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using DLToolkit.Forms.Controls;
 
 namespace COMP7211Assignment2
 {

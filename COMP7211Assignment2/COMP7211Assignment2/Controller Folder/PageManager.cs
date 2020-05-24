@@ -1,11 +1,9 @@
 ﻿using COMP7211Assignment2.Model_Folder;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
-    class PageManager
+    internal class PageManager
     {
         public string CurrentTitle { get; set; }
         public string CurrentSubtext { get; set; }
@@ -15,8 +13,9 @@ namespace COMP7211Assignment2.Controller_Folder
         public List<Post> DetectedPostRecords { get; set; }
         public CourseDetector CDetector { get; set; }
         public PostDetector PDetector { get; set; }
-        PlaceholderUserDatabase userDb;
-        PlaceholderPostDatabase postDb;
+
+        private readonly PlaceholderUserDatabase userDb;
+        private readonly PlaceholderPostDatabase postDb;
         public int SortSettings { get; set; }
         public PageManager()
         {

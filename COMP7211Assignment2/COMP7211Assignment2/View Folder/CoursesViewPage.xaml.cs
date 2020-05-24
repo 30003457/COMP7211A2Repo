@@ -2,12 +2,7 @@
 using COMP7211Assignment2.Model_Folder;
 using COMP7211Assignment2.View_Folder;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace COMP7211Assignment2
@@ -19,7 +14,7 @@ namespace COMP7211Assignment2
         //CourseDetector cd;
         //StackLayout masterStackLayout;
         //PlaceholderUserDatabase userDb;
-        Course selectedCourse;
+        private Course selectedCourse;
         //PageManager pm;
         public CoursesViewPage()
         {

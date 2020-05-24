@@ -1,16 +1,15 @@
 ﻿using COMP7211Assignment2.Model_Folder;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
-    class Sorter
+    internal class Sorter
     {
         private List<Post> SortedPosts { get; set; }
-        bool votesDescending = false;
-        bool activityDescending = false;
+
+        private bool votesDescending = false;
+        private bool activityDescending = false;
 
         public List<Post> SortPosts(int sortSettings, List<Post> postList)
         {
@@ -28,7 +27,7 @@ namespace COMP7211Assignment2.Controller_Folder
         {
             SortedPosts = new List<Post>();
 
-            if(votesDescending == true)
+            if (votesDescending == true)
             {
                 SortedPosts = postList.OrderBy(o => o.Upvotes).ToList();
                 votesDescending = false;
@@ -46,7 +45,7 @@ namespace COMP7211Assignment2.Controller_Folder
         {
             SortedPosts = new List<Post>();
 
-            if(activityDescending == true)
+            if (activityDescending == true)
             {
                 SortedPosts = postList.OrderBy(o => o.Time).ToList();
                 activityDescending = false;
@@ -56,7 +55,7 @@ namespace COMP7211Assignment2.Controller_Folder
                 SortedPosts = postList.OrderByDescending(o => o.Time).ToList();
                 activityDescending = true;
             }
-            
+
 
             return SortedPosts;
         }

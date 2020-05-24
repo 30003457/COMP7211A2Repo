@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace COMP7211Assignment2
 {
-    class PlaceholderCourseDatabase
+    internal class PlaceholderCourseDatabase
     {
         public List<Course> records = new List<Course>();
         public PlaceholderCourseDatabase()
