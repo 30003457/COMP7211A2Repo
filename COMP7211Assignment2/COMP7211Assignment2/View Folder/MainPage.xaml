@@ -12,23 +12,17 @@
                 <RowDefinition Height="100"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>-->
-            <!-- Place new controls here -->
+        <!-- Place new controls here -->
         <Grid>
             <Image Source="wallpaper.png" Aspect="Fill"></Image>
-        
-        <!-- Place new controls here -->
-        <StackLayout TranslationY="10">
-            <Button Text="Login Page" HorizontalOptions="Center" VerticalOptions="Center"
+
+            <!-- Place new controls here -->
+            <StackLayout TranslationY="10">
+                <Button Text="Login Page" HorizontalOptions="Center" VerticalOptions="Center"
                     Clicked="Button_Clicked_1" CornerRadius="20" Opacity="0.8" TextColor="Black"></Button>
                 <Button Text="Course Page" HorizontalOptions="Center" VerticalOptions="Center"
                     Clicked="Button_Clicked" CornerRadius="20" Opacity="0.8" TextColor="Black"></Button>
             </StackLayout>
         </Grid>
     </StackLayout>
-
-            <Button Grid.Row="3" Text="Forgot Password?" HorizontalOptions="Center" VerticalOptions="Center"
-                    Clicked="Button" CornerRadius="20">
-            </Button>
-        </StackLayout>
-        </StackLayout>
 </ContentPage>
