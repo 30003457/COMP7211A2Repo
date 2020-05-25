@@ -24,8 +24,16 @@ namespace COMP7211Assignment2
        
         private void Button1(object sender, EventArgs e)
         {
+            if (resetlink.Text==null)
+            {
+                var message = "Please enter a Email ID";
+                DependencyService.Get<IMessage>().Longtime(message);
+            }
+            else 
+            { 
             var message = "Link has been send!";
             DependencyService.Get<IMessage>().Longtime(message);
+            }
         }
     }
 }
