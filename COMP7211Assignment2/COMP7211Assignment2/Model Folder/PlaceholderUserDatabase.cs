@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
+//*********************
+//Code by Min 30003457
+//*********************
 namespace COMP7211Assignment2
 {
-    //Code by Min 30003457
     class PlaceholderUserDatabase
     {
         public List<User> records = new List<User>();
