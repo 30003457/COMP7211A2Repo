@@ -19,8 +19,8 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="35" ></RowDefinition>
+                            <RowDefinition Height="35"></RowDefinition>
                         </Grid.RowDefinitions>
                         <!-- might not need a back button, since navigation pages give one
                     <Button Text="BACK" Grid.Column="0" HorizontalOptions="Start"
@@ -31,13 +31,13 @@
                         </StackLayout>
                         <Button Text="HOME" Grid.Column="2" HorizontalOptions="End"
                         TranslationX="-5" TranslationY="5" Clicked="Home_Button_Clicked" BackgroundColor="LightGray"
-                            WidthRequest="70"/>
+                            WidthRequest="70" FontSize="Micro"/>
 
                         <Label Text="Posts" TextColor="White" FontSize="20" Grid.Row="1" VerticalOptions="Center"
                            TranslationX="10" TranslationY="10"/>
                         <Button Text="Create Post" Grid.Column="2" Grid.Row="1" HorizontalOptions="End"
                             TranslationY="10" TranslationX="-5" Clicked="Create_Button_Clicked"
-                            BackgroundColor="LightGray" WidthRequest="85"/>
+                            BackgroundColor="LightGray" WidthRequest="85" FontSize="Micro"/>
                     </Grid>
                 </StackLayout>
 
@@ -65,8 +65,8 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Button Text="Activity" HorizontalOptions="End" Clicked="Button_Clicked_Activity" HeightRequest="60" WidthRequest="90" BackgroundColor="LightGray"/>
-                            <Button Text="Votes" HorizontalOptions="Start" Grid.Column="1" Clicked="Button_Clicked_Votes" HeightRequest="60" WidthRequest="90" BackgroundColor="LightGray"/>
+                            <Button Text="Activity" HorizontalOptions="End" Clicked="Button_Clicked_Activity" HeightRequest="60" WidthRequest="90" BackgroundColor="LightGray" FontSize="Micro"/>
+                            <Button Text="Votes" HorizontalOptions="Start" Grid.Column="1" Clicked="Button_Clicked_Votes" HeightRequest="60" WidthRequest="90" BackgroundColor="LightGray" FontSize="Micro"/>
                         </Grid>
                     </StackLayout>
                     <!-- footer status text -->
