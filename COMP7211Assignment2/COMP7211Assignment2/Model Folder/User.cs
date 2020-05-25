@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 
+//*********************
+//Code by Min 30003457
+//*********************
 namespace COMP7211Assignment2
 {
-    //Code by Min 30003457
-    internal class User
+    class User
     {
         public string FName { get; set; }
         public string LName { get; set; }

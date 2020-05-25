@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
+//*********************
+//Code by Min 30003457
+//*********************
 namespace COMP7211Assignment2.Controller_Folder
 {
     internal class Sorter

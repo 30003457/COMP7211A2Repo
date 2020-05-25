@@ -2,6 +2,9 @@
 using COMP7211Assignment2.Model_Folder;
 using System.Collections.Generic;
 
+//*********************
+//Code by Min 30003457
+//*********************
 namespace COMP7211Assignment2
 {
     internal class CourseDetector

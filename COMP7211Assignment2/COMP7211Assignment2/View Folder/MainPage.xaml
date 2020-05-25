@@ -6,27 +6,40 @@
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.MainPage">
 
-    <StackLayout>
-        <!--<Grid>
+
+    <!--<Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>-->
-            <!-- Place new controls here -->
-        <StackLayout TranslationY="10">
-            <Label Text="Welcome to Xamarin.Forms!" 
+    <!-- Place new controls here -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="0.25*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Source="wallpaper.png" Aspect="AspectFill" Grid.RowSpan="4"/>
+        <Label Text="Test hub, main menu" 
                    HorizontalOptions="Center"
-                   VerticalOptions="CenterAndExpand"/>
-            <Button Text="Login Page" HorizontalOptions="Center" VerticalOptions="Center"
-                    Clicked="Button_Clicked_1"></Button>
-            <Button Text="Course Page" HorizontalOptions="Center" VerticalOptions="Center"
-                    Clicked="Button_Clicked"></Button>
-            <Button Text="Forgot Password?" HorizontalOptions="Center" VerticalOptions="Center"
-                    Clicked="Button" CornerRadius="20"></Button>
-            <Button Text="Email" HorizontalOptions="Center" VerticalOptions="Center"
-                    Clicked="ButtonEmail" CornerRadius="20"></Button>
+                   VerticalOptions="CenterAndExpand"
+                   TextColor="White"
+                   FontSize="Large"
+                   Grid.Row="0"/>
 
-        </StackLayout>
-    </StackLayout>
 
+
+        <Button Text="Login Page" HorizontalOptions="Center" VerticalOptions="End"
+                    Clicked="Button_Clicked_1" Grid.Row="1" BackgroundColor="White"
+                WidthRequest="100"></Button>
+        <Button Text="Course Page" HorizontalOptions="Center" VerticalOptions="Start"
+                    Clicked="Button_Clicked" Grid.Row="2" BackgroundColor="White"
+                WidthRequest="100"></Button>
+
+
+
+    </Grid>
 </ContentPage>
+
+    

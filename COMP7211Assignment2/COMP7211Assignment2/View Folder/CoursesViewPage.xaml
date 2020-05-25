@@ -8,9 +8,11 @@
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView">
     <!-- Created by Min 30003457, to be later edited by Agassi -->
     <ContentPage.Content>
-        <StackLayout>
-            <!-- header -->
+        <Grid>
+            <Image Source="wallpaper.png" Aspect="AspectFill"/>
             <StackLayout>
+            <!-- header -->
+            <StackLayout HeightRequest="100">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -18,31 +20,41 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Text="Courses" HorizontalOptions="Center" Grid.Column="1"
-                       VerticalOptions="Center" TextColor="Black" FontSize="24"/>
+                       VerticalOptions="Center" TextColor="White" FontSize="24"/>
                     <Button Text="LOGOUT" Grid.Column="2" HorizontalOptions="End"
-                        TranslationX="-5" TranslationY="5" Clicked="Button_Clicked"/>
+                        TranslationX="-5" TranslationY="5" Clicked="Button_Clicked" BackgroundColor="LightGray"
+                            WidthRequest="70"/>
                 </Grid>
             </StackLayout>
 
-            <ListView ItemsSource="{Binding DetectedCourses}" ItemTapped="ListView_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout TranslationX="10">
-                                <Label Text="{Binding ID}" FontSize="16" TextColor="Black"/>
-                                <Label Text="{Binding Name}" TextColor="Black"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ListView ItemsSource="{Binding DetectedCourses}" ItemTapped="ListView_ItemTapped" HasUnevenRows="True" Grid.Column="1" BackgroundColor="Transparent" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Height="100">
+                                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                         BackgroundColor="Teal" Padding="2" Margin="0,5">
+                                        <Label Text="{Binding IDName}" FontSize="Title" TextColor="White" Margin="5,0"/>
+                                        <Label Text="{Binding Name}" FontSize="Small"  TextColor="White" Margin="5,0"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+           
 
             <!-- footer status text -->
-            <StackLayout>
-                <Label x:Name="lblStatus" Text="Placeholder" TextColor="Black" HorizontalOptions="Center"
-                       TranslationY="-10"/>
+            <StackLayout Margin="0,10">
+                <Label x:Name="lblStatus" Text="Placeholder" TextColor="White" HorizontalOptions="Center"/>
             </StackLayout>
         </StackLayout>
         <!-- master stacklayout -->
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

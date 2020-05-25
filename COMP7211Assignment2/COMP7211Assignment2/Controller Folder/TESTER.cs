@@ -1,6 +1,9 @@
 ﻿using COMP7211Assignment2.Model_Folder;
 using System;
 
+//*********************
+//Code by Min 30003457
+//*********************
 namespace COMP7211Assignment2.Controller_Folder
 {
     internal class TESTER

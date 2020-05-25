@@ -1,7 +1,13 @@
-﻿namespace COMP7211Assignment2
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+//*********************
+//Code by Min 30003457
+//*********************
+namespace COMP7211Assignment2
 {
-    //By Min 30003457
-    internal class Course
+    class Course
     {
         public string Name { get; set; }
         public int ID { get; set; }

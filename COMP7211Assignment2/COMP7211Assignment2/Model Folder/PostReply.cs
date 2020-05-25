@@ -1,8 +1,11 @@
 ﻿using System;
 
+//*********************
+//Code by Min 30003457
+//*********************
 namespace COMP7211Assignment2.Model_Folder
 {
-    internal class PostReply : IPost
+    public class PostReply : IPost
     {
         public string Content { get; set; }
         public int Downvotes { get; set; }

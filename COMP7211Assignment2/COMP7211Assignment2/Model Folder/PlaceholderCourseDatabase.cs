@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 
+//*********************
+//Code by Min 30003457
+//*********************
 namespace COMP7211Assignment2
 {
     internal class PlaceholderCourseDatabase

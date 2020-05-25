@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 
+//*********************
+//Code by Min 30003457
+//*********************
 namespace COMP7211Assignment2
 {
-    //Code by Min 30003457
-    internal class PlaceholderUserDatabase
+    class PlaceholderUserDatabase
     {
         public List<User> records = new List<User>();
 
