@@ -11,7 +11,7 @@ namespace COMP7211Assignment2
         public string LName { get; set; }
         public int StudentID { get; set; }
         public List<Course> EnrolledCourses { get; set; }
-        protected string Password { get; set; }
+        public string Password { get; set; }
         public bool IsRep { get; set; }
         public List<int> VotedPosts { get; set; } //add post id to this list and check this list of id's before voting so users can only vote once on same post
 

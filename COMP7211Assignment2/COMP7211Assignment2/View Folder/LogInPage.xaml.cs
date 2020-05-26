@@ -1,4 +1,6 @@
-﻿using System;
+﻿using COMP7211Assignment2.Controller_Folder;
+using COMP7211Assignment2.Model_Folder;
+using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,9 +10,12 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
+        Validator vd;
         public LogInPage()
         {
             InitializeComponent();
+            vd = new Validator();
+            PageData.PManager = new PageManager(); //initiate page manager
         }
         private async void ForgotClicked(object sender, EventArgs e)
         {
@@ -21,23 +26,18 @@ namespace COMP7211Assignment2
             await Navigation.PushAsync(new FirstLoginPage());
         }
 
-        private void SignInClicked(object sender, EventArgs e)
+        private async void SignInClicked(object sender, EventArgs e)
         {
-
-
-            if (StudentIDEntry.Text == null)
+            if (vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text) == true)
             {
-                DisplayAlert("Error", "No Student ID Entered please try again", "OK");
-            }
-            else if (PasswordEntry.Text == null)
-            {
-                DisplayAlert("Error", "No Password Entered please try again", "OK");
+                StudentIDEntry.Text = null;
+                PasswordEntry.Text = null;
+                await Navigation.PushAsync(new CoursesViewPage());
             }
             else
             {
-                DisplayAlert("Success", "You have successfully logged in", "OK");
+                await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
-
         }
         //try
         //{

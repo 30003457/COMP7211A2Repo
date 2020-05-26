@@ -17,8 +17,8 @@ namespace COMP7211Assignment2
         public CoursesViewPage()
         {
             InitializeComponent();
-            PageData.PManager = new PageManager(); //initiate page manager
-            TESTER.Login(); //random login
+            //PageData.PManager = new PageManager(); //initiate page manager
+            //TESTER.Login(); //random login
             lblStatus.Text = PageData.PManager.UpdateStatusText(); //set footer status text
             PageData.PManager.CDetector = new CourseDetector(LoginSystem.LoggedInUser.StudentID);
             BindingContext = PageData.PManager.CDetector;
@@ -41,6 +41,7 @@ namespace COMP7211Assignment2
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            LoginSystem.LoggedInUser = null;
             await Navigation.PopToRootAsync();
         }
     }

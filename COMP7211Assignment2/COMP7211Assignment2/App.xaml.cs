@@ -10,7 +10,7 @@ namespace COMP7211Assignment2
             InitializeComponent();
             FlowListView.Init();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new LogInPage());
         }
 
         protected override void OnStart()
