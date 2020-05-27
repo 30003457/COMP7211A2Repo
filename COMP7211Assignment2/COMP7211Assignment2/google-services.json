@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "195977647269",
+    "firebase_url": "https://student-rep-app.firebaseio.com",
+    "project_id": "student-rep-app",
+    "storage_bucket": "student-rep-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195977647269:android:a7c0d55890866618b5a94c",
+        "android_client_info": {
+          "package_name": "COMP7211.Assignment2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "195977647269-fnqsihl7hc2bb207bdh65jnm1g3me4j5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_CfsRBBdQQG76gsG_OUzf5Bm18ziliUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "195977647269-fnqsihl7hc2bb207bdh65jnm1g3me4j5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

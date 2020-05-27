@@ -7,11 +7,13 @@ using Xamarin.Forms.Xaml;
 
 namespace COMP7211Assignment2
 {
-    //Code by Lewis Evans 27033957
+    //Code by Lewis 27033957 and Min 30003457
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
+        FireBaseHelper firebaseHelper = new FireBaseHelper();
+
         Validator vd;
         public LogInPage()
         {
@@ -19,6 +21,63 @@ namespace COMP7211Assignment2
             vd = new Validator();
             PageData.PManager = new PageManager(); //initiate page manager
         }
+
+
+
+
+
+        //protected async override void OnAppearing()
+        //{
+
+        //    base.OnAppearing();
+        //    var allPersons = await firebaseHelper.GetAllUsers();
+        //   // string persons = Convert.ToString(allPersons);
+
+        //    //await DisplayAlert("Success", persons, "OK");
+
+        //    foreach (var item in allPersons)
+        //    {
+        //        String User = Convert.ToString(item);
+        //        await DisplayAlert("Success", User, "OK");
+        //    }
+
+        //    //lstPersons.ItemsSource = allPersons;
+        //}
+
+        //private async void BtnAdd_Clicked(object sender, EventArgs e)
+        //{
+        //    await firebaseHelper.AddPerson(Convert.ToInt32(txtId.Text), txtName.Text);
+        //    txtId.Text = string.Empty;
+        //    txtName.Text = string.Empty;
+        //    await DisplayAlert("Success", "Person Added Successfully", "OK");
+        //    var allPersons = await firebaseHelper.GetAllPersons();
+        //    lstPersons.ItemsSource = allPersons;
+        //}
+
+        //private async void BtnRetrive_Clicked(object sender, EventArgs e)
+        //{
+        //    var person = await firebaseHelper.GetPerson(Convert.ToInt32(StudentIDEntry.Text));
+        //    if (person != null)
+        //    {
+        //        StudentIDEntry.Text = person.PersonId.ToString();
+        //        string StudentID = person.Name;
+        //        await DisplayAlert("Success", StudentID, "OK");
+
+        //    }
+        //    else
+        //    {
+        //        await DisplayAlert("Success", "No Person Available", "OK");
+        //    }
+
+
+
+        //}
+
+
+
+
+
+
         private async void ForgotClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ResetPassword());
@@ -27,7 +86,7 @@ namespace COMP7211Assignment2
         {
             await Navigation.PushAsync(new FirstLoginPage());
         }
-
+        
         private async void SignInClicked(object sender, EventArgs e)
         {
             if (vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text) == true)
@@ -40,44 +99,20 @@ namespace COMP7211Assignment2
             {
                 await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
+
+            //var person = await firebaseHelper.GetPerson(Convert.ToInt32(StudentIDEntry.Text));
+            //if (person != null)
+            //{
+            //    StudentIDEntry.Text = person.PersonId.ToString();
+            //    string StudentID = person.Name;
+            //    await DisplayAlert("Success", StudentID, "OK");
+
+            //}
+            //else
+            //{
+            //    await DisplayAlert("Success", "No Person Available", "OK");
+            //}
         }
-        //try
-        //{
-        //    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-        //    builder.DataSource = "mysqlserver-toiohomai.database.windows.net";
-        //    builder.UserID = "serveradmin";
-        //    builder.Password = "AdminAdmin1";
-        //    builder.InitialCatalog = "ToiohomaiStudentsDB";
-
-        //    using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
-        //    {
-
-        //        StringBuilder sb = new StringBuilder();
-        //        sb.Append("SELECT * FROM [StudentLogin] ");
-        //        sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-        //        sb.Append("JOIN [SalesLT].[Product] p ");
-        //        sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-        //        String sql = sb.ToString();
-
-        //        using (SqlCommand command = new SqlCommand(sql, connection))
-        //        {
-        //            connection.Open();
-        //            using (SqlDataReader reader = command.ExecuteReader())
-        //            {
-        //                while (reader.Read())
-        //                {
-        //                    Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-        //catch (SqlException e)
-        //{
-        //    Console.WriteLine(e.ToString());
-        //}
-        //Console.ReadLine();
-
 
     }
-}
+  }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,6 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="google-services.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="google-services.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.4" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.158-pre" />
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.773-pre1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
@@ -18,6 +27,12 @@
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>D:\Program File (x86)\MVS\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

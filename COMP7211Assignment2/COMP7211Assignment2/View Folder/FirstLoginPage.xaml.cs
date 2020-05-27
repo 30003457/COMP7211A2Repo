@@ -18,7 +18,6 @@ namespace COMP7211Assignment2
         private void SignInClicked(object sender, EventArgs e)
         {
 
-
             if (StudentIDEntry.Text == null)
             {
                 DisplayAlert("Error", "No Student ID Entered please try again", "OK");
