@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COMP7211Assignment2.Controller_Folder;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 
@@ -52,6 +53,11 @@ namespace COMP7211Assignment2
         private async void ButtonEmail(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Email());
+        }
+
+        private void Button_Clicked_2(object sender, EventArgs e)
+        {
+            lblMain.Text = FirestoreDatabase.TestMethod();
         }
     }
 }
