@@ -7,6 +7,8 @@ using Xamarin.Forms.Xaml;
 
 namespace COMP7211Assignment2
 {
+    //Code by Lewis Evans 27033957
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
