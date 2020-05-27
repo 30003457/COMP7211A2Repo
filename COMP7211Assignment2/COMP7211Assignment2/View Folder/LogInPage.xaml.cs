@@ -3,6 +3,7 @@ using COMP7211Assignment2.Model_Folder;
 using System;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Markup;
 using Xamarin.Forms.Xaml;
 
 namespace COMP7211Assignment2
@@ -11,12 +12,41 @@ namespace COMP7211Assignment2
     public partial class LogInPage : ContentPage
     {
         Validator vd;
+        private double width, height;
         public LogInPage()
         {
             InitializeComponent();
             vd = new Validator();
             PageData.PManager = new PageManager(); //initiate page manager
+            
+            //responsive ui
+            //this.SizeChanged += LogInPage_SizeChanged;
         }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            if (width != this.width || height != this.height)
+            {
+                this.width = width;
+                this.height = height;
+                if (width > height)
+                {
+                    Grid.SetRowSpan(LogoImage, 3);
+                    Grid.SetColumnSpan(LogoImage, 1);
+                    MainGrid.ColumnDefinitions.RemoveAt(MainGrid.ColumnDefinitions.Count-1);
+                    LoginStack = PageData.PManager.Responsive.LandscapeStack(LoginStack);
+                }
+                else
+                {
+                    Grid.SetRowSpan(LogoImage, 1);
+                    Grid.SetColumnSpan(LogoImage, 3);
+                    MainGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                    LoginStack = PageData.PManager.Responsive.PortraitStack(LoginStack);
+                }
+            }
+        }
+
         private async void ForgotClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ResetPassword());
