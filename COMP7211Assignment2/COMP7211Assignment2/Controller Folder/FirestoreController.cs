@@ -23,7 +23,7 @@ namespace COMP7211Assignment2.Controller_Folder
             //    await Firebase.Child("student-rep-app").Child("Courses").PostAsync(_course);
             //}
             
-            //initialist databases
+            //initialise databases
             PlaceholderCourseDatabase cdb = new PlaceholderCourseDatabase();
             PlaceholderUserDatabase udb = new PlaceholderUserDatabase();
             PlaceholderPostDatabase pdb = new PlaceholderPostDatabase();
@@ -49,7 +49,6 @@ namespace COMP7211Assignment2.Controller_Folder
             {
                 await Firebase.Child("PostReply").Child(_reply.Id.ToString()).PutAsync(_reply);
             }
-
         }
     }
 }
