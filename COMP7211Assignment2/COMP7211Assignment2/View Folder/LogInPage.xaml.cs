@@ -53,11 +53,13 @@ namespace COMP7211Assignment2
                 Grid.SetRow(LoginStack, 1);
                 Grid.SetRowSpan(LoginStack, 1);
                 LoginStack.Margin = new Thickness(0, 0);
+                LoginStack.HorizontalOptions = LayoutOptions.Fill;
                 if (MainGrid.ColumnDefinitions.Count < 3)
                 {
                     MainGrid.ColumnDefinitions.Insert(0, new ColumnDefinition());
                     MainGrid.ColumnDefinitions[1].Width = new GridLength(2.5, GridUnitType.Star);
                     Grid.SetColumnSpan(WallpaperImage, 3);
+                    Grid.SetColumn(LoginStack, 1);
                 }
                 LoginStack = PageData.PManager.Responsive.PortraitStack(LoginStack);
             }
