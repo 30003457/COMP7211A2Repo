@@ -12,38 +12,54 @@ namespace COMP7211Assignment2
     public partial class LogInPage : ContentPage
     {
         Validator vd;
-        private double width, height;
         public LogInPage()
         {
             InitializeComponent();
             vd = new Validator();
             PageData.PManager = new PageManager(); //initiate page manager
-            
+
             //responsive ui
-            //this.SizeChanged += LogInPage_SizeChanged;
+            this.SizeChanged += LogInPage_SizeChanged;
         }
 
-        protected override void OnSizeAllocated(double width, double height)
+        private void LogInPage_SizeChanged(object sender, EventArgs e)
         {
-            base.OnSizeAllocated(width, height);
-            if (width != this.width || height != this.height)
+            //landscape
+            if (Width > Height)
             {
-                this.width = width;
-                this.height = height;
-                if (width > height)
+                Grid.SetRowSpan(LogoImage, 3);
+                Grid.SetColumnSpan(LogoImage, 1);
+                //Grid.SetRow(LogoImage,0);
+                Grid.SetRow(LoginStack,0);
+                Grid.SetRowSpan(LoginStack, 3);
+                LoginStack.Margin = new Thickness(20, 0);
+                LoginStack.VerticalOptions = LayoutOptions.Center;
+                LoginStack.HorizontalOptions = LayoutOptions.Center;
+                if (MainGrid.ColumnDefinitions.Count > 2)
                 {
-                    Grid.SetRowSpan(LogoImage, 3);
-                    Grid.SetColumnSpan(LogoImage, 1);
-                    MainGrid.ColumnDefinitions.RemoveAt(MainGrid.ColumnDefinitions.Count-1);
-                    LoginStack = PageData.PManager.Responsive.LandscapeStack(LoginStack);
+                    MainGrid.ColumnDefinitions.RemoveAt(0);
+                    MainGrid.ColumnDefinitions[0].Width = new GridLength(1.25, GridUnitType.Star);
+                    Grid.SetColumnSpan(WallpaperImage, 2);
                 }
-                else
+                LoginStack = PageData.PManager.Responsive.LandscapeStack(LoginStack);
+                //LoginStack.Orientation = StackOrientation.Horizontal;
+            }
+            //portrait
+            else
+            {
+                Grid.SetRowSpan(LogoImage, 1);
+                Grid.SetColumnSpan(LogoImage, 3);
+                Grid.SetRow(LoginStack, 1);
+                Grid.SetRowSpan(LoginStack, 1);
+                LoginStack.Margin = new Thickness(0, 0);
+                if (MainGrid.ColumnDefinitions.Count < 3)
                 {
-                    Grid.SetRowSpan(LogoImage, 1);
-                    Grid.SetColumnSpan(LogoImage, 3);
-                    MainGrid.ColumnDefinitions.Add(new ColumnDefinition());
-                    LoginStack = PageData.PManager.Responsive.PortraitStack(LoginStack);
+                    MainGrid.ColumnDefinitions.Insert(0, new ColumnDefinition());
+                    MainGrid.ColumnDefinitions[1].Width = new GridLength(2.5, GridUnitType.Star);
+                    Grid.SetColumnSpan(WallpaperImage, 3);
                 }
+                LoginStack = PageData.PManager.Responsive.PortraitStack(LoginStack);
+                //LoginStack.Orientation = StackOrientation.Vertical;
             }
         }
 
