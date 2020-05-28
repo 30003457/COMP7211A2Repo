@@ -57,7 +57,7 @@ namespace COMP7211Assignment2
 
         private void Button_Clicked_2(object sender, EventArgs e)
         {
-            lblMain.Text = FirestoreDatabase.TestMethod();
+            FirestoreController.TestMethod();
         }
     }
 }

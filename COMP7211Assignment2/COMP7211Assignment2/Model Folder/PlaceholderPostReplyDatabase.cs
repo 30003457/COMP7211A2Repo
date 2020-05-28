@@ -8,7 +8,7 @@ namespace COMP7211Assignment2.Model_Folder
 {
     internal class PlaceholderPostReplyDatabase
     {
-        private readonly List<IPost> records;
+        public List<IPost> records;
         public PlaceholderPostReplyDatabase()
         {
             records = new List<IPost>

@@ -1,5 +1,7 @@
 ﻿using COMP7211Assignment2.Model_Folder;
 using System.Collections.Generic;
+using Firebase.Database;
+using Firebase.Database.Query;
 
 //*********************
 //Code by Min 30003457
@@ -16,9 +18,9 @@ namespace COMP7211Assignment2.Controller_Folder
         public List<Post> DetectedPostRecords { get; set; }
         public CourseDetector CDetector { get; set; }
         public PostDetector PDetector { get; set; }
-
         private readonly PlaceholderUserDatabase userDb;
         private readonly PlaceholderPostDatabase postDb;
+        
         public int SortSettings { get; set; }
         public PageManager()
         {
