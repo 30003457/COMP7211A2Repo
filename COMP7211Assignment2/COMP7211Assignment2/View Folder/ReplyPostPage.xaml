@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="COMP7211Assignment2.CreatePostPage">
+             x:Class="COMP7211Assignment2.ReplyPostPage">
     <ContentPage.Content>
         <StackLayout>
             <Grid>
@@ -12,9 +12,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Button Text="BACK" VerticalOptions="Start" HorizontalOptions="Start" BorderWidth="1" BorderColor="Black" Clicked="BackButton"></Button>
                 <Button Text="HOME" VerticalOptions="Start" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="HomeButton"></Button>
-                <Label Text="COMP1231" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Title" Padding="10"></Label>
 
             </Grid>
 
@@ -25,7 +23,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Label Text="Opinion on Blah's teaching" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
+                <Label Text="Blah's Accent" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
             </Grid>
 
             <Grid>
@@ -36,12 +34,20 @@
                 <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium imperdiet pretium. Nunc bibendum, nunc quis porttitor pharetra, sem eros fermentum ipsum, ac rutrum nisl odio id enim." VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
             </Grid>
 
+            <Label Text="Posted by Bob" VerticalOptions="Start" HorizontalOptions="End"></Label>
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Button Text="Create" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="CreateButton"></Button>
+                <StackLayout Orientation="Horizontal">
+
+                    <Button Text="Downvote" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
+                    <Button Text="Upvote" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
+
+                </StackLayout>
+                <Button Text="Reply" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black"></Button>
 
             </Grid>
 

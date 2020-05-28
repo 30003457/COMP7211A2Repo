@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+
+             x:Class="COMP7211Assignment2.Email">
+
+        <StackLayout>
+            <StackLayout>
+                <Entry Text="" Placeholder="Management@Management.toiohomai.ac.nz" x:Name="EntryEmailAddress"/>
+                <Entry Text="" Placeholder="Student Reap APP Report (date)" x:Name="EntrySubject"/>
+                <Editor Text="" Placeholder="Body of the Email" x:Name="EditorBody" VerticalOptions="FillAndExpand"/>
+
+                <Button Text="Send" Clicked="Button_Clicked"/>
+            </StackLayout>
+
+    </StackLayout>
+
+
+</ContentPage>
