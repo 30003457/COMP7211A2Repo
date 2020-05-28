@@ -6,6 +6,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Markup;
 using Xamarin.Forms.Xaml;
 
+//********************
+//Code by Min 30003457
+//********************
 namespace COMP7211Assignment2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -15,10 +18,10 @@ namespace COMP7211Assignment2
         public LogInPage()
         {
             InitializeComponent();
-            vd = new Validator();
+            vd = new Validator(); //initiate validator
             PageData.PManager = new PageManager(); //initiate page manager
 
-            //responsive ui
+            //responsive ui event
             this.SizeChanged += LogInPage_SizeChanged;
         }
 
@@ -29,7 +32,6 @@ namespace COMP7211Assignment2
             {
                 Grid.SetRowSpan(LogoImage, 3);
                 Grid.SetColumnSpan(LogoImage, 1);
-                //Grid.SetRow(LogoImage,0);
                 Grid.SetRow(LoginStack,0);
                 Grid.SetRowSpan(LoginStack, 3);
                 LoginStack.Margin = new Thickness(20, 0);
@@ -42,7 +44,6 @@ namespace COMP7211Assignment2
                     Grid.SetColumnSpan(WallpaperImage, 2);
                 }
                 LoginStack = PageData.PManager.Responsive.LandscapeStack(LoginStack);
-                //LoginStack.Orientation = StackOrientation.Horizontal;
             }
             //portrait
             else
@@ -59,7 +60,6 @@ namespace COMP7211Assignment2
                     Grid.SetColumnSpan(WallpaperImage, 3);
                 }
                 LoginStack = PageData.PManager.Responsive.PortraitStack(LoginStack);
-                //LoginStack.Orientation = StackOrientation.Vertical;
             }
         }
 
@@ -85,43 +85,5 @@ namespace COMP7211Assignment2
                 await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
         }
-        //try
-        //{
-        //    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-        //    builder.DataSource = "mysqlserver-toiohomai.database.windows.net";
-        //    builder.UserID = "serveradmin";
-        //    builder.Password = "AdminAdmin1";
-        //    builder.InitialCatalog = "ToiohomaiStudentsDB";
-
-        //    using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
-        //    {
-
-        //        StringBuilder sb = new StringBuilder();
-        //        sb.Append("SELECT * FROM [StudentLogin] ");
-        //        sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-        //        sb.Append("JOIN [SalesLT].[Product] p ");
-        //        sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-        //        String sql = sb.ToString();
-
-        //        using (SqlCommand command = new SqlCommand(sql, connection))
-        //        {
-        //            connection.Open();
-        //            using (SqlDataReader reader = command.ExecuteReader())
-        //            {
-        //                while (reader.Read())
-        //                {
-        //                    Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-        //catch (SqlException e)
-        //{
-        //    Console.WriteLine(e.ToString());
-        //}
-        //Console.ReadLine();
-
-
     }
 }
