@@ -35,6 +35,8 @@
                          HeightRequest="40" BackgroundColor="Transparent"/>
                 <Button WidthRequest="100" HeightRequest="40" Text="SIGN IN" BorderRadius="20" TextColor="#212121" FontSize="16" Grid.Column="1" Clicked="SignInClicked"
                         HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+                <Button WidthRequest="100" HeightRequest="40" Text="Data Retriever Page" BorderRadius="20" TextColor="#212121" FontSize="16" Grid.Column="2" Clicked="RetrieveDataClicked"
+                        HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
             </StackLayout>
 
 

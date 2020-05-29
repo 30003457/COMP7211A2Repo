@@ -27,6 +27,10 @@ namespace COMP7211Assignment2
         {
             await Navigation.PushAsync(new FirstLoginPage());
         }
+        private async void RetrieveDataClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DataRetriveController());
+        }
 
         private async void SignInClicked(object sender, EventArgs e)
         {
