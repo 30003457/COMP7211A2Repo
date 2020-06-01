@@ -27,9 +27,9 @@
                 </Grid>
             </StackLayout>
 
-                <flv:FlowListView FlowColumnCount="1" SeparatorVisibility="None" HasUnevenRows="True"
+                <flv:FlowListView FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="True"
                                   FlowItemTapped="ListView_ItemTapped"
-                                  FlowItemsSource="{Binding DetectedCourses}" x:Name="fListview" Margin="45,0">
+                                  FlowItemsSource="{Binding DetectedCourses}" x:Name="fListview" Margin="15,0">
                     <flv:FlowListView.FlowColumnTemplate>
                         <DataTemplate>
                             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"

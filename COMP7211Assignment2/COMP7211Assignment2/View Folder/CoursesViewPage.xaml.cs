@@ -28,11 +28,14 @@ namespace COMP7211Assignment2
 
             lblStatus.Text = PageData.PManager.UpdateStatusText();
 
-            SizeChanged += CoursesViewPage_SizeChanged;
+            //responsive ui
+            //SizeChanged += CoursesViewPage_SizeChanged;
         }
 
         private void CoursesViewPage_SizeChanged(object sender, EventArgs e)
         {
+            //responsive ui section
+            //this is currently doing nothing but the layout is there so we can implement something in the future
             //landscape
             if (Width > Height)
             {
@@ -42,7 +45,7 @@ namespace COMP7211Assignment2
             //portrait
             else
             {
-                fListview.FlowColumnCount = 1;
+                fListview.FlowColumnCount = 2;
             }
         }
 
