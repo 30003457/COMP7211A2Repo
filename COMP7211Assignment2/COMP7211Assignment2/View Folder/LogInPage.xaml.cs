@@ -7,77 +7,23 @@ using Xamarin.Forms.Xaml;
 
 namespace COMP7211Assignment2
 {
-    //Code by Lewis 27033957 and Min 30003457
+    //Code by Lewis Evans 27033957
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
-        FireBaseHelper firebaseHelper = new FireBaseHelper();
-
         Validator vd;
+        ValidateLoginData Validator;
+        StudentLoginFirebaseRetriever retriever;
         public LogInPage()
         {
             InitializeComponent();
             vd = new Validator();
+            Validator = new ValidateLoginData();
+            retriever = new StudentLoginFirebaseRetriever();
+
             PageData.PManager = new PageManager(); //initiate page manager
         }
-
-
-
-
-
-        //protected async override void OnAppearing()
-        //{
-
-        //    base.OnAppearing();
-        //    var allPersons = await firebaseHelper.GetAllUsers();
-        //   // string persons = Convert.ToString(allPersons);
-
-        //    //await DisplayAlert("Success", persons, "OK");
-
-        //    foreach (var item in allPersons)
-        //    {
-        //        String User = Convert.ToString(item);
-        //        await DisplayAlert("Success", User, "OK");
-        //    }
-
-        //    //lstPersons.ItemsSource = allPersons;
-        //}
-
-        //private async void BtnAdd_Clicked(object sender, EventArgs e)
-        //{
-        //    await firebaseHelper.AddPerson(Convert.ToInt32(txtId.Text), txtName.Text);
-        //    txtId.Text = string.Empty;
-        //    txtName.Text = string.Empty;
-        //    await DisplayAlert("Success", "Person Added Successfully", "OK");
-        //    var allPersons = await firebaseHelper.GetAllPersons();
-        //    lstPersons.ItemsSource = allPersons;
-        //}
-
-        //private async void BtnRetrive_Clicked(object sender, EventArgs e)
-        //{
-        //    var person = await firebaseHelper.GetPerson(Convert.ToInt32(StudentIDEntry.Text));
-        //    if (person != null)
-        //    {
-        //        StudentIDEntry.Text = person.PersonId.ToString();
-        //        string StudentID = person.Name;
-        //        await DisplayAlert("Success", StudentID, "OK");
-
-        //    }
-        //    else
-        //    {
-        //        await DisplayAlert("Success", "No Person Available", "OK");
-        //    }
-
-
-
-        //}
-
-
-
-
-
-
         private async void ForgotClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ResetPassword());
@@ -86,7 +32,11 @@ namespace COMP7211Assignment2
         {
             await Navigation.PushAsync(new FirstLoginPage());
         }
-        
+        private async void RetrieveDataClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DataRetriveController());
+        }
+
         private async void SignInClicked(object sender, EventArgs e)
         {
             if (vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text) == true)
@@ -99,20 +49,29 @@ namespace COMP7211Assignment2
             {
                 await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
+            RetrieveID();
 
-            //var person = await firebaseHelper.GetPerson(Convert.ToInt32(StudentIDEntry.Text));
-            //if (person != null)
-            //{
-            //    StudentIDEntry.Text = person.PersonId.ToString();
-            //    string StudentID = person.Name;
-            //    await DisplayAlert("Success", StudentID, "OK");
+        }
+        public async void RetrieveID()
+        {
+            await retriever.GetStudent(StudentIDEntry.Text);
+            var student = await retriever.GetStudent(StudentIDEntry.Text);
+            if (student != null)
+            {
 
-            //}
-            //else
-            //{
-            //    await DisplayAlert("Success", "No Person Available", "OK");
-            //}
+                //txtId.Text = person.StudentId.ToString();
+                await DisplayAlert("Success", "Person Retrive Successfully", "OK");
+
+
+            }
+            else
+            {
+                await DisplayAlert("Success", "No Person Available", "OK");
+            }
+
         }
 
+
+
     }
-  }
+}

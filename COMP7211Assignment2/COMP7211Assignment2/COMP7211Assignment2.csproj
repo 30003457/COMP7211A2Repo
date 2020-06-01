@@ -11,16 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="google-services.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="google-services.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="FirebaseDatabase.net" Version="4.0.4" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="2.0.0" />
+    <PackageReference Include="Google.Cloud.Firestore.V1" Version="2.0.0" />
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="3.0.0" />
+    <PackageReference Include="Plugin.CloudFirestore" Version="3.1.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.158-pre" />
+    <PackageReference Include="System.Composition.Runtime" Version="1.4.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.7.0.773-pre1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
@@ -30,12 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Mono.Android">
-      <HintPath>D:\Program File (x86)\MVS\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
+    <EmbeddedResource Update="Controller Folder\DataRetriveController.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Obsolete Folder\PostViewPageTama.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -69,5 +63,9 @@
     <EmbeddedResource Update="View Folder\ReplyPostPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <GoogleServicesJson Include="google-services.json" />
   </ItemGroup>
 </Project>
