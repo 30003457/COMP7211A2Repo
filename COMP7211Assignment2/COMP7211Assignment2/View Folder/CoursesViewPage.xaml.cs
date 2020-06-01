@@ -27,6 +27,23 @@ namespace COMP7211Assignment2
             TESTER.RandomVotes(); //add random votes
 
             lblStatus.Text = PageData.PManager.UpdateStatusText();
+
+            SizeChanged += CoursesViewPage_SizeChanged;
+        }
+
+        private void CoursesViewPage_SizeChanged(object sender, EventArgs e)
+        {
+            //landscape
+            if (Width > Height)
+            {
+                fListview.FlowColumnCount = 2;
+            }
+
+            //portrait
+            else
+            {
+                fListview.FlowColumnCount = 1;
+            }
         }
 
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
