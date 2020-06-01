@@ -13,10 +13,15 @@ namespace COMP7211Assignment2
     public partial class LogInPage : ContentPage
     {
         Validator vd;
+        ValidateLoginData Validator;
+        StudentLoginFirebaseRetriever retriever;
         public LogInPage()
         {
             InitializeComponent();
             vd = new Validator();
+            Validator = new ValidateLoginData();
+            retriever = new StudentLoginFirebaseRetriever();
+
             PageData.PManager = new PageManager(); //initiate page manager
         }
         private async void ForgotClicked(object sender, EventArgs e)
@@ -44,43 +49,28 @@ namespace COMP7211Assignment2
             {
                 await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
+            RetrieveID();
+
         }
-        //try
-        //{
-        //    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-        //    builder.DataSource = "mysqlserver-toiohomai.database.windows.net";
-        //    builder.UserID = "serveradmin";
-        //    builder.Password = "AdminAdmin1";
-        //    builder.InitialCatalog = "ToiohomaiStudentsDB";
+        public async void RetrieveID()
+        {
+            await retriever.GetStudent(StudentIDEntry.Text);
+            var student = await retriever.GetStudent(StudentIDEntry.Text);
+            if (student != null)
+            {
 
-        //    using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
-        //    {
+                //txtId.Text = person.StudentId.ToString();
+                await DisplayAlert("Success", "Person Retrive Successfully", "OK");
 
-        //        StringBuilder sb = new StringBuilder();
-        //        sb.Append("SELECT * FROM [StudentLogin] ");
-        //        sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-        //        sb.Append("JOIN [SalesLT].[Product] p ");
-        //        sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-        //        String sql = sb.ToString();
 
-        //        using (SqlCommand command = new SqlCommand(sql, connection))
-        //        {
-        //            connection.Open();
-        //            using (SqlDataReader reader = command.ExecuteReader())
-        //            {
-        //                while (reader.Read())
-        //                {
-        //                    Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-        //catch (SqlException e)
-        //{
-        //    Console.WriteLine(e.ToString());
-        //}
-        //Console.ReadLine();
+            }
+            else
+            {
+                await DisplayAlert("Success", "No Person Available", "OK");
+            }
+
+        }
+
 
 
     }

@@ -3,6 +3,9 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using Xamarin.Forms;
+using System.Threading.Tasks;
 // Code by Lewis Evans 27033957
 namespace COMP7211Assignment2.Model_Folder
 {
@@ -19,47 +22,59 @@ namespace COMP7211Assignment2.Model_Folder
     {
 
         public bool StudentFound { get; set; }
-        public string StudentIsFound { get; set; }
+        public string StudentIsFound; 
         public bool PasswordMatch { get; set; }
         public bool NotSet { get; set; }
 
         private FirebaseClient firebase = new FirebaseClient("https://student-rep-app.firebaseio.com/");
 
-        //public async Task<List<Person>> GetAllPersons()
-        //{
-
-        //    return (await firebase
-        //      //.Child("Students")
-        //      .Child("Students")
-        //            .Child("EnrolledCourses")
-        //      .OnceAsync<Person>()).Select(item => new Person
-        //      {
-        //          StudentId = item.Object.StudentId
-        //      }).ToList();
-
-
-
-        //}
-        public async void  GetPerson(string studentId)
+        public async Task<List<Student>> GetAllPersons()
         {
-            var Students = await firebase.Child("Students")
-             .OrderByKey()
-             .OnceAsync<Student>();
-            
-            foreach (var item in Students)
-            {
-                if ("00000001" == item.Key)
-                {
-                    StudentFound = true;
-                    StudentIsFound = "Yessir";
-                }
-                //else
-                //{
-                //    StudentFound = false;
-                //}
-                
-            }
-            
+
+            return (await firebase
+              //.Child("Students")
+              .Child("Students")
+                    
+              .OnceAsync<Student>()).Select(item => new Student
+              {
+                  StudentId = item.Object.StudentId
+              }).ToList();
+
+
+
+        }
+        public async Task<Student> GetPassword(string studentId)
+        {
+            var allPersons = await GetAllPersons();
+            await firebase
+              .Child("Students")
+              .OnceAsync<Student>();
+            return allPersons.Where(word => word.StudentId == studentId).FirstOrDefault();
+        }
+       public async Task<Student> GetStudent(string studentId)
+        {
+            var allPersons = await GetAllPersons();
+            await firebase
+              .Child("Students")
+              .OnceAsync<Student>();
+            return allPersons.Where(word => word.StudentId == studentId).FirstOrDefault();
+
+
+
+            //            var Students = await firebase.Child("Students")
+            //            .OnceAsync<Student>();
+            //            foreach (var item in Students)
+            //            {
+            //                if (studentId == item.Key)
+            //                {
+            //                    StudentFound = true;
+            //                }
+            //                else
+            //                {
+            //                    StudentFound = false;
+            //                }
+            //            }
+
             //Console.WriteLine($”{ dino.Key} is { dino.Object.Height } m high.”);
             // await DisplayAlert("Success", item.Key, "word");
 
@@ -72,80 +87,28 @@ namespace COMP7211Assignment2.Model_Folder
             //}
 
 
-
-            //var allPersons = await GetAllPersons();
-            //await firebase
-            //  .Child("Students")
-            //  .OnceAsync<Person>();
-            //return allPersons.Where(word => word.StudentId == studentId).FirstOrDefault();
-
-
-
-            //await firebase.Child("bucketa/bucketb/bucketc").OnceAsync<Dictiona‌​ry<string, RealCl‌​ass>>();
-
-
         }
 
 
-        private async void BtnRetrive_Clicked(object sender, EventArgs e)
+        public async void RetrieveID (string StudentID)
         {
-           // GetPerson(txtId.Text);
-            //var person = await GetPerson(txtId.Text);
-            //if (person != null)
-            //{
+            await GetStudent(StudentID);
+            var student = await GetStudent(StudentID);
+            if (student != null)
+            {
 
-            //    txtId.Text = person.StudentId.ToString();            
-            //     string Id = Convert.ToString(person.StudentId);
-            //    await DisplayAlert("Success", "Person Retrive Successfully ", Id);
+                //txtId.Text = person.StudentId.ToString();
+                StudentIsFound = student.StudentId;
+                
 
-            //}
-            //else
-            //{
-            //    await DisplayAlert("Success", "No Person Available", "OK");
-            //}
+            }
+            else
+            {
+                StudentIsFound = "not found";
+            }
 
         }
 
-
-
-
-
-
-        //protected async override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    var allPersons = await GetAllPersons();
-        //    lstPersons.ItemsSource = allPersons;
-        //}
-        private async void BtnAdd_Clicked(object sender, EventArgs e)
-        {
-
-            // await firebaseHelper.AddPerson(Convert.ToInt32(txtId.Text), txtName.Text);
-            //txtId.Text = string.Empty;
-            //txtName.Text = string.Empty;
-            //await DisplayAlert("Success", "Person Added Successfully", "OK");
-            // var allPersons = await firebaseHelper.GetAllPersons();
-            //  lstPersons.ItemsSource = allPersons;
-        }
-
-
-        private async void BtnUpdate_Clicked(object sender, EventArgs e)
-        {
-            //await firebaseHelper.UpdatePerson(Convert.ToInt32(txtId.Text), txtName.Text);
-            //txtId.Text = string.Empty;
-            //txtName.Text = string.Empty;
-            //await DisplayAlert("Success", "Person Updated Successfully", "OK");
-            // var allPersons = await firebaseHelper.GetAllPersons();
-            // lstPersons.ItemsSource = allPersons;
-        }
-
-        private async void BtnDelete_Clicked(object sender, EventArgs e)
-        {
-            //  await firebaseHelper.DeletePerson(Convert.ToInt32(txtId.Text));
-            //await DisplayAlert("Success", "Person Deleted Successfully", "OK");
-            //var allPersons = await GetAllPersons();
-            //lstPersons.ItemsSource = allPersons;
-        }
 
     }
 }

@@ -27,6 +27,7 @@ namespace COMP7211Assignment2.Controller_Folder
     public partial class DataRetriveController : ContentPage
     {
         private FirebaseClient firebase = new FirebaseClient("https://student-rep-app.firebaseio.com/");
+        public string ID { get; set; }
         public DataRetriveController()
         {
             
@@ -56,6 +57,7 @@ namespace COMP7211Assignment2.Controller_Folder
             {
                 //Console.WriteLine($”{ dino.Key} is { dino.Object.Height } m high.”);
                 await DisplayAlert("Success", item.Key, "word");
+               ID =  item.Key;
             }
 
             //var abc = await firebase

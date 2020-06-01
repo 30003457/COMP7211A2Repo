@@ -10,7 +10,7 @@ namespace COMP7211Assignment2.Model_Folder
         public string StudentIdCheck(string StudentID)
         {
             StudentLoginFirebaseRetriever firebaseRetriever = new StudentLoginFirebaseRetriever();
-            firebaseRetriever.GetPerson(StudentID);
+           //firebaseRetriever.GetStudent(StudentID);
             if (firebaseRetriever.StudentFound)
             {
                 return "Student ID found";
