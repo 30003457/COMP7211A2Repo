@@ -21,43 +21,45 @@ namespace COMP7211Assignment2.Model_Folder
     class StudentLoginFirebaseRetriever
     {
 
-        public bool StudentFound { get; set; }
-        public string StudentIsFound; 
-        public bool PasswordMatch { get; set; }
-        public bool NotSet { get; set; }
-
         private FirebaseClient firebase = new FirebaseClient("https://student-rep-app.firebaseio.com/");
 
         public async Task<List<Student>> GetAllPersons()
         {
 
             return (await firebase
-              //.Child("Students")
               .Child("Students")
-                    
+
               .OnceAsync<Student>()).Select(item => new Student
               {
-                  StudentId = item.Object.StudentId
+                  StudentId = item.Object.StudentId,
+                  Password = item.Object.Password
               }).ToList();
-
-
-
         }
-        public async Task<Student> GetPassword(string studentId)
+        public async Task<Student> CheckPasswordIsSet(string emptyPassword)
+        {
+            var allPersons = await GetAllPersons();
+            await firebase
+              .Child("Students").Child("Password:")
+              .OnceAsync<Student>();
+            return allPersons.Where(word => word.Password == emptyPassword).FirstOrDefault();
+        }
+        public async Task<Student> RetrievePassword(string password)
+        {
+            var allPersons = await GetAllPersons();
+            await firebase
+              .Child("Students").Child("Password:")
+              .OnceAsync<Student>();
+            return allPersons.Where(word => word.Password == password).FirstOrDefault();
+        }
+       public async Task<Student> RetrieveStudentID(string studentId)
         {
             var allPersons = await GetAllPersons();
             await firebase
               .Child("Students")
               .OnceAsync<Student>();
             return allPersons.Where(word => word.StudentId == studentId).FirstOrDefault();
-        }
-       public async Task<Student> GetStudent(string studentId)
-        {
-            var allPersons = await GetAllPersons();
-            await firebase
-              .Child("Students")
-              .OnceAsync<Student>();
-            return allPersons.Where(word => word.StudentId == studentId).FirstOrDefault();
+
+
 
 
 
@@ -88,26 +90,28 @@ namespace COMP7211Assignment2.Model_Folder
 
 
         }
+        //public async void removePassword(string studentId)                                    //not working
+        //{
+
+        //    var toUpdateStudentPassword = (await firebase
+
+        //          .Child("Students").Child("Password:")
+
+        //          .OnceAsync<Student>()).Where(a => a.Object.StudentId == studentId).FirstOrDefault();
 
 
-        public async void RetrieveID (string StudentID)
-        {
-            await GetStudent(StudentID);
-            var student = await GetStudent(StudentID);
-            if (student != null)
-            {
 
-                //txtId.Text = person.StudentId.ToString();
-                StudentIsFound = student.StudentId;
-                
+        //    await firebase
 
-            }
-            else
-            {
-                StudentIsFound = "not found";
-            }
+        //      .Child("Student")
 
-        }
+        //      .Child(toUpdateStudentPassword.Key)
+
+        //      .PutAsync(new Student() { StudentId = studentId, Password = "" });
+        //}
+
+
+
 
 
     }
