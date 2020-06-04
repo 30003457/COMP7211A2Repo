@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COMP7211Assignment2.View_Folder;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -51,6 +52,16 @@ namespace COMP7211Assignment2
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LogInPage());
+
+        }
+        private async void Button_Clicked_2(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CoursesViewRepPage());
+
+        }
+        private async void Button_Clicked_3(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FirstLoginPage());
 
         }
     }

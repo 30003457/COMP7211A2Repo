@@ -6,46 +6,49 @@
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.CreatePostPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+        <Grid>
+            <Image Source="wallpaper.png" Aspect="AspectFill"/>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-                <Button Text="HOME" VerticalOptions="Start" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="HomeButton"></Button>
-                <Label Text="COMP1231" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Title" Padding="10"></Label>
+                    <ImageButton  Source="homeicon.png" VerticalOptions="End" HorizontalOptions="End" WidthRequest="40" HeightRequest="50" BackgroundColor="Black" Clicked="HomeButton"></ImageButton>
+                    <Label Text="COMP1231" VerticalOptions="Start" HorizontalOptions="Center" TextColor="White" FontSize="Title" Padding="10"></Label>
 
-            </Grid>
+                </Grid>
 
-            <Label Text="Subject Name 1" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Body"></Label>
+                <Label Text="Subject Name 1" VerticalOptions="Start" HorizontalOptions="Center" TextColor="White" FontSize="Body"></Label>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-                <Label Text="Opinion on Blah's teaching" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
-            </Grid>
+                    <Label Text="Opinion on Blah's teaching" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
+                </Grid>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
 
-                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium imperdiet pretium. Nunc bibendum, nunc quis porttitor pharetra, sem eros fermentum ipsum, ac rutrum nisl odio id enim." VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
-            </Grid>
+                    <Entry Placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium imperdiet pretium. Nunc bibendum, nunc quis porttitor pharetra, sem eros fermentum ipsum, ac rutrum nisl odio id enim."  VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large" BackgroundColor="DarkGray" ></Entry>
+                </StackLayout>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-                <Button Text="Create" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="CreatePostButton"></Button>
+                    <Button Text="Create" VerticalOptions="End" CornerRadius="20" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="CreatePostButton"></Button>
 
-            </Grid>
+                </Grid>
 
-            <Label Text="Signed in as Bob" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" TextColor="Black"></Label>
+                
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,170,0,0">
+                    <Label x:Name="lblStatus" Text="Placeholder" TextColor="White" HorizontalOptions="Center"/>
+                </StackLayout>
 
-        </StackLayout>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

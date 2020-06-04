@@ -75,13 +75,13 @@ namespace COMP7211Assignment2.View_Folder
             PageData.PManager.DetectedPostRecords = postSorter.SortPosts(PageData.PManager.SortSettings, PageData.PManager.DetectedPostRecords);
         }
 
-        private void Home_Button_Clicked(object sender, EventArgs e)
+        async  void Home_Button_Clicked(object sender, EventArgs e)
         {
             //for (var counter = 1; counter < BackCount; counter++)
             //{
             //    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             //}
-            //await Navigation.PopAsync();
+            await Navigation.PushAsync(new CoursesViewPage());
         }
 
         private async void Create_Button_Clicked(object sender, EventArgs e)

@@ -29,29 +29,30 @@
                             <Label Text="{Binding CurrentTitle}" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
                             <Label Text="{Binding CurrentSubtext}" HorizontalTextAlignment="Center" TextColor="White"/>
                         </StackLayout>
-                        <Button Text="HOME" Grid.Column="2" HorizontalOptions="End"
-                        TranslationX="-5" TranslationY="5" Clicked="Home_Button_Clicked" BackgroundColor="LightGray"
-                            WidthRequest="70"/>
+                        <ImageButton  Source="homeicon.png" Grid.Column="2" BackgroundColor="Black" HorizontalOptions="End" VerticalOptions="End"
+                        TranslationX="-5" TranslationY="5" WidthRequest="60" HeightRequest="80" Clicked="Home_Button_Clicked"/>
 
                         <Label Text="Posts" TextColor="White" FontSize="20" Grid.Row="1" VerticalOptions="Center"
                            TranslationX="10" TranslationY="10"/>
-                        <Button Text="Create Post" Grid.Column="2" Grid.Row="1" HorizontalOptions="End"
+                        <Button Text="Create Post" FontSize="9" CornerRadius="20"  Grid.Column="2" Grid.Row="1" HorizontalOptions="End"
                             TranslationY="10" TranslationX="-5" Clicked="Create_Button_Clicked"
-                            BackgroundColor="LightGray" WidthRequest="85"/>
+                            BackgroundColor="LightGray" HeightRequest="30" WidthRequest="85"/>
                     </Grid>
                 </StackLayout>
 
-                <ListView ItemsSource="{Binding DetectedPostRecords}" ItemTapped="ListView_ItemTapped"
+                <ListView ItemsSource="{Binding DetectedPostRecords}" Opacity="0.9"  ItemTapped="ListView_ItemTapped"
                       TranslationY="10" HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Padding="10">
-                                    <Label Text="{Binding Title}" FontSize="Body" TextColor="Black"/>
-                                    <Label Text="{Binding Time}" FontSize="Small"  TextColor="Black"/>
-                                    <Label Text="{Binding UpvotesTxt}" FontSize="Small" TextColor="Black"/>
-                                    <Label Text="{Binding DownvotesTxt}" FontSize="Small" TextColor="Black"/>
-                                </StackLayout>
+                                <Frame Padding="2" Margin="15,5,15,5" CornerRadius="20" BackgroundColor="DarkGray">
+                                    <StackLayout  Padding="10">
+                                        <Label Text="{Binding Title}" FontSize="Body" TextColor="White"/>
+                                        <Label Text="{Binding Time}" FontSize="Small"  TextColor="White"/>
+                                        <Label Text="{Binding UpvotesTxt}" FontSize="Small" TextColor="White"/>
+                                        <Label Text="{Binding DownvotesTxt}" FontSize="Small" TextColor="White"/>
+                                    </StackLayout>
+                                </Frame>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -65,8 +66,8 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Button Text="Activity" HorizontalOptions="End" Clicked="Button_Clicked_Activity" HeightRequest="60" WidthRequest="90" BackgroundColor="LightGray"/>
-                            <Button Text="Votes" HorizontalOptions="Start" Grid.Column="1" Clicked="Button_Clicked_Votes" HeightRequest="60" WidthRequest="90" BackgroundColor="LightGray"/>
+                            <Button Text="Activity" FontSize="11" HorizontalOptions="End" CornerRadius="20"  Clicked="Button_Clicked_Activity" HeightRequest="60" WidthRequest="85" BackgroundColor="LightGray"/>
+                            <Button Text="Votes" FontSize="11" HorizontalOptions="Start" CornerRadius="20" Grid.Column="1" Clicked="Button_Clicked_Votes" HeightRequest="60" WidthRequest="85" BackgroundColor="LightGray"/>
                         </Grid>
                     </StackLayout>
                     <!-- footer status text -->

@@ -14,19 +14,28 @@ using Rg.Plugins.Popup.Pages;
 namespace COMP7211Assignment2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ResetPassword 
+    public partial class ResetPassword
     {
         public ResetPassword()
         {
             InitializeComponent();
         }
-        
-       
+
+
         private void Button1(object sender, EventArgs e)
         {
-            var message = "Link has been sent!";
-            //DependencyService.Get<IMessage>().Longtime(message);
-            DisplayAlert("Success", message, "OK");
+            if (emailbox.Text == null)
+            {
+                var message = "please enter a Email ID!";
+                DependencyService.Get<IMessage>().Longtime(message);
+            }
+            else
+            {
+                var message = "Success!";
+                DependencyService.Get<IMessage>().Longtime(message);
+            }
+
+
         }
     }
 }

@@ -26,11 +26,10 @@
                 <Entry  x:Name="StudentIDEntry"   Grid.Column="1" TextColor="Black" FontSize="17" BackgroundColor="White"
                         HeightRequest="40"/>
                 <Label  Text="Password" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1"  TextColor="White" FontSize="20" />
-                <Entry  x:Name="PasswordEntry" IsPassword="True" Grid.Column="1" TextColor="Black" FontSize="17" BackgroundColor="White"
-                        HeightRequest="40"/>
-                <Button  Text="Forgot Password?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"  TextColor="Blue" FontSize="12" Clicked="ForgotClicked"
+                <Entry  x:Name="PasswordEntry" IsPassword="True" Grid.Column="1" TextColor="Black" FontSize="17" BackgroundColor="White" HeightRequest="40"/>
+                <Button  Text="Forgot Password?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1"  TextColor="Teal" FontSize="12" Clicked="ForgotClicked"
                          HeightRequest="40" BackgroundColor="Transparent"/>
-                <Button WidthRequest="100" HeightRequest="40" Text="SIGN IN" BorderRadius="20" TextColor="#212121" FontSize="16" Grid.Column="1" Clicked="SignInClicked"
+                <Button WidthRequest="100" HeightRequest="40" Text="SIGN IN" BorderRadius="20" TextColor="Black" FontSize="16" Grid.Column="1" Clicked="SignInClicked"
                         HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
             </StackLayout>
 

@@ -6,7 +6,10 @@
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.ReplyPostPage">
     <ContentPage.Content>
-        <StackLayout>
+        <Grid>
+            <Image Source="wallpaper.png" Aspect="Fill"/>
+
+            <StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -54,5 +57,7 @@
             <Label Text="Signed in as Bob" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" TextColor="Black"></Label>
 
         </StackLayout>
+        </Grid>
     </ContentPage.Content>
+            
 </ContentPage>

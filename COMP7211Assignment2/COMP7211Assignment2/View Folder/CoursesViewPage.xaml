@@ -21,20 +21,20 @@
                     </Grid.ColumnDefinitions>
                     <Label Text="Courses" HorizontalOptions="Center" Grid.Column="1"
                        VerticalOptions="Center" TextColor="White" FontSize="24"/>
-                    <Button Text="LOGOUT" Grid.Column="2" HorizontalOptions="End"
+                    <Button Text="LOGOUT" Grid.Column="2" HorizontalOptions="End" FontSize="Micro" CornerRadius="20"
                         TranslationX="-5" TranslationY="5" Clicked="Button_Clicked" BackgroundColor="LightGray"
-                            WidthRequest="70"/>
+                            WidthRequest="65" HeightRequest="30"/>
                 </Grid>
             </StackLayout>
 
-            <ListView ItemsSource="{Binding DetectedCourses}" ItemTapped="ListView_ItemTapped" HasUnevenRows="True">
+            <ListView ItemsSource="{Binding DetectedCourses}" ItemTapped="ListView_ItemTapped" BackgroundColor="DimGray" Opacity="0.9"  SeparatorColor="Gray" SeparatorVisibility="Default" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="100">
                             <StackLayout TranslationX="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                                          Margin="15,15">
-                                <Label Text="{Binding IDName}" FontSize="Title" TextColor="Black"/>
-                                <Label Text="{Binding Name}" FontSize="Small"  TextColor="Black"/>
+                                <Label Text="{Binding IDName}" FontSize="Title" TextColor="White"/>
+                                <Label Text="{Binding Name}" FontSize="Small"  TextColor="White"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
