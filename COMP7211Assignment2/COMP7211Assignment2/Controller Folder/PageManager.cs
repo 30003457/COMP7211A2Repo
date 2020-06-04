@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+//*********************
+//Code by Min 30003457
+//*********************
 namespace COMP7211Assignment2.Controller_Folder
 {
     class PageManager
@@ -27,12 +30,6 @@ namespace COMP7211Assignment2.Controller_Folder
             PostRecords = postDb.records;
 
             SortSettings = 1; //default to votes
-
-            //CurrentCourseID = PageData.CurrentCourseID;
-            //DetectedPostRecords = PDetector.DetectedPosts;
-            //CDetector = PageData.CDetector;
-            //CurrentTitle = PageData.CurrentTitle;
-            //CurrentSubtext = PageData.CurrentSubtext;
         }
 
         public string UpdateStatusText()
@@ -41,7 +38,6 @@ namespace COMP7211Assignment2.Controller_Folder
         }
         public void DetectPosts()
         {
-            //DetectedPostRecords = PageData.PDetector.DetectedPosts;
             DetectedPostRecords = PDetector.DetectedPosts;
         }
 
@@ -53,10 +49,5 @@ namespace COMP7211Assignment2.Controller_Folder
             //}
             //await Navigation.PopAsync();
         }
-
-        //public void SetTitle(string title)
-        //{
-        //    PageData.CurrentTitle = title;
-        //}
     }
 }

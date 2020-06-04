@@ -40,19 +40,17 @@
                     </Grid>
                 </StackLayout>
 
-                <ListView ItemsSource="{Binding DetectedPostRecords}" Opacity="0.9"  ItemTapped="ListView_ItemTapped"
-                      TranslationY="10" HasUnevenRows="True">
+                <ListView ItemsSource="{Binding DetectedPostRecords}" ItemTapped="ListView_ItemTapped"
+                      TranslationY="10" HasUnevenRows="True" BackgroundColor="Transparent" SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame Padding="2" Margin="15,5,15,5" CornerRadius="20" BackgroundColor="DarkGray">
-                                    <StackLayout  Padding="10">
-                                        <Label Text="{Binding Title}" FontSize="Body" TextColor="White"/>
-                                        <Label Text="{Binding Time}" FontSize="Small"  TextColor="White"/>
-                                        <Label Text="{Binding UpvotesTxt}" FontSize="Small" TextColor="White"/>
-                                        <Label Text="{Binding DownvotesTxt}" FontSize="Small" TextColor="White"/>
-                                    </StackLayout>
-                                </Frame>
+                                <StackLayout Padding="2" Margin="5,5" BackgroundColor="Teal">
+                                    <Label Text="{Binding Title}" FontSize="Medium"  TextColor="White" Margin="5,0"/>
+                                    <Label Text="{Binding Time}" FontSize="Small"  TextColor="White" Margin="5,0"/>
+                                    <Label Text="{Binding UpvotesTxt}" FontSize="Small" TextColor="White" Margin="5,0"/>
+                                    <Label Text="{Binding DownvotesTxt}" FontSize="Small" TextColor="White" Margin="5,0"/>
+                                </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

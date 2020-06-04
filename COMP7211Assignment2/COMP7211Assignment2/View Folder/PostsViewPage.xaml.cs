@@ -23,14 +23,12 @@ namespace COMP7211Assignment2.View_Folder
         public PostsViewPage()
         {
             InitializeComponent();
-            //pm = new PageManager();
             postSorter = new Sorter();
 
             PageData.PManager.PDetector = new PostDetector(PageData.PManager.CurrentCourseID);
             PageData.PManager.DetectPosts();
             SortByVotes();
             lblStatus.Text = PageData.PManager.UpdateStatusText(); //set footer status text
-            //Bind();
             BindingContext = PageData.PManager;
         }
         private void RefreshBind()
@@ -41,8 +39,6 @@ namespace COMP7211Assignment2.View_Folder
 
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            //Post clickedPost = (Post)sender;
-            //PageData.PManager.ClickedPost = (Post)sender;
             await Navigation.PushAsync(new PostWithRepliesPage((Post)e.Item));
         }
 
