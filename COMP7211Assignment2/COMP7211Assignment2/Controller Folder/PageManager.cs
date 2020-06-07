@@ -19,9 +19,9 @@ namespace COMP7211Assignment2.Controller_Folder
         public List<Post> DetectedPostRecords { get; set; }
         public CourseDetector CDetector { get; set; }
         public PostDetector PDetector { get; set; }
-        public FireBaseHelperv2 FBHelper { get; set; }
-        private readonly PlaceholderUserDatabase userDb;
-        private readonly PlaceholderPostDatabase postDb;
+        private FireBaseHelperv2 FBHelper { get; set; }
+        //private readonly PlaceholderUserDatabase userDb;
+        //private readonly PlaceholderPostDatabase postDb;
         
         public int SortSettings { get; set; }
         public PageManager()
@@ -35,6 +35,8 @@ namespace COMP7211Assignment2.Controller_Folder
             SortSettings = 1; //default to votes
 
             FBHelper = new FireBaseHelperv2();
+            UserRecords = FBHelper.GetAllUsers().Result;
+            PostRecords = FBHelper.GetAllPosts().Result;
         }
 
         public string UpdateStatusText()

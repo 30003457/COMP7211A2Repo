@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
+using COMP7211Assignment2.Model_Folder;
+
 namespace COMP7211Assignment2
 {
     public class FireBaseHelperv2
@@ -18,6 +20,11 @@ namespace COMP7211Assignment2
             return (await firebase
               .Child("Students")
               .OnceAsync<User>()).Select(item => new User(item.Object.FName, item.Object.LName, item.Object.StudentID, item.Object.Password, item.Object.IsRep)).ToList();
+        }
+
+        public async Task<List<Post>> GetAllPosts()
+        {
+            return (await firebase.Child("Posts").OnceAsync<Post>()).Select(item => new Post(item.Object.Id, item.Object.CourseId, item.Object.Time, item.Object.Title, item.Object.Content)).ToList();
         }
 
         //public async Task AddPerson(int personId, string name)

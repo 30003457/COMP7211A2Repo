@@ -5,6 +5,7 @@ using System.Text;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
+    //code by Min 30003457
     class Validator
     {
         string digits = "0123456789";
@@ -30,7 +31,7 @@ namespace COMP7211Assignment2.Controller_Folder
                     }
 
                     //username is all numbers
-                    foreach (var item in PageData.PManager.FBHelper.GetAllUsers().Result)
+                    foreach (var item in PageData.PManager.UserRecords)
                     {
                         if (item.StudentID.ToString("00000000") == username)
                         {
@@ -54,7 +55,7 @@ namespace COMP7211Assignment2.Controller_Folder
             if (string.IsNullOrEmpty(password) == false)
             {
                 //check existing database
-                foreach (var item in PageData.PManager.FBHelper.GetAllUsers().Result)
+                foreach (var item in PageData.PManager.UserRecords)
                 {
                     //check it matches or if it exists
                     //if this is true then it is a successful login
