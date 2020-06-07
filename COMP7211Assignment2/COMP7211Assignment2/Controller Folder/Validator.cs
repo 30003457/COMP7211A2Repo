@@ -30,7 +30,7 @@ namespace COMP7211Assignment2.Controller_Folder
                     }
 
                     //username is all numbers
-                    foreach (var item in PageData.PManager.UserRecords)
+                    foreach (var item in PageData.PManager.FBHelper.GetAllUsers().Result)
                     {
                         if (item.StudentID.ToString("00000000") == username)
                         {
@@ -54,7 +54,7 @@ namespace COMP7211Assignment2.Controller_Folder
             if (string.IsNullOrEmpty(password) == false)
             {
                 //check existing database
-                foreach (var item in PageData.PManager.UserRecords)
+                foreach (var item in PageData.PManager.FBHelper.GetAllUsers().Result)
                 {
                     //check it matches or if it exists
                     //if this is true then it is a successful login

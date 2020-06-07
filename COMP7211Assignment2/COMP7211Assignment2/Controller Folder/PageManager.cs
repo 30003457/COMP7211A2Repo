@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Google.Cloud.Firestore.V1;
 
 //*********************
 //Code by Min 30003457
@@ -18,19 +19,22 @@ namespace COMP7211Assignment2.Controller_Folder
         public List<Post> DetectedPostRecords { get; set; }
         public CourseDetector CDetector { get; set; }
         public PostDetector PDetector { get; set; }
+        public FireBaseHelperv2 FBHelper { get; set; }
         private readonly PlaceholderUserDatabase userDb;
         private readonly PlaceholderPostDatabase postDb;
         
         public int SortSettings { get; set; }
         public PageManager()
         {
-            userDb = new PlaceholderUserDatabase();
-            postDb = new PlaceholderPostDatabase();
+            //userDb = new PlaceholderUserDatabase();
+            //postDb = new PlaceholderPostDatabase();
 
-            UserRecords = userDb.records;
-            PostRecords = postDb.records;
+            //UserRecords = userDb.records;
+            //PostRecords = postDb.records;
 
             SortSettings = 1; //default to votes
+
+            FBHelper = new FireBaseHelperv2();
         }
 
         public string UpdateStatusText()

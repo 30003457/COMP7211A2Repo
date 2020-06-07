@@ -5,7 +5,7 @@
 //*********************
 namespace COMP7211Assignment2
 {
-    class User
+    public class User
     {
         public string FName { get; set; }
         public string LName { get; set; }
