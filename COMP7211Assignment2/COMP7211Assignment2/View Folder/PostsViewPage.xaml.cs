@@ -26,7 +26,35 @@ namespace COMP7211Assignment2.View_Folder
             SortByVotes();
             lblStatus.Text = PageData.PManager.UpdateStatusText(); //set footer status text
             BindingContext = PageData.PManager;
+
+            SizeChanged += PostsViewPage_SizeChanged;
         }
+
+
+        private void PostsViewPage_SizeChanged(object sender, EventArgs e)
+        {
+            //landscape
+            if(Width>Height)
+            {
+                fListview.FlowColumnCount = 2;
+                SortUI.Orientation = StackOrientation.Horizontal;
+                //LoggedUserUI.Orientation = StackOrientation.Horizontal;
+                FooterUI.Orientation = StackOrientation.Horizontal;
+                BtnActivity.HeightRequest = 80;
+                BtnVotes.HeightRequest = 80;
+            }
+            //portrait
+            else
+            {
+                fListview.FlowColumnCount = 1;
+                SortUI.Orientation = StackOrientation.Vertical;
+                //LoggedUserUI.Orientation = StackOrientation.Vertical;
+                FooterUI.Orientation = StackOrientation.Vertical;
+                BtnActivity.HeightRequest = 60;
+                BtnVotes.HeightRequest = 60;
+            }
+        }
+
         private void RefreshBind()
         {
             BindingContext = null;
