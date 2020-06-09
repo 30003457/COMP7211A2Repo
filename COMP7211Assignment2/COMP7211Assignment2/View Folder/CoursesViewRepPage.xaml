@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="COMP7211Assignment2.View_Folder.CoursesViewRepPage">
+             x:Class="COMP7211Assignment2.View_Folder.CoursesViewRepPage"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView">
     <!-- Coded by min and edited by Agassi 30015804 -->
     <ContentPage.Content>
         <Grid>
@@ -27,20 +28,20 @@
                     </Grid>
                 </StackLayout>
 
-                <ListView ItemsSource="{Binding DetectedCourses}" ItemTapped="ListView_ItemTapped" BackgroundColor="Black" Opacity="0.9" HasUnevenRows="True">
-                    <ListView.ItemTemplate>
+                <flv:FlowListView FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="True"
+                                  FlowItemTapped="ListView_ItemTapped"
+                                  FlowItemsSource="{Binding DetectedCourses}" x:Name="fListview" Margin="15,0">
+                    <flv:FlowListView.FlowColumnTemplate>
                         <DataTemplate>
-                            <ViewCell Height="100">
-                                <Frame Padding="2" Margin="15,5,15,5" BackgroundColor="Teal">
-                                    <StackLayout TranslationX="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="15,15">
-                                        <Label Text="{Binding IDName}" FontSize="Title" TextColor="White"/>
-                                        <Label Text="{Binding Name}" FontSize="Small"  TextColor="White"/>
-                                    </StackLayout>
-                                </Frame>
-                            </ViewCell>
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                         BackgroundColor="Teal" Padding="2" Margin="5,5" HeightRequest="100" x:Name="flvStack">
+                                <Label Text="{Binding IDName}" FontSize="Title" TextColor="White" Margin="5,0"/>
+                                <Label Text="{Binding Name}" FontSize="Small"  TextColor="White" Margin="5,0"/>
+                            </StackLayout>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </flv:FlowListView.FlowColumnTemplate>
+                </flv:FlowListView>
+
 
                 <!--Contact Management Button is here-->
                 <StackLayout>

@@ -10,18 +10,15 @@
             <Image Source="wallpaper.png" Aspect="Fill"/>
 
             <StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-                <Button Text="HOME" VerticalOptions="Start" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="HomeButton"></Button>
-
-            </Grid>
-
-            <Label Text="Subject Name 1" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Body"></Label>
-
-            <Grid>
+                    <ImageButton Source="homeicon.png" BackgroundColor="Black" Grid.Row="0"  VerticalOptions="End" HorizontalOptions="End"  WidthRequest="70" HeightRequest="40" Clicked="HomeButton"></ImageButton>
+                    <Label Text="{Binding CourseTitle}" VerticalOptions="Center" HorizontalOptions="Center"  Grid.Row="0" TextColor="White" FontSize="Title"></Label>
+                </Grid>
+                <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
@@ -37,7 +34,7 @@
                 <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium imperdiet pretium. Nunc bibendum, nunc quis porttitor pharetra, sem eros fermentum ipsum, ac rutrum nisl odio id enim." VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
             </Grid>
 
-            <Label Text="Posted by Bob" VerticalOptions="Start" HorizontalOptions="End"></Label>
+            <Label Text="Posted by Bob" VerticalOptions="Start" HorizontalOptions="End" TextColor="White"></Label>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -45,18 +42,16 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout Orientation="Horizontal">
-
-                    <Button Text="Downvote" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
-                    <Button Text="Upvote" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
-
-                </StackLayout>
-                <Button Text="Reply" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black"></Button>
+                        <ImageButton Source="dislike1.png" BackgroundColor="Black" VerticalOptions="Center"  HorizontalOptions="Start"></ImageButton>
+                        <ImageButton Source="like1.png" VerticalOptions="Center" HorizontalOptions="Start" BackgroundColor="Black"></ImageButton>
+                    </StackLayout>
+                <Button Text="Reply" VerticalOptions="End" HorizontalOptions="End" CornerRadius="20"></Button>
 
             </Grid>
 
-            <Label Text="Signed in as Bob" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" TextColor="Black"></Label>
+                <Label x:Name="lblStatus" Text="Placeholder" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" TextColor="White"></Label>
 
-        </StackLayout>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
             
