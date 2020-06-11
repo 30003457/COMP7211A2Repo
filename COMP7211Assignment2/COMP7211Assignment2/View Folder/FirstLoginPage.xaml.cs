@@ -15,20 +15,20 @@ namespace COMP7211Assignment2
             InitializeComponent();
         }
 
-        private void SignInClicked(object sender, EventArgs e)
+        private void CreatePasswordClicked(object sender, EventArgs e)
         {
 
-            if (StudentIDEntry.Text == null)
+            if (Password1.Text == null)
             {
                 DisplayAlert("Error", "No Student ID Entered please try again", "OK");
             }
-            else if (PasswordEntry.Text == null)
+            else if (Password2.Text == null)
             {
                 DisplayAlert("Error", "No Password Entered please try again", "OK");
             }
             else
             {
-                DisplayAlert("Success", "You have successfully logged in", "OK");
+                DisplayAlert("Success", "Creating Login...", "ok");
             }
 
         }
