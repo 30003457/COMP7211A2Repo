@@ -9,11 +9,15 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PostWithRepliesPage : ContentPage
     {
+        Vote newvote = new Vote();
         public PostWithRepliesPage(Post clickedPost)
         {
             InitializeComponent();
             BindingContext = clickedPost;
         }
+
+        public int UpVote { get; private set; }
+        public int DwnVote { get; private set; }
 
         private async void HomeButton(object sender, EventArgs e)
         {
@@ -28,6 +32,16 @@ namespace COMP7211Assignment2
         private async void ReplyButton2(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ReplyPostPage());
+        }
+
+        private void UpvoteADD (object sender, EventArgs e)   
+        {
+            newvote.AddUpVote(UpVote);
+        }
+
+        private void DwnvoteADD(object sender, EventArgs e) 
+        {
+            newvote.addDwnvote(DwnVote);
         }
     }
 }
