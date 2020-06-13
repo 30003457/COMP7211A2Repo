@@ -14,9 +14,6 @@ namespace COMP7211Assignment2.Model_Folder
         public string StudentId { get; set; }
         public string Password { get; set; }
 
-        
-
-
     }
     class StudentLoginFirebaseRetriever
     {
@@ -35,29 +32,31 @@ namespace COMP7211Assignment2.Model_Folder
                   Password = item.Object.Password
               }).ToList();
         }
-        public async Task<Student> CheckPasswordIsSet(string emptyPassword)
+        public async Task<Student> CheckPasswordIsSet(string emptyPassword, string studentID)
         {
             var allPersons = await GetAllPersons();
             await firebase
-              .Child("Students").Child("Password:")
+             .Child("Students").Child(studentID).Child("Password:")
               .OnceAsync<Student>();
-            return allPersons.Where(word => word.Password == emptyPassword).FirstOrDefault();
+            return allPersons.Where(word => word.Password == emptyPassword &&  word.StudentId == studentID).FirstOrDefault();
         }
-        public async Task<Student> RetrievePassword(string password)
+        public async Task<Student> RetrievePassword(string password, string studentID)
         {
             var allPersons = await GetAllPersons();
             await firebase
-              .Child("Students").Child("Password:")
+                .Child("Students")
+              .Child(studentID).Child("Password:")
               .OnceAsync<Student>();
             return allPersons.Where(word => word.Password == password).FirstOrDefault();
         }
-       public async Task<Student> RetrieveStudentID(string studentId)
+        public async Task<Student> RetrieveStudentID(string studentId)
         {
             var allPersons = await GetAllPersons();
             await firebase
               .Child("Students")
               .OnceAsync<Student>();
             return allPersons.Where(word => word.StudentId == studentId).FirstOrDefault();
+        }
 
 
 
@@ -89,7 +88,9 @@ namespace COMP7211Assignment2.Model_Folder
             //}
 
 
-        }
+        //}
+
+
         //public async void removePassword(string studentId)                                    //not working
         //{
 

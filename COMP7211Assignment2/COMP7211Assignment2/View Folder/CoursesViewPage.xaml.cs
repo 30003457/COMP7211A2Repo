@@ -27,6 +27,26 @@ namespace COMP7211Assignment2
             TESTER.RandomVotes(); //add random votes
 
             lblStatus.Text = PageData.PManager.UpdateStatusText();
+
+            //responsive ui
+            //SizeChanged += CoursesViewPage_SizeChanged;
+        }
+
+        private void CoursesViewPage_SizeChanged(object sender, EventArgs e)
+        {
+            //responsive ui section
+            //this is currently doing nothing but the layout is there so we can implement something in the future
+            //landscape
+            if (Width > Height)
+            {
+                fListview.FlowColumnCount = 2;
+            }
+
+            //portrait
+            else
+            {
+                fListview.FlowColumnCount = 2;
+            }
         }
 
         private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)

@@ -2,66 +2,56 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 // Code by Lewis Evans 27033957
 namespace COMP7211Assignment2.Model_Folder
 {
     class ValidateLoginData
     {
-        public bool idMatches = false;
-        public bool passwordMatches = false;
-        public bool PasswordIsSet;
+        //public bool idMatches = false;
+        //public bool passwordMatches = false;
+        //public bool PasswordIsSet = false;
 
         private StudentLoginFirebaseRetriever firebaseRetriever = new StudentLoginFirebaseRetriever();
 
-        //public async void ValidatePasswordStatus(string passwordEmpty)
-        //{
-        //    await firebaseRetriever.RetrievePassword(passwordEmpty);
-        //    var password = await firebaseRetriever.RetrievePassword(passwordEmpty);         //not working
-        //    if (passwordEmpty != null)
-        //    {
-        //        PasswordIsSet = false;
-        //    }
-        //    else
-        //    {
-        //        PasswordIsSet = true;
-        //    }
-        //}
-        public async void ValidateID(string StudentIDEntryText)
+        public async Task<bool> ValidatePasswordStatus(string passwordEmpty, string StudentID)
         {
-            // firebaseRetriever.removePassword(StudentIDEntryText);
-            await firebaseRetriever.RetrieveStudentID(StudentIDEntryText);
+            var emptyPassword = await firebaseRetriever.CheckPasswordIsSet(passwordEmpty , StudentID);
+            if (emptyPassword != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public async Task<bool> ValidateID(string StudentIDEntryText)
+        {
             var student = await firebaseRetriever.RetrieveStudentID(StudentIDEntryText);
             if (student != null)
             {
-
-
-                idMatches = true;
-
-
+                return true;
             }
             else
             {
-                idMatches = false;
+                return false;
             }
 
         }
-        public async void ValidatePassword(string PasswordEntryText)
+        public async Task<bool> ValidatePassword(string passwordEntryText, string studentID)
         {
             
-            await firebaseRetriever.RetrievePassword(PasswordEntryText);
-            var password = await firebaseRetriever.RetrievePassword(PasswordEntryText);
-            if (password != null)
+            var password = await firebaseRetriever.RetrievePassword(passwordEntryText, studentID);
+           
+            if (password != null )
             {
-
-                //txtId.Text = person.StudentId.ToString();
-                // await DisplayAlert("Success", "Password Retrive Successfully", "OK");
-                passwordMatches = true;
+                return true;
 
             }
             else
             {
-                // await DisplayAlert("Success", "No Password Available", "OK");
-                passwordMatches = false;
+                return false;
             }
 
         }
