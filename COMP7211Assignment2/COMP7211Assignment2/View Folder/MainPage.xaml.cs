@@ -62,10 +62,10 @@ namespace COMP7211Assignment2
             FirestoreController.TestMethod();
         }
 
-        private void Button_Clicked_3(object sender, EventArgs e)
+        private async void Button_Clicked_3(object sender, EventArgs e)
         {
             PageData.PManager = new PageManager();
-            List<User> testList = PageData.PManager.FBHelper.GetAllUsers().Result;
+            List<User> testList = await PageData.PManager.FBHelper.GetAllUsers();
             foreach (var item in testList)
             {
                 lblUsers.Text += (item.StudentID.ToString("00000000") + "\n");
