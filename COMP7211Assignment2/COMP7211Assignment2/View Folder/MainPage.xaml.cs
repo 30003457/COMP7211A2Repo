@@ -1,5 +1,7 @@
 ﻿using COMP7211Assignment2.Controller_Folder;
+using COMP7211Assignment2.Model_Folder;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
 
@@ -58,6 +60,16 @@ namespace COMP7211Assignment2
         private void Button_Clicked_2(object sender, EventArgs e)
         {
             FirestoreController.TestMethod();
+        }
+
+        private void Button_Clicked_3(object sender, EventArgs e)
+        {
+            PageData.PManager = new PageManager();
+            List<User> testList = PageData.PManager.FBHelper.GetAllUsers().Result;
+            foreach (var item in testList)
+            {
+                lblUsers.Text += (item.StudentID.ToString("00000000") + "\n");
+            }
         }
     }
 }

@@ -37,9 +37,11 @@
             <Button Text="Course Page" HorizontalOptions="Center" VerticalOptions="Center"
                     Clicked="Button_Clicked" BackgroundColor="White"
                 WidthRequest="100"></Button>
-            <Button Text="Database Test" Clicked="Button_Clicked_2" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Button Text="Database Test" Clicked="Button_Clicked_2" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
         </StackLayout>
-        
+        <Button Grid.Row="2" Text="Get Users Test" Clicked="Button_Clicked_3" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+        <Label Grid.Row="3" x:Name="lblUsers" TextColor="White"/>
+
 
 
 
