@@ -20,9 +20,10 @@ namespace COMP7211Assignment2.Controller_Folder
         public CourseDetector CDetector { get; set; }
         public PostDetector PDetector { get; set; }
         public FireBaseHelperv2 FBHelper { get; set; }
+        public ResponsiveController Responsive { get; set; }
         //private readonly PlaceholderUserDatabase userDb;
         //private readonly PlaceholderPostDatabase postDb;
-        
+
         public int SortSettings { get; set; }
         public PageManager()
         {
@@ -31,6 +32,7 @@ namespace COMP7211Assignment2.Controller_Folder
 
             //UserRecords = userDb.records;
             //PostRecords = postDb.records;
+            Responsive = new ResponsiveController();
 
             SortSettings = 1; //default to votes
 

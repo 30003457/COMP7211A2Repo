@@ -7,7 +7,7 @@ using System.Text;
 //*********************
 namespace COMP7211Assignment2
 {
-    class Course
+    public class Course
     {
         public string Name { get; set; }
         public int ID { get; set; }
