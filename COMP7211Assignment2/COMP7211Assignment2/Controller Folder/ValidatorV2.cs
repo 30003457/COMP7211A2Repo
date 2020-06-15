@@ -1,6 +1,7 @@
 ﻿using COMP7211Assignment2.Model_Folder;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -88,13 +89,35 @@ namespace COMP7211Assignment2.Controller_Folder
             }
         }
 
-        public bool ValidateNewPassword(string password)
+        public bool ValidateNewPassword(string password1, string password2)
         {
-            //first ever login
-            //15 characters like toi ohomai passwords?
             //all characters allowed
             //at least 1 digit and 1 letter
             //NYI
+            //first ever login
+            //15 characters like toi ohomai passwords?
+
+            if (password1 == null || password2 == null)
+            {
+                errorMsg = "Both passwords cannot blank!";
+                return false;
+            }
+            else if (password1 == password2)
+            {
+                if (password1.Length >= 15)
+                {
+                    bool containsNumbersAndLetters = password1.All(Char.IsLetterOrDigit);
+                    if (containsNumbersAndLetters)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    errorMsg = "Password must be 15 or more characters";
+                    return false;
+                }
+            }
             return false;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COMP7211Assignment2.Controller_Folder;
+using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,26 +11,40 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FirstLoginPage : ContentPage
     {
+        private ValidatorV2 vd;
         public FirstLoginPage()
         {
+            vd = new ValidatorV2();
             InitializeComponent();
         }
 
-        private void CreatePasswordClicked(object sender, EventArgs e)
+        private async void CreatePasswordClicked(object sender, EventArgs e)
         {
 
-            if (Password1.Text == null)
+            if (await vd.ValidateLogin(Password1.Text, Password2.Text))
             {
-                DisplayAlert("Error", "No Student ID Entered please try again", "OK");
-            }
-            else if (Password2.Text == null)
-            {
-                DisplayAlert("Error", "No Password Entered please try again", "OK");
+                Password1.Text = null;
+                Password2.Text = null;
+                await DisplayAlert("Valid", "Password Correct Check", "OK");
+                await Navigation.PushAsync(new CoursesViewPage());
             }
             else
             {
-                DisplayAlert("Success", "Creating Login...", "ok");
+                await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
+
+            //if (Password1.Text == null)
+            //{
+            //    DisplayAlert("Error", "No Password Entered please try again", "OK");
+            //}
+            //else if (Password2.Text == null)
+            //{
+            //    DisplayAlert("Error", "No Password Entered please try again", "OK");
+            //}
+            //else
+            //{
+            //    DisplayAlert("Success", "Creating Login...", "ok");
+            //}
 
         }
     }
