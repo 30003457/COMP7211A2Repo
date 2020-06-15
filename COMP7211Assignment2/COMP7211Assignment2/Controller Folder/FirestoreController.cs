@@ -32,7 +32,7 @@ namespace COMP7211Assignment2.Controller_Folder
             //push each database up to firebase
             foreach (Course _course in cdb.records)
             {
-                await Firebase.Child("Courses").Child(_course.ID.ToString()).PutAsync(_course);
+                await Firebase.Child("Courses").Child(_course.ID.ToString("0000")).PutAsync(_course);
             }
 
             foreach (User _student in udb.records)
@@ -42,12 +42,12 @@ namespace COMP7211Assignment2.Controller_Folder
 
             foreach (Post _post in pdb.records)
             {
-                await Firebase.Child("Posts").Child(_post.Id.ToString()).PutAsync(_post);
+                await Firebase.Child("Posts").Child(_post.Id.ToString("0000")).PutAsync(_post);
             }
 
             foreach (PostReply _reply in prdb.records)
             {
-                await Firebase.Child("PostReply").Child(_reply.Id.ToString()).PutAsync(_reply);
+                await Firebase.Child("PostReply").Child(_reply.Id.ToString("0000")).PutAsync(_reply);
             }
         }
     }

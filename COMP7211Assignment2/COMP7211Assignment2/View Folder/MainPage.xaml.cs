@@ -15,6 +15,7 @@ namespace COMP7211Assignment2
         public MainPage()
         {
             InitializeComponent();
+            PageData.PManager = new PageManager();
         }
 
         private async void NewPostButton(object sender, EventArgs e)
@@ -64,12 +65,55 @@ namespace COMP7211Assignment2
 
         private async void Button_Clicked_3(object sender, EventArgs e)
         {
-            PageData.PManager = new PageManager();
             List<User> testList = await PageData.PManager.FBHelper.GetAllUsers();
             foreach (var item in testList)
             {
                 lblUsers.Text += (item.StudentID.ToString("00000000") + "\n");
             }
+        }
+
+        private async void Button_Clicked_4(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Post> testList = await PageData.PManager.FBHelper.GetAllPosts();
+                foreach (var item in testList)
+                {
+                    lblUsers.Text += (item.Title.ToString() + "\n");
+                }
+            }
+            catch (Exception _e)
+            {
+                lblUsers.Text = _e.Message;
+            }
+        }
+
+        private void Button_Clicked_5(object sender, EventArgs e)
+        {
+            lblUsers.Text = null;
+        }
+
+        private async void Button_Clicked_6(object sender, EventArgs e)
+        {
+            try
+            {
+                List<PostReply> testList = await PageData.PManager.FBHelper.GetAllReplies();
+                foreach (var item in testList)
+                {
+                    lblUsers.Text += (item.Content + "\n");
+                }
+            }
+            catch (Exception _e)
+            {
+                lblUsers.Text = _e.Message;
+            }
+        }
+
+        private void Button_Clicked_7(object sender, EventArgs e)
+        {
+            //TESTER.AddRandomPosts(100);
+            //TESTER.RandomVotes();
+            //TESTER.UpdateVotesToDB();
         }
     }
 }

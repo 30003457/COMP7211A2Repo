@@ -34,7 +34,6 @@ namespace COMP7211Assignment2.Controller_Folder
 
             //UserRecords = userDb.records;
             //PostRecords = postDb.records;
-            PostRecords = new List<Post>();
 
             Responsive = new ResponsiveController();
 
@@ -42,7 +41,7 @@ namespace COMP7211Assignment2.Controller_Folder
 
             FBHelper = new FireBaseHelperv2();
             RetrieveUsersFromDB();
-            //RetrievePostsFromDB();
+            RetrievePostsFromDB();
         }
 
         private async void RetrieveUsersFromDB()

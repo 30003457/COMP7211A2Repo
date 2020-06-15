@@ -1,5 +1,7 @@
 ﻿using COMP7211Assignment2.Model_Folder;
+using Firebase.Database.Query;
 using System;
+using System.Collections.Generic;
 
 //*********************
 //Code by Min 30003457
@@ -29,9 +31,18 @@ namespace COMP7211Assignment2.Controller_Folder
             }
         }
 
-        public static void AddRandomPosts(int amount)
+        public static async void UpdateVotesToDB()
         {
-            int currentPostId = PageData.PManager.PostRecords.Count + 1;
+            foreach (Post _post in PageData.PManager.PostRecords)
+            {
+                await PageData.PManager.FBHelper.firebase.Child("Posts").Child(_post.Id.ToString("0000")).PutAsync(_post);
+            }
+        }
+
+        public static async void AddRandomPosts(int amount)
+        {
+            List<Post> tempList = await PageData.PManager.FBHelper.GetAllPosts();
+            int currentPostId = tempList.Count + 1;
 
             //random title gen and post gen
             for (int i = 0; i < amount; i++)
@@ -50,12 +61,21 @@ namespace COMP7211Assignment2.Controller_Folder
                     randomPost += randomWordsArray[rnd.Next(randomWordsArray.Length)] + " ";
                 }
 
-                PageData.PManager.PostRecords.Add(new Post(
+                //PageData.PManager.PostRecords.Add(new Post(
+                //    currentPostId,
+                //    courseDb.records[rnd.Next(courseDb.records.Count)].ID,
+                //    DateTime.Now.AddHours(rnd.Next(25) * -1).AddMinutes(rnd.Next(60) * -1).AddSeconds(rnd.Next(60) * 1),
+                //    randomTitle,
+                //    randomPost));
+
+                await PageData.PManager.FBHelper.firebase.Child("Posts").Child(currentPostId.ToString("0000")).PutAsync(new Post(
                     currentPostId,
                     courseDb.records[rnd.Next(courseDb.records.Count)].ID,
                     DateTime.Now.AddHours(rnd.Next(25) * -1).AddMinutes(rnd.Next(60) * -1).AddSeconds(rnd.Next(60) * 1),
                     randomTitle,
                     randomPost));
+
+                ++currentPostId;
             }
         }
     }
