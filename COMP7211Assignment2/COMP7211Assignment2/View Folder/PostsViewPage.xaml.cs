@@ -1,7 +1,7 @@
 ﻿using COMP7211Assignment2.Controller_Folder;
 using COMP7211Assignment2.Model_Folder;
 using System;
-
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,6 +19,10 @@ namespace COMP7211Assignment2.View_Folder
         public PostsViewPage()
         {
             InitializeComponent();
+
+            //retrieve from post db
+            RetrievePostDB();
+
             postSorter = new Sorter();
 
             PageData.PManager.PDetector = new PostDetector(PageData.PManager.CurrentCourseID);
@@ -28,6 +32,11 @@ namespace COMP7211Assignment2.View_Folder
             BindingContext = PageData.PManager;
 
             SizeChanged += PostsViewPage_SizeChanged;
+        }
+
+        private async void RetrievePostDB()
+        {
+            PageData.PManager.PostRecords = await PageData.PManager.FBHelper.GetAllPosts();
         }
 
 

@@ -23,10 +23,10 @@ namespace COMP7211Assignment2
             PageData.PManager.CDetector = new CourseDetector(LoginSystem.LoggedInUser.StudentID);
             BindingContext = PageData.PManager.CDetector;
 
-            TESTER.AddRandomPosts(100); //add random posts
-            TESTER.RandomVotes(); //add random votes
+            //TESTER.AddRandomPosts(100); //add random posts
+            //TESTER.RandomVotes(); //add random votes
 
-            lblStatus.Text = PageData.PManager.UpdateStatusText();
+            //lblStatus.Text = PageData.PManager.UpdateStatusText();
 
             //responsive ui
             //SizeChanged += CoursesViewPage_SizeChanged;
