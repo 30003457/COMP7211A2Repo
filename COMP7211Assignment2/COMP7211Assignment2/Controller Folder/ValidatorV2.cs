@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
@@ -10,7 +11,7 @@ namespace COMP7211Assignment2.Controller_Folder
     {
         string digits = "0123456789";
         public string errorMsg = null;
-        public bool ValidateLogin(string studentId, string password)
+        public async Task<bool> ValidateLogin(string studentId, string password)
         {
             User matchingUser = null;
             User dbUser;
@@ -32,7 +33,7 @@ namespace COMP7211Assignment2.Controller_Folder
                     }
 
                     int studentIdInt = Convert.ToInt32(studentId);
-                    dbUser = PageData.PManager.FBHelper.GetUser(studentIdInt).Result;
+                    dbUser = await PageData.PManager.FBHelper.GetUser(studentIdInt);
 
                     //username is all numbers
                     if (dbUser != null)

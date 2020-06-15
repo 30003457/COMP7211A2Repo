@@ -14,33 +14,40 @@
             </Grid.RowDefinitions>-->
     <!-- Place new controls here -->
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.25*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Image Source="wallpaper.png" Aspect="AspectFill" Grid.RowSpan="4"/>
+        <Image Source="wallpaper.png" Aspect="AspectFill"/>
 
 
 
-        <Label x:Name="lblMain" Text="Test hub, main menu" 
+        <StackLayout>
+            <Label x:Name="lblMain" Text="Test hub, main menu" 
                    HorizontalOptions="Center"
-                   VerticalOptions="CenterAndExpand"
+                   VerticalOptions="Center"
                    TextColor="White"
                    FontSize="Large"
                    Grid.Row="0"/>
-        <StackLayout Grid.Row="1">
-            <Button Text="Login Page" HorizontalOptions="Center" VerticalOptions="Center"
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Login Page" HorizontalOptions="Center" VerticalOptions="Center"
                     Clicked="Button_Clicked_1" BackgroundColor="White"
-                WidthRequest="100"></Button>
-            <Button Text="Course Page" HorizontalOptions="Center" VerticalOptions="Center"
+                ></Button>
+                <Button Text="Course Page" HorizontalOptions="Center" VerticalOptions="Center"
                     Clicked="Button_Clicked" BackgroundColor="White"
-                WidthRequest="100"></Button>
-            <Button Text="Database Test" Clicked="Button_Clicked_2" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+                ></Button>
+                <Button Text="Database Test" Clicked="Button_Clicked_2" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Get Users Test" Clicked="Button_Clicked_3" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+                <Button Text="Get Posts Test" Clicked="Button_Clicked_4" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" />
+                <Button Text="Reset" Clicked="Button_Clicked_5" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Get Replies Test" Clicked="Button_Clicked_6" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+                <Button Text="Add Random Posts" Clicked="Button_Clicked_7" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+            </StackLayout>
+            <ScrollView >
+                <Label x:Name="lblUsers" TextColor="White"/>
+            </ScrollView>
+
         </StackLayout>
-        <Button Grid.Row="2" Text="Get Users Test" Clicked="Button_Clicked_3" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
-        <Label Grid.Row="3" x:Name="lblUsers" TextColor="White"/>
 
 
 

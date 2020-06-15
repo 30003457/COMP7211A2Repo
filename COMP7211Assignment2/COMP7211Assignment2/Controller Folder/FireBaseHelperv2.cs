@@ -7,12 +7,13 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
 using COMP7211Assignment2.Model_Folder;
+using Newtonsoft.Json.Linq;
 
 namespace COMP7211Assignment2
 {
     public class FireBaseHelperv2
     {
-        FirebaseClient firebase = new FirebaseClient($"https://student-rep-app.firebaseio.com/");
+        public FirebaseClient firebase = new FirebaseClient($"https://student-rep-app.firebaseio.com/");
 
         public async Task<List<User>> GetAllUsers()
         {
@@ -34,7 +35,20 @@ namespace COMP7211Assignment2
         {
             return (await firebase
                 .Child("Posts")
-                .OnceAsync<Post>()).Select(item => new Post(item.Object.Id, item.Object.CourseId, item.Object.Time, item.Object.Title, item.Object.Content)).ToList();
+                .OnceAsync<Post>()).Select(item => new Post(item.Object.Id, item.Object.CourseId, item.Object.Time, item.Object.Title, item.Object.Content)
+                {
+                    Upvotes = item.Object.Upvotes,
+                    UpvotesTxt = item.Object.UpvotesTxt,
+                    Downvotes = item.Object.Downvotes,
+                    DownvotesTxt = item.Object.DownvotesTxt
+                }).ToList();
+        }
+
+        public async Task<List<PostReply>> GetAllReplies()
+        {
+            return (await firebase
+                .Child("PostReply")
+                .OnceAsync<PostReply>()).Select(item => new PostReply(item.Object.Id, item.Object.PostId, item.Object.Time, item.Object.Content)).ToList();
         }
 
         //public async Task AddPerson(int personId, string name)

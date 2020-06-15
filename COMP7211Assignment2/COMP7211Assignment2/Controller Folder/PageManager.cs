@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Firebase.Database;
 using Firebase.Database.Query;
 using Google.Cloud.Firestore.V1;
+using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 //*********************
 //Code by Min 30003457
@@ -32,13 +34,24 @@ namespace COMP7211Assignment2.Controller_Folder
 
             //UserRecords = userDb.records;
             //PostRecords = postDb.records;
+
             Responsive = new ResponsiveController();
 
             SortSettings = 1; //default to votes
 
             FBHelper = new FireBaseHelperv2();
-            //UserRecords = FBHelper.GetAllUsers().Result;
-            //PostRecords = FBHelper.GetAllPosts().Result;
+            RetrieveUsersFromDB();
+            RetrievePostsFromDB();
+        }
+
+        private async void RetrieveUsersFromDB()
+        {
+            UserRecords = await FBHelper.GetAllUsers();
+        }
+
+        private async void RetrievePostsFromDB()
+        {
+            PostRecords = await FBHelper.GetAllPosts();
         }
 
         public string UpdateStatusText()

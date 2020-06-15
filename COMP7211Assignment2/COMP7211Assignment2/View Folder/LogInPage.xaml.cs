@@ -16,12 +16,12 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
-        Validator vd;
+        ValidatorV2 vd;
         ValidateLoginData Validator;
         public LogInPage()
         {
             InitializeComponent();
-            vd = new Validator();
+            vd = new ValidatorV2();
             Validator = new ValidateLoginData();
 
             PageData.PManager = new PageManager(); //initiate page manager
@@ -81,46 +81,40 @@ namespace COMP7211Assignment2
 
         private async void SignInClicked(object sender, EventArgs e)
         {
-            
-            if (await Validator.ValidatePasswordStatus("Empty", StudentIDEntry.Text))
-            {
-                if (await Validator.ValidatePassword(PasswordEntry.Text, StudentIDEntry.Text) && await Validator.ValidateID(StudentIDEntry.Text))//&& vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text))
-                {
-                    await DisplayAlert("Success", "You are Logged In", "OK");
-                    await Navigation.PushAsync(new CoursesViewPage());
-                    StudentIDEntry.Text = null;
-                    PasswordEntry.Text = null;
-                }
-                else
-                {
-                    await DisplayAlert("Invalid", vd.errorMsg, "OK");
-                }
+            //lewis validator
+            //if (await Validator.ValidatePasswordStatus("Empty", StudentIDEntry.Text))
+            //{
+            //    if (await Validator.ValidatePassword(PasswordEntry.Text, StudentIDEntry.Text) && await Validator.ValidateID(StudentIDEntry.Text) && vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text))
+            //    {
+            //        await DisplayAlert("Success", "You are Logged In", "OK");
+            //        await Navigation.PushAsync(new CoursesViewPage());
+            //        StudentIDEntry.Text = null;
+            //        PasswordEntry.Text = null;
+            //    }
+            //    else
+            //    {
+            //        await DisplayAlert("Invalid", vd.errorMsg, "OK");
+            //    }
 
+            //}
+            //else
+            //{
+            //    await DisplayAlert("Warning", "You have not set up your account,\n Please set up your password to continue. ", "OK");
+            //    await Navigation.PushAsync(new FirstLoginPage());
+            //}
+
+            //min's older validator
+            if (await vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text) == true)
+            {
+                StudentIDEntry.Text = null;
+                PasswordEntry.Text = null;
+                await Navigation.PushAsync(new CoursesViewPage());
             }
             else
             {
-                await DisplayAlert("Warning", "You have not set up your account,\n Please set up your password to continue. ", "OK");
-                await Navigation.PushAsync(new FirstLoginPage());
+                await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
 
-    //min's older validator
-    //if (vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text) == true)
-    //{
-    //    StudentIDEntry.Text = null;
-    //    PasswordEntry.Text = null;
-    //    await Navigation.PushAsync(new CoursesViewPage());
-    //}
-    //else
-    //{
-    //    await DisplayAlert("Invalid", vd.errorMsg, "OK");
-    //}
-
-}
-
-
-
-
-            
-        
+        }
     }
 }
