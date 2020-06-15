@@ -4,28 +4,29 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="COMP7211Assignment2.CoursesViewPage"
+             x:Class="COMP7211Assignment2.View_Folder.CoursesViewRepPage"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView">
-    <!-- Created by Min 30003457, to be later edited by Agassi -->
+    <!-- Coded by min and edited by Agassi 30015804 -->
     <ContentPage.Content>
         <Grid>
             <Image Source="wallpaper.png" Aspect="AspectFill"/>
             <StackLayout>
-            <!-- header -->
-            <StackLayout HeightRequest="100">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Label Text="Courses" HorizontalOptions="Center" Grid.Column="1"
+                <!-- header -->
+                <StackLayout HeightRequest="100">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/> 
+                        </Grid.ColumnDefinitions>
+                        
+                        
+                        <Label Text="Courses" HorizontalOptions="Center" Grid.Column="1"
                        VerticalOptions="Center" TextColor="White" FontSize="24"/>
-                    <Button Text="LOGOUT" Grid.Column="2" HorizontalOptions="End" FontSize="Micro" CornerRadius="20"
+                        <Button Text="LOGOUT" Grid.Column="2" HorizontalOptions="End" FontSize="Micro" CornerRadius="20"
                         TranslationX="-5" TranslationY="5" Clicked="Button_Clicked" BackgroundColor="LightGray"
                             WidthRequest="65" HeightRequest="30"/>
-                </Grid>
-            </StackLayout>
+                    </Grid>
+                </StackLayout>
 
                 <flv:FlowListView FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="True"
                                   FlowItemTapped="ListView_ItemTapped"
@@ -42,13 +43,18 @@
                 </flv:FlowListView>
 
 
-
+                <!--Contact Management Button is here-->
+                <StackLayout>
+                    <Button HorizontalOptions="Start" 
+                        Text="Contact Management" CornerRadius="20" FontSize="9" BackgroundColor="LightGray" WidthRequest="130" HeightRequest="30"/>
+                </StackLayout>
+                
                 <!-- footer status text -->
-            <StackLayout Margin="0,10">
-                <Label x:Name="lblStatus" Text="Placeholder" TextColor="White" HorizontalOptions="Center"/>
+                <StackLayout Margin="0,10">
+                    <Label x:Name="lblStatus" Text="Placeholder" TextColor="White" HorizontalOptions="Center" />
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
-        <!-- master stacklayout -->
+            <!-- master stacklayout -->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

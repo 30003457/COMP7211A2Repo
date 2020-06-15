@@ -13,6 +13,7 @@ namespace COMP7211Assignment2
         {
             InitializeComponent();
             BindingContext = clickedPost;
+            lblStatus.Text = PageData.PManager.UpdateStatusText();
         }
 
         private async void HomeButton(object sender, EventArgs e)

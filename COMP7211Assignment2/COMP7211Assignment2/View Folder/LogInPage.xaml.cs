@@ -5,6 +5,8 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Markup;
 using Xamarin.Forms.Xaml;
+using COMP7211Assignment2.View_Folder;
+using COMP7211Assignment2.Controller_Folder;
 
 //********************
 //Code by Min 30003457
@@ -17,54 +19,8 @@ namespace COMP7211Assignment2
         Validator vd;
         public LogInPage()
         {
-            InitializeComponent();
-            vd = new Validator(); //initiate validator
-            PageData.PManager = new PageManager(); //initiate page manager
-
-            //responsive ui event
-            this.SizeChanged += LogInPage_SizeChanged;
+            InitializeComponent();           
         }
-
-        private void LogInPage_SizeChanged(object sender, EventArgs e)
-        {
-            //landscape
-            if (Width > Height)
-            {
-                Grid.SetRowSpan(LogoImage, 3);
-                Grid.SetColumnSpan(LogoImage, 1);
-                Grid.SetRow(LoginStack,0);
-                Grid.SetRowSpan(LoginStack, 3);
-                LoginStack.Margin = new Thickness(20, 0);
-                LoginStack.VerticalOptions = LayoutOptions.Center;
-                LoginStack.HorizontalOptions = LayoutOptions.Center;
-                if (MainGrid.ColumnDefinitions.Count > 2)
-                {
-                    MainGrid.ColumnDefinitions.RemoveAt(0);
-                    MainGrid.ColumnDefinitions[0].Width = new GridLength(1.25, GridUnitType.Star);
-                    Grid.SetColumnSpan(WallpaperImage, 2);
-                }
-                LoginStack = PageData.PManager.Responsive.LandscapeStack(LoginStack);
-            }
-            //portrait
-            else
-            {
-                Grid.SetRowSpan(LogoImage, 1);
-                Grid.SetColumnSpan(LogoImage, 3);
-                Grid.SetRow(LoginStack, 1);
-                Grid.SetRowSpan(LoginStack, 1);
-                LoginStack.Margin = new Thickness(0, 0);
-                LoginStack.HorizontalOptions = LayoutOptions.Fill;
-                if (MainGrid.ColumnDefinitions.Count < 3)
-                {
-                    MainGrid.ColumnDefinitions.Insert(0, new ColumnDefinition());
-                    MainGrid.ColumnDefinitions[1].Width = new GridLength(2.5, GridUnitType.Star);
-                    Grid.SetColumnSpan(WallpaperImage, 3);
-                    Grid.SetColumn(LoginStack, 1);
-                }
-                LoginStack = PageData.PManager.Responsive.PortraitStack(LoginStack);
-            }
-        }
-
         private async void ForgotClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ResetPassword());
@@ -73,6 +29,9 @@ namespace COMP7211Assignment2
         {
             await Navigation.PushAsync(new FirstLoginPage());
         }
+       
+        void SignInClicked(object sender, EventArgs e)
+        {
 
         private async void SignInClicked(object sender, EventArgs e)
         {
@@ -86,6 +45,58 @@ namespace COMP7211Assignment2
             {
                 await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
+
+            PlaceholderUserDatabase users = new PlaceholderUserDatabase();
+            LoginSystem.LoggedInUser = users.records.Where(i => i.IsRep = true).First();
+            if (LoginSystem.LoggedInUser.IsRep == true)
+            {
+                Navigation.PushAsync(new CoursesViewRepPage());
+            }
+            else if (LoginSystem.LoggedInUser.IsRep == false)
+            {
+                Navigation.PushAsync(new CoursesViewPage());
+            }
+
         }
-    }
+    
+
+    //try
+    //{
+    //    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+    //    builder.DataSource = "mysqlserver-toiohomai.database.windows.net";
+    //    builder.UserID = "serveradmin";
+    //    builder.Password = "AdminAdmin1";
+    //    builder.InitialCatalog = "ToiohomaiStudentsDB";
+
+    //    using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+    //    {
+
+    //        StringBuilder sb = new StringBuilder();
+    //        sb.Append("SELECT * FROM [StudentLogin] ");
+    //        sb.Append("FROM [SalesLT].[ProductCategory] pc ");
+    //        sb.Append("JOIN [SalesLT].[Product] p ");
+    //        sb.Append("ON pc.productcategoryid = p.productcategoryid;");
+    //        String sql = sb.ToString();
+
+    //        using (SqlCommand command = new SqlCommand(sql, connection))
+    //        {
+    //            connection.Open();
+    //            using (SqlDataReader reader = command.ExecuteReader())
+    //            {
+    //                while (reader.Read())
+    //                {
+    //                    Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+    //catch (SqlException e)
+    //{
+    //    Console.WriteLine(e.ToString());
+    //}
+    //Console.ReadLine();
+
+
+}
 }

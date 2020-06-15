@@ -157,4 +157,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\homeicon.png" />
+  </ItemGroup>
 </Project>

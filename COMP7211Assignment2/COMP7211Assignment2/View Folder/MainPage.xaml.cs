@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COMP7211Assignment2.View_Folder;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 
@@ -49,9 +50,15 @@ namespace COMP7211Assignment2
             await Navigation.PushAsync(new LogInPage());
 
         }
-        private async void ButtonEmail(object sender, EventArgs e)
+        private async void Button_Clicked_2(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Email());
+            await Navigation.PushAsync(new CoursesViewRepPage());
+
+        }
+        private async void Button_Clicked_3(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FirstLoginPage());
+
         }
     }
 }

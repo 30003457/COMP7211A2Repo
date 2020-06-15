@@ -14,13 +14,17 @@
             </Grid.RowDefinitions>-->
     <!-- Place new controls here -->
     <Grid>
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.25*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="0.25*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Source="wallpaper.png" Aspect="AspectFill" Grid.RowSpan="4"/>
+        <Image Source="wallpaper.png" Aspect="AspectFill" Grid.RowSpan="7"/>
         <Label Text="Test hub, main menu" 
                    HorizontalOptions="Center"
                    VerticalOptions="CenterAndExpand"
@@ -36,6 +40,13 @@
         <Button Text="Course Page" HorizontalOptions="Center" VerticalOptions="Start"
                     Clicked="Button_Clicked" Grid.Row="2" BackgroundColor="White"
                 WidthRequest="100"></Button>
+        <Button Text="Rep View" HorizontalOptions="Center" VerticalOptions="Center"
+                    Clicked="Button_Clicked_2" Grid.Row="3" BackgroundColor="White"
+                WidthRequest="100"></Button>
+        <Button Text="First Login page" HorizontalOptions="Center" VerticalOptions="Center"
+                    Clicked="Button_Clicked_3" Grid.Row="4" BackgroundColor="White"
+                WidthRequest="100"></Button>
+
 
 
 

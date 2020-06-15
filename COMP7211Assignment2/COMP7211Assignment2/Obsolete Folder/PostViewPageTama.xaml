@@ -6,91 +6,101 @@
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.PostViewPageTama">
     <ContentPage.Content>
-        <StackLayout>
+        <Grid>
+            <Image Source="wallpaper.png" Aspect="AspectFill" />
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <ImageButton  Source="homeicon.png" Grid.Row="0" BackgroundColor="Black" HorizontalOptions="End" VerticalOptions="End" Clicked="HomeButton"/>
+                    <Label Text="COMP1231" VerticalOptions="Start" Grid.Row="0" HorizontalOptions="Center" TextColor="White" FontSize="Title" Padding="10"></Label>
+
+                </Grid>
+            
+            <Label Text="Subject Name 1" VerticalOptions="Start" HorizontalOptions="Center" TextColor="White" FontSize="Body"></Label>
+            
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-                <Button Text="HOME" VerticalOptions="Start" HorizontalOptions="End"  BorderWidth="1" BorderColor="Black" Clicked="HomeButton"></Button>
-                <Label Text="COMP1231" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Title" Padding="10"></Label>
+                    <Label Text="Posts" VerticalOptions="Start" HorizontalOptions="Start" TextColor="White" FontSize="Large"></Label>
+                    <Button Text="NEW POST" VerticalOptions="Start" HorizontalOptions="End" CornerRadius="20" BackgroundColor="DarkGray" Clicked="NewPostButton"></Button>
+                </Grid>
 
-            </Grid>
+                <Label Text="123 Upvotes" VerticalOptions="Start" TextColor="White" HorizontalOptions="End"></Label>
 
-            <Label Text="Subject Name 1" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Body"></Label>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                    <Button Text="Blah's accent" VerticalOptions="FillAndExpand" FontAttributes="Bold" BorderWidth="1" BorderColor="Black" Clicked="FirstPostButton"></Button>
+                </Grid>
 
-                <Label Text="Posts" VerticalOptions="Start" HorizontalOptions="Start" TextColor="Black" FontSize="Large"></Label>
-                <Button Text="NEW POST" VerticalOptions="Start" HorizontalOptions="End"  BorderWidth="1" BorderColor="Black" Clicked="NewPostButton"></Button>
-            </Grid>
+                <Label Text="111 Upvotes" VerticalOptions="Start" TextColor="White" HorizontalOptions="End"></Label>
 
-            <Label Text="123 Upvotes" VerticalOptions="Start" HorizontalOptions="End"></Label>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                    <Button Text="Example 2" VerticalOptions="FillAndExpand"  BorderWidth="1" BorderColor="Black"></Button>
+                    <Button Text="Voted" VerticalOptions="Start" HorizontalOptions="End" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
+                </Grid>
 
-                <Button Text="Blah's accent" VerticalOptions="FillAndExpand" FontAttributes="Bold" BorderWidth="1" BorderColor="Black" Clicked="FirstPostButton"></Button>
-            </Grid>
+                <Label Text="66 Upvotes" VerticalOptions="Start" TextColor="White" HorizontalOptions="End"></Label>
 
-            <Label Text="111 Upvotes" VerticalOptions="Start" HorizontalOptions="End"></Label>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                    <Button Text="Example 3" VerticalOptions="FillAndExpand" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
+                </Grid>
 
-                <Button Text="Example 2" VerticalOptions="FillAndExpand"  BorderWidth="1" BorderColor="Black"></Button>
-                <Button Text="Voted" VerticalOptions="Start" HorizontalOptions="End" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
-            </Grid>
+                <Label Text="15 Upvotes" VerticalOptions="Start" TextColor="White" HorizontalOptions="End"></Label>
 
-            <Label Text="66 Upvotes" VerticalOptions="Start" HorizontalOptions="End"></Label>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                    <Button Text="[REP] Example 4" VerticalOptions="FillAndExpand" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
+                </Grid>
 
-                <Button Text="Example 3" VerticalOptions="FillAndExpand" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
-            </Grid>
+                <Label Text="3 Upvotes" VerticalOptions="Start" TextColor="White" HorizontalOptions="End"></Label>
 
-            <Label Text="15 Upvotes" VerticalOptions="Start" HorizontalOptions="End"></Label>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                    <Button Text="Example 5" VerticalOptions="FillAndExpand" BorderWidth="1" BorderColor="Black"></Button>
+                    <Button Text="Voted" VerticalOptions="Start" HorizontalOptions="End" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
+                </Grid>
 
-                <Button Text="[REP] Example 4" VerticalOptions="FillAndExpand" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
-            </Grid>
+            <StackLayout>
+                <StackLayout>
+                    <Label Text="Sort by:" TextColor="White" HorizontalOptions="Center"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Activity" FontSize="11" HorizontalOptions="End" CornerRadius="20"  Clicked="Button_Clicked_Activity" HeightRequest="60" WidthRequest="85" BackgroundColor="LightGray"/>
+                        <Button Text="Votes" FontSize="11" HorizontalOptions="Start" CornerRadius="20" Grid.Column="1" Clicked="Button_Clicked_Votes" HeightRequest="60" WidthRequest="85" BackgroundColor="LightGray"/>
+                    </Grid>
+                </StackLayout>
 
-            <Label Text="3 Upvotes" VerticalOptions="Start" HorizontalOptions="End"></Label>
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-
-                <Button Text="Example 5" VerticalOptions="FillAndExpand" BorderWidth="1" BorderColor="Black"></Button>
-                <Button Text="Voted" VerticalOptions="Start" HorizontalOptions="End" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
-            </Grid>
-
-            <Label Text="Sort by" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black"></Label>
-
-            <StackLayout Orientation="Horizontal">
-
-                <Button Text="Activity" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
-                <Button Text="Votes" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
-
+                <StackLayout>
+                    <Label x:Name="lblStatus" Text="Placeholder" TextColor="White" HorizontalOptions="Center"/>
+                </StackLayout>
+                </StackLayout>
             </StackLayout>
+        </Grid>
 
-            <Label Text="Signed in as Bob" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black"></Label>
-
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

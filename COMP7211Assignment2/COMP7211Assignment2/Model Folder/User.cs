@@ -21,7 +21,6 @@ namespace COMP7211Assignment2
         public User(string fn, string ln, int studentId, string password, bool isRep)
         {
             cdb = new PlaceholderCourseDatabase();
-
             FName = fn;
             LName = ln;
             StudentID = studentId;
