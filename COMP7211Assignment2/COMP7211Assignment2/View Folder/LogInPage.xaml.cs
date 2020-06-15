@@ -84,7 +84,7 @@ namespace COMP7211Assignment2
             
             if (await Validator.ValidatePasswordStatus("Empty", StudentIDEntry.Text))
             {
-                if (await Validator.ValidatePassword(PasswordEntry.Text, StudentIDEntry.Text) && await Validator.ValidateID(StudentIDEntry.Text) && vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text))
+                if (await Validator.ValidatePassword(PasswordEntry.Text, StudentIDEntry.Text) && await Validator.ValidateID(StudentIDEntry.Text))//&& vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text))
                 {
                     await DisplayAlert("Success", "You are Logged In", "OK");
                     await Navigation.PushAsync(new CoursesViewPage());
