@@ -76,7 +76,7 @@ namespace COMP7211Assignment2
         }
         private async void CreateClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new FirstLoginPage());
+            //await Navigation.PushAsync(new FirstLoginPage());
         }
 
         private async void SignInClicked(object sender, EventArgs e)
@@ -119,7 +119,7 @@ namespace COMP7211Assignment2
             {
                 if(vd.CheckFirstLogin() == true)
                 {
-                    await Navigation.PushAsync(new FirstLoginPage());
+                    await Navigation.PushAsync(new FirstLoginPage(Convert.ToInt32(StudentIDEntry.Text)));
                 }
                 else
                 {

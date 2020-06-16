@@ -12,15 +12,17 @@ namespace COMP7211Assignment2
     public partial class FirstLoginPage : ContentPage
     {
         private ValidatorV3 vd;
-        public FirstLoginPage()
+        int studentIdInt = 0;
+        public FirstLoginPage(int _studentIdInt)
         {
             InitializeComponent();
             vd = new ValidatorV3();
+            studentIdInt = _studentIdInt;
         }
 
         private async void CreatePasswordClicked(object sender, EventArgs e)
         {
-            if (vd.ValidateNewPassword(Password1.Text, Password2.Text))
+            if (await vd.ValidateNewPassword(Password1.Text, Password2.Text, studentIdInt))
             {
                 Password1.Text = null;
                 Password2.Text = null;

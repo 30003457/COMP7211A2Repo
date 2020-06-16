@@ -30,9 +30,10 @@ namespace COMP7211Assignment2
 
         public async Task<List<User>> GetAllUsers()
         {
-            return (await firebase
-                .Child("Students")
-                .OnceAsync<User>()).Select(item => new User(item.Object.FName, item.Object.LName, item.Object.StudentID, item.Object.Password, item.Object.IsRep, item.Object.EnrolledCourses)).ToList();
+            //return (await firebase
+            //    .Child("Students")
+            //    .OnceAsync<User>()).Select(item => new User(item.Object.FName, item.Object.LName, item.Object.StudentID, item.Object.Password, item.Object.IsRep, item.Object.EnrolledCourses)).ToList();
+            return await firebase.Child("Students").OnceSingleAsync<List<User>>();
         }
 
         public async Task<User> GetUser(int studentId)
