@@ -52,7 +52,7 @@ namespace COMP7211Assignment2
         {
             return (await firebase
                 .Child("PostReply")
-                .OnceAsync<PostReply>()).Select(item => new PostReply(item.Object.Id, item.Object.PostId, item.Object.Time, item.Object.Content)).ToList();
+                .OnceSingleAsync<List<PostReply>>());
         }
 
         public async Task<List<Course>> GetAllCourses()

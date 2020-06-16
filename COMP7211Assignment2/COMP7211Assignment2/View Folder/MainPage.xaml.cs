@@ -120,20 +120,20 @@ namespace COMP7211Assignment2
             //TESTER.RandomVotesReplies();
 
             //add random courses
-            //TESTER.RandomCourses(1);
+            TESTER.RandomCourses(10);
 
-            try
-            {
-                List<PostReply> testList = await PageData.PManager.FBHelper.GetAllReplies();
-                foreach (var item in testList)
-                {
-                    lblUsers.Text += (item.Content + "\n");
-                }
-            }
-            catch (Exception _e)
-            {
-                lblUsers.Text = _e.Message;
-            }
+            //try
+            //{
+            //    List<Course> testList = await PageData.PManager.FBHelper.GetAllCourses();
+            //    foreach (var item in testList)
+            //    {
+            //        lblUsers.Text += ($"{item.IDName} {item.Name}\n");
+            //    }
+            //}
+            //catch (Exception _e)
+            //{
+            //    lblUsers.Text = _e.Message;
+            //}
         }
     }
 }

@@ -26,18 +26,19 @@ namespace COMP7211Assignment2.Controller_Folder
         public static async void RandomCourses(int amount)
         {
             List<Course> tempList = await PageData.PManager.FBHelper.GetAllCourses();
+            //List<Course> tempList = new List<Course>();
 
-            //for (int i = tempList.Count; i < i+amount; i++)
-            //{
-            //    string tempstring = null;
-            //    for (int j = 0; j < rnd.Next(3, 6); j++)
-            //    {
-            //        tempstring += (randomWordsArray[rnd.Next(randomWordsArray.Length - 1)] + " ");
-            //    }
-            //    tempList.Add(new Course(tempstring, rnd.Next(1000, 6201)));
-            //}
+            for (int i = 0; i < amount; i++)
+            {
+                string tempstring = null;
+                for (int j = 0; j < rnd.Next(3, 6); j++)
+                {
+                    tempstring += (randomWordsArray[rnd.Next(randomWordsArray.Length - 1)] + " ");
+                }
+                tempList.Add(new Course(tempstring, rnd.Next(1000, 10000)));
+            }
 
-            //await PageData.PManager.FBHelper.firebase.Child("Courses").PutAsync(tempList);
+            await PageData.PManager.FBHelper.firebase.Child("Courses").PutAsync(tempList);
         }
 
         public static async void RandomVotes()
