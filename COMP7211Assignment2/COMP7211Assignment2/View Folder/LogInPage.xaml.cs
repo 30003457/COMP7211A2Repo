@@ -115,30 +115,39 @@ namespace COMP7211Assignment2
             //    await DisplayAlert("Invalid", vd.errorMsg, "OK");
             //}
 
-            if (await vd.ValidateUser(StudentIDEntry.Text) == true)
+            try
             {
-                if(vd.CheckFirstLogin() == true)
+                if (await vd.ValidateUser(StudentIDEntry.Text) == true)
                 {
-                    await Navigation.PushAsync(new FirstLoginPage(Convert.ToInt32(StudentIDEntry.Text)));
-                }
-                else
-                {
-                    if(vd.ValidatePassword(PasswordEntry.Text) == true)
+                    if (vd.CheckFirstLogin() == true)
                     {
-                        StudentIDEntry.Text = null;
-                        PasswordEntry.Text = null;
-                        await Navigation.PushAsync(new CoursesViewPage());
+                        await Navigation.PushAsync(new FirstLoginPage(Convert.ToInt32(StudentIDEntry.Text)));
                     }
                     else
                     {
-                        await DisplayAlert("Invalid", vd.errorMsg, "OK");
+                        if (vd.ValidatePassword(PasswordEntry.Text) == true)
+                        {
+                            StudentIDEntry.Text = null;
+                            PasswordEntry.Text = null;
+                            await Navigation.PushAsync(new CoursesViewPage());
+                        }
+                        else
+                        {
+                            await DisplayAlert("Invalid", vd.errorMsg, "OK");
+                        }
                     }
                 }
+                else
+                {
+                    await DisplayAlert("Invalid", vd.errorMsg, "OK");
+                }
             }
-            else
+            catch (Exception _e)
             {
-                await DisplayAlert("Invalid", vd.errorMsg, "OK");
+                await DisplayAlert("Invalid", _e.Message, "OK");
+                throw;
             }
+            
         }
     }
 }

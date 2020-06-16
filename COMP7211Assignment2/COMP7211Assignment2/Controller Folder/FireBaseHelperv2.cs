@@ -22,10 +22,11 @@ namespace COMP7211Assignment2
         public async void SetPassword(int studentId, string pw)
         {
             var users = await GetAllUsers();
-            await firebase
-              .Child("Students")
-              .OnceAsync<User>();
-            users.Where(a => a.StudentID == studentId).FirstOrDefault().Password = pw;
+            foreach (var item in users)
+            {
+                if (item.StudentID == studentId)
+                    item.Password = pw;
+            }
 
             await firebase.Child("Students").PutAsync(users);
         }
@@ -41,10 +42,16 @@ namespace COMP7211Assignment2
         public async Task<User> GetUser(int studentId)
         {
             var users = await GetAllUsers();
-            await firebase
-              .Child("Students")
-              .OnceAsync<User>();
-            return users.Where(a => a.StudentID == studentId).FirstOrDefault();
+            foreach (var item in users)
+            {
+                if (item.StudentID == studentId)
+                    return item;
+            }
+            return null;
+            //await firebase
+            //  .Child("Students")
+            //  .OnceAsync<User>();
+            //return users.Where(a => a.StudentID == studentId).FirstOrDefault();
         }
 
         public async Task<List<Post>> GetAllPosts()
