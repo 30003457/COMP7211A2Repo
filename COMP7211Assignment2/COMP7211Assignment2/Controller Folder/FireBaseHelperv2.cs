@@ -9,6 +9,8 @@ using System;
 using COMP7211Assignment2.Model_Folder;
 using Newtonsoft.Json.Linq;
 using System.Reactive.Threading.Tasks;
+using Google.Apis.Auth.OAuth2;
+using Google.Api.Gax.Rest;
 
 namespace COMP7211Assignment2
 {
@@ -61,6 +63,26 @@ namespace COMP7211Assignment2
                 .Child("Courses").OnceSingleAsync<List<Course>>());
                 //.OnceAsync<Course>()).Select(item => new Course(item.Object.Name, item.Object.ID)).ToList();
         }
+
+        public async Task AddPassword(int studentId, string password)
+        {
+            var users = await GetAllUsers();
+            var toUpdatePerson = (await firebase
+              .Child("Students")
+              .OnceAsync<User>()).Where(a => a.Object.StudentID == studentId).FirstOrDefault();
+
+            await firebase
+              .Child("Students")
+              .Child(toUpdatePerson.Key)
+              .PutAsync(new Student() {Password = password });
+
+
+            //await firebase
+            //  .Child("Students").Child(studentId)
+            //  .PostAsync(new User(){ Password = password });
+        }
+
+
 
         //public async Task AddPerson(int personId, string name)
         //{

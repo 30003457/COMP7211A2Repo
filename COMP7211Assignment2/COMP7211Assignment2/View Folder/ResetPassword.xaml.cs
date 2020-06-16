@@ -13,10 +13,17 @@ namespace COMP7211Assignment2
         }
 
 
-        private void Button1(object sender, EventArgs e)
+        private async void Button1(object sender, EventArgs e)
         {
-            string message = "Link has been send!";
-            DependencyService.Get<IMessage>().Longtime(message);
+            //Validation for email here?
+            string UserEmailInput = EmailText.Text;
+            await DisplayAlert("Success", "Link has been sent to email " + UserEmailInput, "OK");
+
+            //Set Password on account to null?
+            //Take User to FirstLoginPage to setup new password?
+
+            //string message = "Link has been sent!";
+            //DependencyService.Get<IMessage>().Longtime(message);
         }
     }
 }

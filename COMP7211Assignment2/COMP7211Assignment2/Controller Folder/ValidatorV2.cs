@@ -97,6 +97,8 @@ namespace COMP7211Assignment2.Controller_Folder
             //first ever login
             //15 characters like toi ohomai passwords?
 
+            //Lewis Evans 27033957
+
             if (password1 == null || password2 == null)
             {
                 errorMsg = "Both passwords cannot blank!";
