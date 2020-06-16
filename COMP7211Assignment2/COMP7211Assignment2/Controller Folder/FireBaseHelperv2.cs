@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System;
 using COMP7211Assignment2.Model_Folder;
 using Newtonsoft.Json.Linq;
+using System.Reactive.Threading.Tasks;
 
 namespace COMP7211Assignment2
 {
@@ -19,7 +20,7 @@ namespace COMP7211Assignment2
         {
             return (await firebase
                 .Child("Students")
-                .OnceAsync<User>()).Select(item => new User(item.Object.FName, item.Object.LName, item.Object.StudentID, item.Object.Password, item.Object.IsRep)).ToList();
+                .OnceAsync<User>()).Select(item => new User(item.Object.FName, item.Object.LName, item.Object.StudentID, item.Object.Password, item.Object.IsRep, item.Object.EnrolledCourses)).ToList();
         }
 
         public async Task<User> GetUser(int studentId)
@@ -35,13 +36,16 @@ namespace COMP7211Assignment2
         {
             return (await firebase
                 .Child("Posts")
-                .OnceAsync<Post>()).Select(item => new Post(item.Object.Id, item.Object.CourseId, item.Object.Time, item.Object.Title, item.Object.Content)
-                {
-                    Upvotes = item.Object.Upvotes,
-                    UpvotesTxt = item.Object.UpvotesTxt,
-                    Downvotes = item.Object.Downvotes,
-                    DownvotesTxt = item.Object.DownvotesTxt
-                }).ToList();
+                .OnceSingleAsync<List<Post>>());
+        }
+
+        public async Task<Post> GetPost(int postId)
+        {
+            var posts = await GetAllPosts();
+            await firebase
+              .Child("Posts")
+              .OnceAsync<Post>();
+            return posts.Where(a => a.Id == postId).FirstOrDefault();
         }
 
         public async Task<List<PostReply>> GetAllReplies()
@@ -49,6 +53,13 @@ namespace COMP7211Assignment2
             return (await firebase
                 .Child("PostReply")
                 .OnceAsync<PostReply>()).Select(item => new PostReply(item.Object.Id, item.Object.PostId, item.Object.Time, item.Object.Content)).ToList();
+        }
+
+        public async Task<List<Course>> GetAllCourses()
+        {
+            return (await firebase
+                .Child("Courses").OnceSingleAsync<List<Course>>());
+                //.OnceAsync<Course>()).Select(item => new Course(item.Object.Name, item.Object.ID)).ToList();
         }
 
         //public async Task AddPerson(int personId, string name)

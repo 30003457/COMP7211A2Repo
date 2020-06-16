@@ -11,12 +11,12 @@ namespace COMP7211Assignment2
     {
         public List<Course> DetectedCourses { get; set; }
 
-        private readonly PageManager pm;
+        //private readonly PageManager pm;
         //PlaceholderUserDatabase userDb;
         public CourseDetector(int id)
         {
             DetectedCourses = new List<Course>();
-            pm = new PageManager();
+            //pm = new PageManager();
             //userDb = new PlaceholderUserDatabase();
             foreach (User item in PageData.PManager.UserRecords)
             {

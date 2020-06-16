@@ -109,11 +109,31 @@ namespace COMP7211Assignment2
             }
         }
 
-        private void Button_Clicked_7(object sender, EventArgs e)
+        private async void Button_Clicked_7(object sender, EventArgs e)
         {
             //TESTER.AddRandomPosts(100);
             //TESTER.RandomVotes();
             //TESTER.UpdateVotesToDB();
+
+            //add random replies and votes
+            //TESTER.AddRandomReplies(50);
+            //TESTER.RandomVotesReplies();
+
+            //add random courses
+            //TESTER.RandomCourses(1);
+
+            try
+            {
+                List<PostReply> testList = await PageData.PManager.FBHelper.GetAllReplies();
+                foreach (var item in testList)
+                {
+                    lblUsers.Text += (item.Content + "\n");
+                }
+            }
+            catch (Exception _e)
+            {
+                lblUsers.Text = _e.Message;
+            }
         }
     }
 }
