@@ -16,12 +16,12 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
-        ValidatorV2 vd;
+        ValidatorV3 vd;
         ValidateLoginData Validator;
         public LogInPage()
         {
             InitializeComponent();
-            vd = new ValidatorV2();
+            vd = new ValidatorV3();
             Validator = new ValidateLoginData();
 
             PageData.PManager = new PageManager(); //initiate page manager
@@ -104,17 +104,41 @@ namespace COMP7211Assignment2
             //}
 
             //min's older validator
-            if (await vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text) == true)
+            //if (await vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text) == true)
+            //{
+            //    StudentIDEntry.Text = null;
+            //    PasswordEntry.Text = null;
+            //    await Navigation.PushAsync(new CoursesViewPage());
+            //}
+            //else
+            //{
+            //    await DisplayAlert("Invalid", vd.errorMsg, "OK");
+            //}
+
+            if (await vd.ValidateUser(StudentIDEntry.Text) == true)
             {
-                StudentIDEntry.Text = null;
-                PasswordEntry.Text = null;
-                await Navigation.PushAsync(new CoursesViewPage());
+                if(vd.CheckFirstLogin() == true)
+                {
+                    await Navigation.PushAsync(new FirstLoginPage());
+                }
+                else
+                {
+                    if(vd.ValidatePassword(PasswordEntry.Text) == true)
+                    {
+                        StudentIDEntry.Text = null;
+                        PasswordEntry.Text = null;
+                        await Navigation.PushAsync(new CoursesViewPage());
+                    }
+                    else
+                    {
+                        await DisplayAlert("Invalid", vd.errorMsg, "OK");
+                    }
+                }
             }
             else
             {
                 await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
-
         }
     }
 }

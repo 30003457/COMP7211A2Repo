@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
-    //code by Min 30003457
-    class ValidatorV2
+    //code by Min 30003457 and Lewis
+    class ValidatorV3
     {
         string digits = "0123456789";
         public string errorMsg = null;
-        public async Task<bool> ValidateLogin(string studentId, string password)
+        User matchingUser = null;
+        User dbUser;
+        int studentIdInt = 0;
+        public async Task<bool> ValidateUser(string studentId)
         {
-            User matchingUser = null;
-            User dbUser;
             //*** username
             //cannot be empty
             if (string.IsNullOrEmpty(studentId) == false)
@@ -33,13 +34,19 @@ namespace COMP7211Assignment2.Controller_Folder
                         }
                     }
 
-                    int studentIdInt = Convert.ToInt32(studentId);
+                    studentIdInt = Convert.ToInt32(studentId);
                     dbUser = await PageData.PManager.FBHelper.GetUser(studentIdInt);
 
                     //username is all numbers
                     if (dbUser != null)
                     {
                         matchingUser = dbUser;
+                        return true;
+                    }
+                    else
+                    {
+                        errorMsg = "Student ID cannot be blank!";
+                        return false;
                     }
 
                 }
@@ -54,7 +61,21 @@ namespace COMP7211Assignment2.Controller_Folder
                 errorMsg = "Student ID cannot be blank!";
                 return false;
             }
+        }
 
+        public bool CheckFirstLogin()
+        {
+            if (string.IsNullOrEmpty(dbUser.Password) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool ValidatePassword(string password)
+        {
             //*** password
             if (string.IsNullOrEmpty(password) == false)
             {
@@ -104,14 +125,25 @@ namespace COMP7211Assignment2.Controller_Folder
                 errorMsg = "Both passwords cannot blank!";
                 return false;
             }
+            else if(password1 != password2)
+            {
+                errorMsg = "Both passwords must match";
+                return false;
+            }
             else if (password1 == password2)
             {
                 if (password1.Length >= 15)
                 {
-                    bool containsNumbersAndLetters = password1.All(Char.IsLetterOrDigit);
-                    if (containsNumbersAndLetters)
+                    if (password1.Any(char.IsLetter) && password1.Any(char.IsDigit))
                     {
+                        LoginSystem.LoggedInUser = dbUser;
+                        PageData.PManager.FBHelper.SetPassword(studentIdInt, password1);
                         return true;
+                    }
+                    else
+                    {
+                        errorMsg = "The password must contain at least 1 letter and 1 digit";
+                        return false;
                     }
                 }
                 else

@@ -12,9 +12,21 @@ using System.Reactive.Threading.Tasks;
 
 namespace COMP7211Assignment2
 {
+    //Code by Lewis and Min 30003457
     public class FireBaseHelperv2
     {
         public FirebaseClient firebase = new FirebaseClient($"https://student-rep-app.firebaseio.com/");
+
+        public async void SetPassword(int studentId, string pw)
+        {
+            var users = await GetAllUsers();
+            await firebase
+              .Child("Students")
+              .OnceAsync<User>();
+            users.Where(a => a.StudentID == studentId).FirstOrDefault().Password = pw;
+
+            await firebase.Child("Students").PutAsync(users);
+        }
 
         public async Task<List<User>> GetAllUsers()
         {
