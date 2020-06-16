@@ -1,7 +1,7 @@
 ﻿using COMP7211Assignment2.Controller_Folder;
 using COMP7211Assignment2.Model_Folder;
 using System;
-
+using System.Security.Cryptography.X509Certificates;
 using Xamarin.Forms;
 using Xamarin.Forms.Markup;
 using Xamarin.Forms.Xaml;
@@ -18,11 +18,13 @@ namespace COMP7211Assignment2
     {
         ValidatorV2 vd;
         ValidateLoginData Validator;
+        public int StudentID;
         public LogInPage()
         {
             InitializeComponent();
             vd = new ValidatorV2();
             Validator = new ValidateLoginData();
+            StudentID = Convert.ToInt32(StudentIDEntry.Text);
 
             PageData.PManager = new PageManager(); //initiate page manager
 

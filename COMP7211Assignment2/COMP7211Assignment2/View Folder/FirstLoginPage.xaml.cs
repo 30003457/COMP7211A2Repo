@@ -12,9 +12,13 @@ namespace COMP7211Assignment2
     public partial class FirstLoginPage : ContentPage
     {
         private ValidatorV2 vd;
+        private FireBaseHelperv2 FBHelper;
+        private LogInPage logInPage;
         public FirstLoginPage()
         {
             vd = new ValidatorV2();
+            FBHelper = new FireBaseHelperv2();
+            logInPage = new LogInPage();
             InitializeComponent();
         }
 
@@ -26,25 +30,13 @@ namespace COMP7211Assignment2
                 Password1.Text = null;
                 Password2.Text = null;
                 await DisplayAlert("Valid", "Password Correct Check", "OK");
+                await FBHelper.AddPassword(logInPage.StudentID, Password1.Text);
                 await Navigation.PushAsync(new CoursesViewPage());
             }
             else
             {
                 await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
-
-            //if (Password1.Text == null)
-            //{
-            //    DisplayAlert("Error", "No Password Entered please try again", "OK");
-            //}
-            //else if (Password2.Text == null)
-            //{
-            //    DisplayAlert("Error", "No Password Entered please try again", "OK");
-            //}
-            //else
-            //{
-            //    DisplayAlert("Success", "Creating Login...", "ok");
-            //}
 
         }
     }
