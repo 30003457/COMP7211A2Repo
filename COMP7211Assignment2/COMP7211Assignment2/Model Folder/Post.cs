@@ -21,7 +21,7 @@ namespace COMP7211Assignment2.Model_Folder
         public string DownvotesTxt { get; set; }
         public List<PostReply> Replies { get; set; }
 
-        /*public Post(int id, int courseId, DateTime time, string title, string content)
+        public Post(int id, int courseId, DateTime time, string title, string content)
         {
             Id = id;
             CourseId = courseId;
@@ -32,6 +32,6 @@ namespace COMP7211Assignment2.Model_Folder
             Content = content;
             Upvotes = 0;
             Downvotes = 0;
-        }*/
+        }
     }
 }
