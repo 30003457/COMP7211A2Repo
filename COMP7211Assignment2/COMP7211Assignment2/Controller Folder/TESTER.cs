@@ -1,7 +1,9 @@
 ﻿using COMP7211Assignment2.Model_Folder;
 using Firebase.Database.Query;
+using Google.Api;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 //*********************
 //Code by Min 30003457
@@ -20,15 +22,36 @@ namespace COMP7211Assignment2.Controller_Folder
             int randomUserIndex = rnd.Next(PageData.PManager.UserRecords.Count - 1);
             LoginSystem.LoggedInUser = PageData.PManager.UserRecords[randomUserIndex];
         }
-        public static void RandomVotes()
+
+        public static async void RandomCourses(int amount)
         {
-            foreach (Post item in PageData.PManager.PostRecords)
+            List<Course> tempList = await PageData.PManager.FBHelper.GetAllCourses();
+
+            //for (int i = tempList.Count; i < i+amount; i++)
+            //{
+            //    string tempstring = null;
+            //    for (int j = 0; j < rnd.Next(3, 6); j++)
+            //    {
+            //        tempstring += (randomWordsArray[rnd.Next(randomWordsArray.Length - 1)] + " ");
+            //    }
+            //    tempList.Add(new Course(tempstring, rnd.Next(1000, 6201)));
+            //}
+
+            //await PageData.PManager.FBHelper.firebase.Child("Courses").PutAsync(tempList);
+        }
+
+        public static async void RandomVotes()
+        {
+            List<Post> tempList = await PageData.PManager.FBHelper.GetAllPosts();
+            foreach (Post item in tempList)
             {
                 item.Upvotes = rnd.Next(501);
                 item.Downvotes = rnd.Next(501);
                 item.UpvotesTxt = $"Upvotes: {item.Upvotes}";
                 item.DownvotesTxt = $"Downvotes: {item.Downvotes}";
             }
+
+            await PageData.PManager.FBHelper.firebase.Child("Posts").PutAsync(tempList);
         }
 
         public static async void UpdateVotesToDB()
@@ -37,6 +60,63 @@ namespace COMP7211Assignment2.Controller_Folder
             {
                 await PageData.PManager.FBHelper.firebase.Child("Posts").Child(_post.Id.ToString("0000")).PutAsync(_post);
             }
+        }
+        public async static void RandomVotesReplies()
+        {
+            List<PostReply> tempList = await PageData.PManager.FBHelper.GetAllReplies();
+            foreach (PostReply item in tempList)
+            {
+                item.Upvotes = rnd.Next(501);
+                item.Downvotes = rnd.Next(501);
+                item.UpvotesTxt = $"Upvotes: {item.Upvotes}";
+                item.DownvotesTxt = $"Downvotes: {item.Downvotes}";
+            }
+
+            //foreach (PostReply _reply in tempList)
+            //{
+            //    await PageData.PManager.FBHelper.firebase.Child("PostReply").Child(_reply.Id.ToString("0000")).PutAsync(_reply);
+            //}
+
+            await PageData.PManager.FBHelper.firebase.Child("PostReply").PutAsync(tempList);
+        }
+
+        public static async void AddRandomReplies(int amount)
+        {
+            List<PostReply> tempList = await PageData.PManager.FBHelper.GetAllReplies();
+            int currentReplyId = tempList.Count + 1;
+
+            //random title gen and post gen
+            for (int i = 0; i < amount; i++)
+            {
+                string randomPost = null;
+
+                //generate post
+                for (int k = 0; k < rnd.Next(10, 51); k++)
+                {
+                    randomPost += randomWordsArray[rnd.Next(randomWordsArray.Length)] + " ";
+                }
+
+                //PageData.PManager.PostRecords.Add(new Post(
+                //    currentPostId,
+                //    courseDb.records[rnd.Next(courseDb.records.Count)].ID,
+                //    DateTime.Now.AddHours(rnd.Next(25) * -1).AddMinutes(rnd.Next(60) * -1).AddSeconds(rnd.Next(60) * 1),
+                //    randomTitle,
+                //    randomPost));
+
+                await PageData.PManager.FBHelper.firebase.Child("PostReply").Child(currentReplyId.ToString("0000")).PutAsync(new PostReply(
+                    currentReplyId,
+                    await GetRandomPostId(),
+                    DateTime.Now.AddHours(rnd.Next(25) * -1).AddMinutes(rnd.Next(60) * -1).AddSeconds(rnd.Next(60) * 1),
+                    randomPost));
+
+                ++currentReplyId;
+            }
+        }
+
+        private async static Task<int> GetRandomPostId()
+        {
+            Post rndPost = await PageData.PManager.FBHelper.GetPost(PageData.PManager.PostRecords[rnd.Next(PageData.PManager.PostRecords.Count)].Id);
+            return rndPost.Id;
         }
 
         public static async void AddRandomPosts(int amount)
