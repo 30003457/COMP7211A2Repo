@@ -19,9 +19,7 @@ namespace COMP7211Assignment2
             InitializeComponent();
             clickedPost = _clickedPost;
             lblStatus.Text = PageData.PManager.UpdateStatusText();
-
             PageData.PManager.PRDetector = new PostReplyDetector(_clickedPost);
-            //PageData.PManager.DetectPostReplies();
             AddPostRepliesGUI(_clickedPost);
             BindingContext = _clickedPost;
         }
@@ -57,7 +55,7 @@ namespace COMP7211Assignment2
 
         public async void ReplyButton1(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ReplyPostPage());
+            await Navigation.PushAsync(new ReplyPostPage(clickedPost));
         }
 
         private void UpvoteADD (object sender, EventArgs e)   
