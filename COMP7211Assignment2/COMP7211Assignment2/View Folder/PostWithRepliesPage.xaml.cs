@@ -1,7 +1,8 @@
 ﻿using COMP7211Assignment2.Controller_Folder;
 using COMP7211Assignment2.Model_Folder;
 using System;
-
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,23 +13,37 @@ namespace COMP7211Assignment2
     public partial class PostWithRepliesPage : ContentPage
     {
         Vote newvote = new Vote();
-        public PostWithRepliesPage(Post clickedPost)
+        Post clickedPost;
+        public PostWithRepliesPage(Post _clickedPost)
         {
             InitializeComponent();
+            clickedPost = _clickedPost;
             lblStatus.Text = PageData.PManager.UpdateStatusText();
 
-            PageData.PManager.PRDetector = new PostReplyDetector(clickedPost.Id);
-            PageData.PManager.DetectPostReplies();
-            AddPostRepliesGUI();
-            BindingContext = clickedPost;
+            PageData.PManager.PRDetector = new PostReplyDetector(_clickedPost);
+            //PageData.PManager.DetectPostReplies();
+            AddPostRepliesGUI(_clickedPost);
+            BindingContext = _clickedPost;
         }
-        private void AddPostRepliesGUI()
+        private async Task<List<Post>> RetrieveUpdatedPosts()
         {
-            if(PageData.PManager.PRDetector.DetectedPostReplies != null)
+            return await PageData.PManager.FBHelper.GetAllPosts();
+        }
+        private async void AddPostRepliesGUI(Post clickedPost)
+        {
+            List<Post> posts = await RetrieveUpdatedPosts();
+            foreach (var item in posts)
             {
-                for (int i = 0; i < PageData.PManager.PRDetector.DetectedPostReplies.Count; i++)
+                if(item.Id == clickedPost.Id)
                 {
-                    mainStack.Children.Add(CreateStack(i));
+                    if (item.Replies != null)
+                    {
+                        for (int i = 0; i < item.Replies.Count; i++)
+                        {
+                            mainStack.Children.Add(CreateStack(i));
+                        }
+                    }
+                    return;
                 }
             }
         }
@@ -63,8 +78,8 @@ namespace COMP7211Assignment2
         {
             StackLayout stack = new StackLayout();
 
-            Label lblcontent = new Label { Text = PageData.PManager.DetectedPostReplyRecords[i].Content };
-            Label lbldate = new Label { Text = PageData.PManager.DetectedPostReplyRecords[i].TimeString };
+            Label lblcontent = new Label { Text = clickedPost.Replies[i].Content };
+            Label lbldate = new Label { Text = clickedPost.Replies[i].TimeString };
 
             Grid gridvotes = new Grid
             {
@@ -85,7 +100,7 @@ namespace COMP7211Assignment2
             Label lbldownvote = new Label
             {
                 HorizontalOptions = LayoutOptions.Center,
-                Text = PageData.PManager.DetectedPostReplyRecords[i].Downvotes.ToString(),
+                Text = clickedPost.Replies[i].Downvotes.ToString(),
                 TextColor = Color.Black,
                 VerticalOptions = LayoutOptions.Start,
                 FontAttributes = FontAttributes.Bold
@@ -94,7 +109,7 @@ namespace COMP7211Assignment2
             Label lblupvote = new Label
             {
                 HorizontalOptions = LayoutOptions.Center,
-                Text = PageData.PManager.DetectedPostReplyRecords[i].Upvotes.ToString(),
+                Text = clickedPost.Replies[i].Upvotes.ToString(),
                 TextColor = Color.Black,
                 VerticalOptions = LayoutOptions.Start,
                 FontAttributes = FontAttributes.Bold,

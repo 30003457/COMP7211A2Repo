@@ -11,12 +11,18 @@ namespace COMP7211Assignment2.Controller_Folder
     {
         public List<PostReply> DetectedPostReplies { get; set; }
         //private List<PostReply> tempList;
-        public PostReplyDetector(int postId)
+        public PostReplyDetector(Post post)
         {
-            DetectPostsAsync(postId);
+            AddRepliesToPost(post);
         }
 
-        private async void DetectPostsAsync(int postId)
+        private async void AddRepliesToPost(Post post)
+        {
+            post.Replies = await DetectPostsAsync(post.Id);
+            await PageData.PManager.FBHelper.UpdatePost(post);
+        }
+
+        private async Task<List<PostReply>> DetectPostsAsync(int postId)
         {
             List<PostReply> tempList = await PageData.PManager.FBHelper.GetAllReplies();
 
@@ -28,11 +34,7 @@ namespace COMP7211Assignment2.Controller_Folder
                     DetectedPostReplies.Add(item);
                 }
             }
-        }
-
-        private async Task<List<PostReply>> GetPostReplies()
-        {
-            return await PageData.PManager.FBHelper.GetAllReplies();
+            return DetectedPostReplies;
         }
     }
 }

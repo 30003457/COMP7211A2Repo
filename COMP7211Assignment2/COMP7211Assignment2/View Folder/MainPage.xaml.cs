@@ -1,4 +1,5 @@
-﻿using COMP7211Assignment2.Controller_Folder;
+﻿using Android.Runtime;
+using COMP7211Assignment2.Controller_Folder;
 using COMP7211Assignment2.Model_Folder;
 using Firebase.Database.Query;
 using System;
@@ -116,12 +117,12 @@ namespace COMP7211Assignment2
             //TESTER.AddRandomPosts(100);
             //TESTER.RandomVotes();
             //TESTER.UpdateVotesToDB();
-
+            //UpdatePostReplies();
             //add random replies and votes
             //TESTER.AddRandomReplies(100);
 
             //await CreateReplies(10);
-            DisplayPosts();
+            //DisplayPosts();
             //TESTER.RandomUsers(100);
             //TESTER.RandomVotesReplies();
 
@@ -141,6 +142,42 @@ namespace COMP7211Assignment2
             //{
             //    lblUsers.Text = _e.Message;
             //}
+            GetNullPasswordUsers();
+        }
+
+        public async void GetNullPasswordUsers()
+        {
+            var users = await PageData.PManager.FBHelper.GetAllUsers();
+            foreach (var item in users)
+            {
+                if(string.IsNullOrEmpty(item.Password))
+                {
+                    lblUsers.Text += $"{item.FName} {item.StudentID} has no password\n";
+                }
+            }
+        }
+
+        public async void UpdatePostReplies()
+        {
+            var posts = await PageData.PManager.FBHelper.GetAllPosts();
+            var postreplies = await PageData.PManager.FBHelper.GetAllReplies();
+            foreach (var post in posts)
+            {
+                //lblUsers.Text = "";
+                lblUsers.Text += "Updating replies for post " + post.Id + "\n";
+                //lblUsers.Text += ".";
+                //PageData.PManager.PRDetector = new PostReplyDetector(item);
+                post.Replies = new List<PostReply>();
+                foreach (var reply in postreplies)
+                {
+                    if (reply.PostId == post.Id)
+                    {
+                        post.Replies.Add(reply);
+                    }
+                }
+            }
+            await PageData.PManager.FBHelper.firebase.Child("Posts").PutAsync(posts);
+            lblUsers.Text += "Complete";
         }
 
         private async void DisplayPosts()

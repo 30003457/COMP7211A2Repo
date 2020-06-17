@@ -121,19 +121,36 @@ namespace COMP7211Assignment2
                 //.OnceAsync<Course>()).Select(item => new Course(item.Object.Name, item.Object.ID)).ToList();
         }
 
-        public async Task AddPassword(int studentId, string password)
+        //public async Task AddPassword(int studentId, string password)
+        //{
+        //    var users = await GetAllUsers();
+        //    var toUpdatePerson = (await firebase
+        //      .Child("Students")
+        //      .OnceAsync<User>()).Where(a => a.Object.StudentID == studentId).FirstOrDefault();
+
+        //    await firebase
+        //      .Child("Students")
+        //      .Child(toUpdatePerson.Key)
+        //      .PutAsync(new Student() {Password = password });
+
+
+        //    //await firebase
+        //    //  .Child("Students").Child(studentId)
+        //    //  .PostAsync(new User(){ Password = password });
+        //}
+
+        public async Task UpdatePost(Post post)
         {
-            var users = await GetAllUsers();
-            var toUpdatePerson = (await firebase
-              .Child("Students")
-              .OnceAsync<User>()).Where(a => a.Object.StudentID == studentId).FirstOrDefault();
+            var posts = await GetAllPosts();
+            foreach (var item in posts)
+            {
+                if (item.Id == post.Id)
+                    item.Replies = post.Replies;
+            }
 
             await firebase
-              .Child("Students")
-              .Child(toUpdatePerson.Key)
-              .PutAsync(new Student() {Password = password });
-
-
+              .Child("Posts")
+              .PutAsync(posts);
             //await firebase
             //  .Child("Students").Child(studentId)
             //  .PostAsync(new User(){ Password = password });
