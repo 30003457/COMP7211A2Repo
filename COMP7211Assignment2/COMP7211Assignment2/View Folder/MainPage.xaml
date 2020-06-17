@@ -41,7 +41,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Button Text="Get Replies Test" Clicked="Button_Clicked_6" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
-                <Button Text="Add Random Posts" Clicked="Button_Clicked_7" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+                <Button Text="Randomise Enrolled Courses" Clicked="Button_Clicked_7" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
             </StackLayout>
             <ScrollView >
                 <Label x:Name="lblUsers" TextColor="White"/>

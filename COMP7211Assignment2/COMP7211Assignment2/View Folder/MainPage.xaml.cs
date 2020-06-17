@@ -109,18 +109,20 @@ namespace COMP7211Assignment2
             }
         }
 
-        private async void Button_Clicked_7(object sender, EventArgs e)
+        private void Button_Clicked_7(object sender, EventArgs e)
         {
             //TESTER.AddRandomPosts(100);
             //TESTER.RandomVotes();
             //TESTER.UpdateVotesToDB();
 
             //add random replies and votes
-            //TESTER.AddRandomReplies(50);
+            //TESTER.AddRandomReplies(100);
+            TESTER.RandomUsers(100);
             //TESTER.RandomVotesReplies();
 
             //add random courses
-            TESTER.RandomCourses(10);
+            //TESTER.RandomCourses(10);
+            //TESTER.RandomEnrolledCourses();
 
             //try
             //{
