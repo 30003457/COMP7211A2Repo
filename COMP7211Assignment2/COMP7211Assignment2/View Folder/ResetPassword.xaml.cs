@@ -22,6 +22,7 @@ namespace COMP7211Assignment2
             //Set Password on account to null?
             //Take User to FirstLoginPage to setup new password?
 
+            //Old code by Agassi Shaju
             //string message = "Link has been sent!";
             //DependencyService.Get<IMessage>().Longtime(message);
         }

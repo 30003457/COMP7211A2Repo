@@ -15,6 +15,7 @@ namespace COMP7211Assignment2
         int studentIdInt = 0;
         public FirstLoginPage(int _studentIdInt)
         {
+    
             InitializeComponent();
             vd = new ValidatorV3();
             studentIdInt = _studentIdInt;
@@ -33,19 +34,6 @@ namespace COMP7211Assignment2
             {
                 await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
-
-            //if (Password1.Text == null)
-            //{
-            //    DisplayAlert("Error", "No Password Entered please try again", "OK");
-            //}
-            //else if (Password2.Text == null)
-            //{
-            //    DisplayAlert("Error", "No Password Entered please try again", "OK");
-            //}
-            //else
-            //{
-            //    DisplayAlert("Success", "Creating Login...", "ok");
-            //}
 
         }
     }
