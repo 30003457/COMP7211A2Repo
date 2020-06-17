@@ -64,10 +64,12 @@ namespace COMP7211Assignment2
         public async Task<Post> GetPost(int postId)
         {
             var posts = await GetAllPosts();
-            await firebase
-              .Child("Posts")
-              .OnceAsync<Post>();
-            return posts.Where(a => a.Id == postId).FirstOrDefault();
+            foreach (var item in posts)
+            {
+                if (item.Id == postId)
+                    return item;
+            }
+            return null;
         }
 
         public async Task<List<PostReply>> GetAllReplies()
