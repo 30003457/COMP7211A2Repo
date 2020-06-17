@@ -117,7 +117,7 @@ namespace COMP7211Assignment2
 
             //add random replies and votes
             //TESTER.AddRandomReplies(100);
-            TESTER.RandomUsers(100);
+            //TESTER.RandomUsers(100);
             //TESTER.RandomVotesReplies();
 
             //add random courses
