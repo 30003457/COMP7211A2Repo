@@ -15,7 +15,7 @@ namespace COMP7211Assignment2
     public partial class CreatePostPage : ContentPage
     {
         FirebaseHelper firebaseHelper = new FirebaseHelper();
-        User userDetails = new User();
+        //User userDetails = new User();
         public CreatePostPage()
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace COMP7211Assignment2
 
         private async void CreatePostButton(object sender, EventArgs e)
         {
-            await firebaseHelper.AddPost(PostTitle.Text, PostContent.Text, );
+            //await firebaseHelper.AddPost(PostTitle.Text, PostContent.Text,DateTime.Now,0,0);
             PostTitle.Text = string.Empty;
             PostContent.Text = string.Empty;
             await DisplayAlert("Success", "Post Created", "OK");

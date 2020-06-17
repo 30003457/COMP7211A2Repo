@@ -19,8 +19,10 @@ namespace COMP7211Assignment2.Controller_Folder
         public List<User> UserRecords { get; set; } //Have to have lists here from the DB's for bindings
         public List<Post> PostRecords { get; set; }
         public List<Post> DetectedPostRecords { get; set; }
+        public List<PostReply> DetectedPostReplyRecords { get; set; }
         public CourseDetector CDetector { get; set; }
         public PostDetector PDetector { get; set; }
+        public PostReplyDetector PRDetector { get; set;}
         public FireBaseHelperv2 FBHelper { get; set; }
         public ResponsiveController Responsive { get; set; }
         //private readonly PlaceholderUserDatabase userDb;
@@ -61,6 +63,11 @@ namespace COMP7211Assignment2.Controller_Folder
         public void DetectPosts()
         {
             DetectedPostRecords = PDetector.DetectedPosts;
+        }
+
+        public void DetectPostReplies()
+        {
+            DetectedPostReplyRecords = PRDetector.DetectedPostReplies;
         }
 
         public void BackToHomePage(int currentPageIndex)

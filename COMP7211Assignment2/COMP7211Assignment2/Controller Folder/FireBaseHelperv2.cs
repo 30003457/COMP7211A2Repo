@@ -109,9 +109,9 @@ namespace COMP7211Assignment2
 
         public async Task<List<PostReply>> GetAllReplies()
         {
-            return (await firebase
-                .Child("PostReply")
-                .OnceSingleAsync<List<PostReply>>());
+           return (await firebase
+          .Child("PostReply")
+          .OnceSingleAsync<List<PostReply>>());
         }
 
         public async Task<List<Course>> GetAllCourses()
