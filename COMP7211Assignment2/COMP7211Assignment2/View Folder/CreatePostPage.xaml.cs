@@ -14,8 +14,7 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreatePostPage : ContentPage
     {
-        FirebaseHelper firebaseHelper = new FirebaseHelper();
-        User userDetails = new User();
+        FireBaseHelperv2 firebaseHelper = new FireBaseHelperv2();
         public CreatePostPage()
         {
             InitializeComponent();
@@ -30,17 +29,19 @@ namespace COMP7211Assignment2
 
         private async void HomeButton(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PostViewPageTama());
+            //await Navigation.PushAsync(new PostViewPageTama());
         }
 
         private async void CreatePostButton(object sender, EventArgs e)
         {
-            await firebaseHelper.AddPost(PostTitle.Text, PostContent.Text, );
+            await firebaseHelper.AddPost(PostTitle.Text, PostContent.Text, LoginSystem.LoggedInUser.StudentID, PageData.PManager.CurrentCourseID, DateTime.Now, 0, 0);
             PostTitle.Text = string.Empty;
             PostContent.Text = string.Empty;
             await DisplayAlert("Success", "Post Created", "OK");
             var allPersons = await firebaseHelper.GetAllPersons();
-            
+
+            //await Navigation.PushAsync(new CoursesViewPage());
+
         }
     }
 }

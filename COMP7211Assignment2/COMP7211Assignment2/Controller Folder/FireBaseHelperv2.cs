@@ -37,6 +37,7 @@ namespace COMP7211Assignment2
             //}).ToList();
         }
 
+        
         public async Task AddPost(string content, string title, int id, int courseId, DateTime time, int upvotes, int downvotes)
         {
 

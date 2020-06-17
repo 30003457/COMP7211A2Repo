@@ -14,7 +14,7 @@ namespace COMP7211Assignment2
         public string Name { get; set; }
     }
 
-    public class FireBaseHelper
+    public class FirebaseHelper
     {
         FirebaseClient firebase = new FirebaseClient("https://student-rep-app.firebaseio.com/");
 
