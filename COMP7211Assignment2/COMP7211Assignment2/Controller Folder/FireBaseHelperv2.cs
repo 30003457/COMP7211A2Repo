@@ -19,6 +19,37 @@ namespace COMP7211Assignment2
     {
         public FirebaseClient firebase = new FirebaseClient($"https://student-rep-app.firebaseio.com/");
 
+        public async Task<List<Post>> GetAllPersons()
+        {
+            return (await firebase
+              .Child("Posts")
+              .OnceSingleAsync<List<Post>>());
+        }
+
+        public async Task AddPost(string content, string title)
+        {
+            var posts = await PageData.PManager.FBHelper.GetAllPosts();
+            posts.Add(new Post(posts.Count + 1, PageData.PManager.CurrentCourseID, DateTime.Now, title, content)
+            {
+                Downvotes = 0,
+                Upvotes = 0,
+                DownvotesTxt = $"Downvotes: 0",
+                UpvotesTxt = $"Upvotes: 0"
+            });
+            await firebase
+              .Child("Posts")
+              .PutAsync(posts);
+        }
+
+
+        public async Task AddReply(string content, int id, int postId, DateTime time, string timeString, int upvotes, int downvotes)
+        {
+
+            await firebase
+              .Child("PostReply")
+              .PostAsync(new PostReply(id, postId, time, content) { Upvotes = upvotes, Downvotes = downvotes });
+        }
+
         public async void SetPassword(int studentId, string pw)
         {
             var users = await GetAllUsers();
@@ -33,9 +64,6 @@ namespace COMP7211Assignment2
 
         public async Task<List<User>> GetAllUsers()
         {
-            //return (await firebase
-            //    .Child("Students")
-            //    .OnceAsync<User>()).Select(item => new User(item.Object.FName, item.Object.LName, item.Object.StudentID, item.Object.Password, item.Object.IsRep, item.Object.EnrolledCourses)).ToList();
             return await firebase.Child("Students").OnceSingleAsync<List<User>>();
         }
 
@@ -48,10 +76,6 @@ namespace COMP7211Assignment2
                     return item;
             }
             return null;
-            //await firebase
-            //  .Child("Students")
-            //  .OnceAsync<User>();
-            //return users.Where(a => a.StudentID == studentId).FirstOrDefault();
         }
 
         public async Task<List<Post>> GetAllPosts()
@@ -64,83 +88,40 @@ namespace COMP7211Assignment2
         public async Task<Post> GetPost(int postId)
         {
             var posts = await GetAllPosts();
-            await firebase
-              .Child("Posts")
-              .OnceAsync<Post>();
-            return posts.Where(a => a.Id == postId).FirstOrDefault();
+            foreach (var item in posts)
+            {
+                if (item.Id == postId)
+                    return item;
+            }
+            return null;
         }
 
         public async Task<List<PostReply>> GetAllReplies()
         {
-            return (await firebase
-                .Child("PostReply")
-                .OnceSingleAsync<List<PostReply>>());
+           return (await firebase
+          .Child("PostReply")
+          .OnceSingleAsync<List<PostReply>>());
         }
 
         public async Task<List<Course>> GetAllCourses()
         {
             return (await firebase
                 .Child("Courses").OnceSingleAsync<List<Course>>());
-                //.OnceAsync<Course>()).Select(item => new Course(item.Object.Name, item.Object.ID)).ToList();
         }
 
-        public async Task AddPassword(int studentId, string password)
+        public async Task UpdatePost(Post post)
         {
-            var users = await GetAllUsers();
-            var toUpdatePerson = (await firebase
-              .Child("Students")
-              .OnceAsync<User>()).Where(a => a.Object.StudentID == studentId).FirstOrDefault();
+            var posts = await GetAllPosts();
+            foreach (var item in posts)
+            {
+                if (item.Id == post.Id)
+                    item.Replies = post.Replies;
+            }
 
             await firebase
-              .Child("Students")
-              .Child(toUpdatePerson.Key)
-              .PutAsync(new Student() {Password = password });
-
-
-            //await firebase
-            //  .Child("Students").Child(studentId)
-            //  .PostAsync(new User(){ Password = password });
+              .Child("Posts")
+              .PutAsync(posts);
         }
-
-
-
-        //public async Task AddPerson(int personId, string name)
-        //{
-
-        //    await firebase
-        //      .Child("Persons")
-        //      .PostAsync(new Person() { PersonId = personId, Name = name });
-        //}
-
-        //public async Task<Person> GetPerson(int personId)
-        //{
-        //    var allPersons = await GetAllUsers();
-        //    await firebase
-        //      .Child("User")
-        //      .OnceAsync<Person>();
-        //    return allPersons.Where(a => a.PersonId == personId).FirstOrDefault();
-        //}
-
-        //public async Task UpdatePerson(int personId, string name)
-        //{
-        //    var toUpdatePerson = (await firebase
-        //      .Child("Persons")
-        //      .OnceAsync<Person>()).Where(a => a.Object.PersonId == personId).FirstOrDefault();
-
-        //    await firebase
-        //      .Child("Persons")
-        //      .Child(toUpdatePerson.Key)
-        //      .PutAsync(new Person() { PersonId = personId, Name = name });
-        //}
-
-        //public async Task DeletePerson(int personId)
-        //{
-        //    var toDeletePerson = (await firebase
-        //      .Child("Persons")
-        //      .OnceAsync<Person>()).Where(a => a.Object.PersonId == personId).FirstOrDefault();
-        //    await firebase.Child("Persons").Child(toDeletePerson.Key).DeleteAsync();
-
-        //}
     }
 
 }

@@ -8,10 +8,6 @@ namespace COMP7211Assignment2.Model_Folder
 {
     class ValidateLoginData
     {
-        //public bool idMatches = false;
-        //public bool passwordMatches = false;
-        //public bool PasswordIsSet = false;
-
         private StudentLoginFirebaseRetriever firebaseRetriever = new StudentLoginFirebaseRetriever();
 
         public async Task<bool> ValidatePasswordStatus(string passwordEmpty, string StudentID)

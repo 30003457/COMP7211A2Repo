@@ -136,7 +136,6 @@ namespace COMP7211Assignment2.Controller_Folder
                 {
                     if (password1.Any(char.IsLetter) && password1.Any(char.IsDigit))
                     {
-                        //LoginSystem.LoggedInUser = dbUser;
                         PageData.PManager.FBHelper.SetPassword(_studentIdInt, password1);
                         return true;
                     }

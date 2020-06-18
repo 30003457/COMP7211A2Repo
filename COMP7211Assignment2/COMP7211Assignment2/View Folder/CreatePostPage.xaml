@@ -13,18 +13,17 @@
                 </Grid.RowDefinitions>
 
                 <Button Text="HOME" VerticalOptions="Start" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="HomeButton"></Button>
-                <Label Text="COMP1231" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Title" Padding="10"></Label>
+                <Label Text="{Binding CurrentTitle}" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Title" Padding="10"></Label>
 
             </Grid>
 
-            <Label Text="Subject Name 1" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Body"></Label>
 
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Label Text="Opinion on Blah's teaching" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
+                <Entry x:Name="PostTitle" Placeholder="Enter title here" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray"></Entry>
             </Grid>
 
             <Grid>
@@ -32,7 +31,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium imperdiet pretium. Nunc bibendum, nunc quis porttitor pharetra, sem eros fermentum ipsum, ac rutrum nisl odio id enim." VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
+                <Editor x:Name="PostContent" Placeholder="Enter text here" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Body" BackgroundColor="DarkGray"></Editor>
             </Grid>
 
             <Grid>
@@ -43,8 +42,6 @@
                 <Button Text="Create" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="CreatePostButton"></Button>
 
             </Grid>
-
-            <Label Text="Signed in as Bob" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" TextColor="Black"></Label>
 
         </StackLayout>
     </ContentPage.Content>
