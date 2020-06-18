@@ -11,36 +11,38 @@ using COMP7211Assignment2.Controller_Folder;
 
 namespace COMP7211Assignment2
 {
+    //code by Tama and Min
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreatePostPage : ContentPage
     {
-        FirebaseHelper firebaseHelper = new FirebaseHelper();
+        FireBaseHelperv2 firebaseHelper = new FireBaseHelperv2();
         //User userDetails = new User();
         public CreatePostPage()
         {
             InitializeComponent();
+            BindingContext = PageData.PManager;
         }
 
         protected async override void OnAppearing()
         {
 
             base.OnAppearing();
-            var allPersons = await firebaseHelper.GetAllPersons();
+            var allUsers = await firebaseHelper.GetAllUsers();
         }
 
         private async void HomeButton(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PostViewPageTama());
+            //await Navigation.PushAsync(new PostViewPageTama());
         }
 
         private async void CreatePostButton(object sender, EventArgs e)
         {
-            //await firebaseHelper.AddPost(PostTitle.Text, PostContent.Text,DateTime.Now,0,0);
+            await firebaseHelper.AddPost(PostContent.Text,PostTitle.Text);
             PostTitle.Text = string.Empty;
             PostContent.Text = string.Empty;
-            await DisplayAlert("Success", "Post Created", "OK");
-            var allPersons = await firebaseHelper.GetAllPersons();
-            
+            //await DisplayAlert("Success", "Post Created", "OK");
+            var allUsers = await firebaseHelper.GetAllUsers();
+            await Navigation.PopAsync();
         }
     }
 }

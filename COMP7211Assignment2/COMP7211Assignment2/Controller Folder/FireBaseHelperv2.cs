@@ -37,12 +37,19 @@ namespace COMP7211Assignment2
             //}).ToList();
         }
 
-        public async Task AddPost(string content, string title, int id, int courseId, DateTime time, int upvotes, int downvotes)
+        public async Task AddPost(string content, string title)
         {
-
+            var posts = await PageData.PManager.FBHelper.GetAllPosts();
+            posts.Add(new Post(posts.Count + 1, PageData.PManager.CurrentCourseID, DateTime.Now, title, content)
+            {
+                Downvotes = 0,
+                Upvotes = 0,
+                DownvotesTxt = $"Downvotes: 0",
+                UpvotesTxt = $"Upvotes: 0"
+            });
             await firebase
               .Child("Posts")
-              .PutAsync(new Post(id, courseId, time, title, content) { Upvotes = upvotes, Downvotes = downvotes });
+              .PutAsync(posts);
         }
 
 
