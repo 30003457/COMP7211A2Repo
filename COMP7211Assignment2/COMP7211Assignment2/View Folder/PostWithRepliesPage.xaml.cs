@@ -86,7 +86,7 @@ namespace COMP7211Assignment2
         }
 
        
-
+        /*
         private void Btndownvote_Clicked(object sender, EventArgs e)
         {
 
@@ -94,15 +94,15 @@ namespace COMP7211Assignment2
             DwnVote++;
             lbldownvote.Text = DwnVote.ToString(); 
         }
-
-        private void Btnupvote_Clicked(object sender, EventArgs e)
+        */
+     /*   private void Btnupvote_Clicked(object sender, EventArgs e)
         {
             
                 int UpVote = clickedPost.Replies[i].Upvotes;
                 UpVote++;
                 lblupvote.Text = UpVote.ToString();
             
-        }
+        }*/
 
 
 
@@ -189,9 +189,18 @@ namespace COMP7211Assignment2
             Grid.SetColumn(btnreply, 2);
 
             btnreply.Clicked += Btnreply_Clicked; 
-            btnupvote.Clicked += Btnupvote_Clicked;
-            btndownvote.Clicked += Btndownvote_Clicked;
-          
+            btnupvote.Clicked += (sender, args) =>
+            {
+                int UpVote = clickedPost.Replies[i].Upvotes;
+                UpVote++;
+                lblupvote.Text = UpVote.ToString();
+            };
+            btndownvote.Clicked += (sender, args) =>
+            {
+                int DwnVote = clickedPost.Replies[i].Downvotes;
+                DwnVote++;
+                lbldownvote.Text = DwnVote.ToString();
+            };//this will update the replies votes
 
             stack.Children.Add(lblcontent);
             stack.Children.Add(lbldate);
