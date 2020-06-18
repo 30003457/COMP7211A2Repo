@@ -61,7 +61,6 @@ namespace COMP7211Assignment2
         private void UpvoteADD (object sender, EventArgs e)   
         {
             newvote.AddUpVote(UpVote);
-            //UpVotes.Text = Upvote.ToString();
 
 
         }
@@ -69,7 +68,6 @@ namespace COMP7211Assignment2
         private void DwnvoteADD(object sender, EventArgs e) 
         {
             newvote.addDwnvote(DwnVote);
-            //DWNVotes.Text = DwnVote.ToString();
         }
 
         private StackLayout CreateStack(int i)
