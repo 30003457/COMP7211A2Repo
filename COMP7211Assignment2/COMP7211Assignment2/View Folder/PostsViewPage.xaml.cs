@@ -100,8 +100,9 @@ namespace COMP7211Assignment2.View_Folder
             PageData.PManager.DetectedPostRecords = postSorter.SortPosts(PageData.PManager.SortSettings, PageData.PManager.DetectedPostRecords);
         }
 
-        private void Home_Button_Clicked(object sender, EventArgs e)
+        private async void Home_Button_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new CoursesViewPage());
             //for (var counter = 1; counter < BackCount; counter++)
             //{
             //    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);

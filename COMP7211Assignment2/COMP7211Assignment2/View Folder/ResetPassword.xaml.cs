@@ -1,6 +1,6 @@
 ﻿using System;
 using Xamarin.Forms.Xaml;
-
+//Code by Lewis
 namespace COMP7211Assignment2
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -14,12 +14,9 @@ namespace COMP7211Assignment2
 
         private async void Button1(object sender, EventArgs e)
         {
-            //Validation for email here?
             string UserEmailInput = EmailText.Text;
             await DisplayAlert("Success", "Link has been sent to email " + UserEmailInput, "OK");
 
-            //Set Password on account to null?
-            //Take User to FirstLoginPage to setup new password?
 
             //Old code by Agassi Shaju
             //string message = "Link has been sent!";
