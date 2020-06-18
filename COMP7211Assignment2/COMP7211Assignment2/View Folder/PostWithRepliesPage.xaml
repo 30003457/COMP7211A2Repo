@@ -77,10 +77,10 @@
                             <RowDefinition Height="20"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Center" Text="{Binding Downvotes}" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
-                        <Label HorizontalOptions="Center" Grid.Column="1" Text="{Binding Upvotes}" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
-                        <Button Grid.Row="1" Text="Downvote" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Small" TextColor="Black" BackgroundColor="LightGray" WidthRequest="70"></Button>
-                        <Button Grid.Row="1" Grid.Column="1" Text="Upvote" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Small" TextColor="Black" BackgroundColor="LightGray" WidthRequest="70"></Button>
+                        <Label x:Name="Dvotes" HorizontalOptions="Center" Text="{Binding Downvotes}" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
+                        <Label x:Name="Uvotes" HorizontalOptions="Center" Grid.Column="1" Text="{Binding Upvotes}" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
+                        <Button Grid.Row="1" Text="Downvote" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Small" TextColor="Black" BackgroundColor="LightGray" WidthRequest="70" Clicked="DwnvoteADD" ></Button>
+                        <Button Grid.Row="1" Grid.Column="1" Text="Upvote" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Small" TextColor="Black" BackgroundColor="LightGray" WidthRequest="70" Clicked="UpvoteADD" ></Button>
                         <Button Grid.Row="1" Grid.Column="2" Text="Reply" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="LightGray" WidthRequest="70" Clicked="ReplyButton1" TranslationX="-10"></Button>
 
 

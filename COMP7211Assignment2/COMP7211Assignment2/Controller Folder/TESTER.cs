@@ -1,10 +1,8 @@
 ﻿using COMP7211Assignment2.Model_Folder;
 using Firebase.Database.Query;
-using Google.Api;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
 //*********************
 //Code by Min 30003457
@@ -65,7 +63,7 @@ namespace COMP7211Assignment2.Controller_Folder
                 await PageData.PManager.FBHelper.firebase.Child("Posts").Child(_post.Id.ToString("0000")).PutAsync(_post);
             }
         }
-        public async static void RandomVotesReplies()
+        public static async void RandomVotesReplies()
         {
             List<PostReply> tempList = await PageData.PManager.FBHelper.GetAllReplies();
             foreach (PostReply item in tempList)
@@ -93,7 +91,7 @@ namespace COMP7211Assignment2.Controller_Folder
             //random title gen and post gen
             for (int i = 0; i < amount; i++)
             {
-                
+
                 string randomPost = null;
 
                 //generate post
@@ -135,7 +133,7 @@ namespace COMP7211Assignment2.Controller_Folder
             await PageData.PManager.FBHelper.firebase.Child("PostReply").PutAsync(tempList);
         }
 
-        public async static Task<int> GetRandomPostId()
+        public static async Task<int> GetRandomPostId()
         {
             Post rndPost = await PageData.PManager.FBHelper.GetPost(PageData.PManager.PostRecords[rnd.Next(PageData.PManager.PostRecords.Count)].Id);
             return rndPost.Id;
@@ -179,7 +177,7 @@ namespace COMP7211Assignment2.Controller_Folder
                 //    randomTitle,
                 //    randomPost));
 
-                tempList.Add(new Post(currentPostId,courseDb[rnd.Next(courseDb.Count-1)].ID,DateTime.Now.AddHours(rnd.Next(25) * -1).AddMinutes(rnd.Next(60) * -1).AddSeconds(rnd.Next(60) * 1),
+                tempList.Add(new Post(currentPostId, courseDb[rnd.Next(courseDb.Count - 1)].ID, DateTime.Now.AddHours(rnd.Next(25) * -1).AddMinutes(rnd.Next(60) * -1).AddSeconds(rnd.Next(60) * 1),
                     randomTitle,
                     randomPost));
 
@@ -200,16 +198,16 @@ namespace COMP7211Assignment2.Controller_Folder
 
         public static async void RandomEnrolledCourses()
         {
-            var users = await PageData.PManager.FBHelper.GetAllUsers();
-            var courses = await PageData.PManager.FBHelper.GetAllCourses();
+            List<User> users = await PageData.PManager.FBHelper.GetAllUsers();
+            List<Course> courses = await PageData.PManager.FBHelper.GetAllCourses();
 
-            foreach (var item in users)
+            foreach (User item in users)
             {
                 item.EnrolledCourses.Clear();
                 //enroll students to random amounts of courses
-                for (int i = 0; i < rnd.Next(4,9); i++)
+                for (int i = 0; i < rnd.Next(4, 9); i++)
                 {
-                    item.EnrolledCourses.Add(courses[rnd.Next(courses.Count-1)]);
+                    item.EnrolledCourses.Add(courses[rnd.Next(courses.Count - 1)]);
                 }
             }
 
@@ -218,19 +216,27 @@ namespace COMP7211Assignment2.Controller_Folder
 
         public static async void RandomUsers(int amount)
         {
-            var users = await PageData.PManager.FBHelper.GetAllUsers();
-            var courses = await PageData.PManager.FBHelper.GetAllCourses();
+            List<User> users = await PageData.PManager.FBHelper.GetAllUsers();
+            List<Course> courses = await PageData.PManager.FBHelper.GetAllCourses();
             for (int i = 0; i < amount; i++)
             {
                 int num = rnd.Next(101);
                 string temppass = null;
                 bool randomBool = false;
                 if (num >= 90)
+                {
                     randomBool = true;
+                }
                 else
+                {
                     randomBool = false;
+                }
+
                 if (num < 70)
+                {
                     temppass = "123456789";
+                }
+
                 List<Course> item = new List<Course>();
                 for (int j = 0; j < rnd.Next(4, 9); j++)
                 {

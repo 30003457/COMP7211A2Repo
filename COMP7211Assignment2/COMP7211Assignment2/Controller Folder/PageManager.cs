@@ -1,10 +1,5 @@
 ﻿using COMP7211Assignment2.Model_Folder;
 using System.Collections.Generic;
-using Firebase.Database;
-using Firebase.Database.Query;
-using Google.Cloud.Firestore.V1;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 
 //*********************
 //Code by Min 30003457
@@ -22,7 +17,7 @@ namespace COMP7211Assignment2.Controller_Folder
         public List<PostReply> DetectedPostReplyRecords { get; set; }
         public CourseDetector CDetector { get; set; }
         public PostDetector PDetector { get; set; }
-        public PostReplyDetector PRDetector { get; set;}
+        public PostReplyDetector PRDetector { get; set; }
         public FireBaseHelperv2 FBHelper { get; set; }
         public ResponsiveController Responsive { get; set; }
         //private readonly PlaceholderUserDatabase userDb;

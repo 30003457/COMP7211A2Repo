@@ -5,7 +5,7 @@
 //*********************
 namespace COMP7211Assignment2
 {
-    class PlaceholderUserDatabase
+    internal class PlaceholderUserDatabase
     {
         public List<User> records = new List<User>();
 

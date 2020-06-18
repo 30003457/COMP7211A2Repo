@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Diagnostics;
-using Plugin.CloudFirestore;
-using Google.Cloud.Firestore;
+﻿using COMP7211Assignment2.Model_Folder;
 using Firebase.Database;
 using Firebase.Database.Query;
-using COMP7211Assignment2.Model_Folder;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
-    class FirestoreController
+    internal class FirestoreController
     {
-        public async static void TestMethod()
+        public static async void TestMethod()
         {
             FirebaseClient Firebase = new FirebaseClient("https://student-rep-app.firebaseio.com/");
             //PageData.PManager = new PageManager();
@@ -22,7 +16,7 @@ namespace COMP7211Assignment2.Controller_Folder
             //{
             //    await Firebase.Child("student-rep-app").Child("Courses").PostAsync(_course);
             //}
-            
+
             //initialise databases
             PlaceholderCourseDatabase cdb = new PlaceholderCourseDatabase();
             PlaceholderUserDatabase udb = new PlaceholderUserDatabase();

@@ -12,7 +12,7 @@ namespace COMP7211Assignment2.Controller_Folder
         public PostDetector(int id)
         {
             DetectedPosts = new List<Post>();
-            foreach (var item in PageData.PManager.PostRecords)
+            foreach (Post item in PageData.PManager.PostRecords)
             {
                 if (item.CourseId == id)
                 {

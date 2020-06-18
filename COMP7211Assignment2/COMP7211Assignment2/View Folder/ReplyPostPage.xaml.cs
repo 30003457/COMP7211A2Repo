@@ -10,7 +10,7 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReplyPostPage : ContentPage
     {
-        Post clickedPost;
+        private readonly Post clickedPost;
         public ReplyPostPage(Post _clickedPost)
         {
             InitializeComponent();
@@ -25,11 +25,11 @@ namespace COMP7211Assignment2
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            var posts = await PageData.PManager.FBHelper.GetAllPosts();
-            var postreplies = await PageData.PManager.FBHelper.GetAllReplies();
-            foreach (var post in posts)
+            System.Collections.Generic.List<Post> posts = await PageData.PManager.FBHelper.GetAllPosts();
+            System.Collections.Generic.List<PostReply> postreplies = await PageData.PManager.FBHelper.GetAllReplies();
+            foreach (Post post in posts)
             {
-                if(post.Id == clickedPost.Id)
+                if (post.Id == clickedPost.Id)
                 {
                     PostReply reply = new PostReply(postreplies.Count + 1, clickedPost.Id, DateTime.Now, editorReply.Text);
                     postreplies.Add(reply);

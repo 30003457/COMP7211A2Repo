@@ -1,16 +1,10 @@
 ﻿
+using COMP7211Assignment2.Model_Folder;
 using Firebase.Database;
 using Firebase.Database.Query;
-using System.Linq;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 using System;
-using COMP7211Assignment2.Model_Folder;
-using Newtonsoft.Json.Linq;
-using System.Reactive.Threading.Tasks;
-using Google.Apis.Auth.OAuth2;
-using Google.Api.Gax.Rest;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace COMP7211Assignment2
 {
@@ -56,11 +50,13 @@ namespace COMP7211Assignment2
 
         public async void SetPassword(int studentId, string pw)
         {
-            var users = await GetAllUsers();
-            foreach (var item in users)
+            List<User> users = await GetAllUsers();
+            foreach (User item in users)
             {
                 if (item.StudentID == studentId)
+                {
                     item.Password = pw;
+                }
             }
 
             await firebase.Child("Students").PutAsync(users);
@@ -76,11 +72,13 @@ namespace COMP7211Assignment2
 
         public async Task<User> GetUser(int studentId)
         {
-            var users = await GetAllUsers();
-            foreach (var item in users)
+            List<User> users = await GetAllUsers();
+            foreach (User item in users)
             {
                 if (item.StudentID == studentId)
+                {
                     return item;
+                }
             }
             return null;
             //await firebase
@@ -98,27 +96,29 @@ namespace COMP7211Assignment2
 
         public async Task<Post> GetPost(int postId)
         {
-            var posts = await GetAllPosts();
-            foreach (var item in posts)
+            List<Post> posts = await GetAllPosts();
+            foreach (Post item in posts)
             {
                 if (item.Id == postId)
+                {
                     return item;
+                }
             }
             return null;
         }
 
         public async Task<List<PostReply>> GetAllReplies()
         {
-           return (await firebase
-          .Child("PostReply")
-          .OnceSingleAsync<List<PostReply>>());
+            return (await firebase
+           .Child("PostReply")
+           .OnceSingleAsync<List<PostReply>>());
         }
 
         public async Task<List<Course>> GetAllCourses()
         {
             return (await firebase
                 .Child("Courses").OnceSingleAsync<List<Course>>());
-                //.OnceAsync<Course>()).Select(item => new Course(item.Object.Name, item.Object.ID)).ToList();
+            //.OnceAsync<Course>()).Select(item => new Course(item.Object.Name, item.Object.ID)).ToList();
         }
 
         //public async Task AddPassword(int studentId, string password)
@@ -141,11 +141,13 @@ namespace COMP7211Assignment2
 
         public async Task UpdatePost(Post post)
         {
-            var posts = await GetAllPosts();
-            foreach (var item in posts)
+            List<Post> posts = await GetAllPosts();
+            foreach (Post item in posts)
             {
                 if (item.Id == post.Id)
+                {
                     item.Replies = post.Replies;
+                }
             }
 
             await firebase

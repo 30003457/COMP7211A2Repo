@@ -11,11 +11,11 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FirstLoginPage : ContentPage
     {
-        private ValidatorV3 vd;
-        int studentIdInt = 0;
+        private readonly ValidatorV3 vd;
+        private readonly int studentIdInt = 0;
         public FirstLoginPage(int _studentIdInt)
         {
-    
+
             InitializeComponent();
             vd = new ValidatorV3();
             studentIdInt = _studentIdInt;

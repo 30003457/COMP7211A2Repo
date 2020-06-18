@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 // Code by Lewis Evans 27033957
 namespace COMP7211Assignment2.Model_Folder
 {
-    class ValidateLoginData
+    internal class ValidateLoginData
     {
         //public bool idMatches = false;
         //public bool passwordMatches = false;
         //public bool PasswordIsSet = false;
 
-        private StudentLoginFirebaseRetriever firebaseRetriever = new StudentLoginFirebaseRetriever();
+        private readonly StudentLoginFirebaseRetriever firebaseRetriever = new StudentLoginFirebaseRetriever();
 
         public async Task<bool> ValidatePasswordStatus(string passwordEmpty, string StudentID)
         {
-            var emptyPassword = await firebaseRetriever.CheckPasswordIsSet(passwordEmpty , StudentID);
+            Student emptyPassword = await firebaseRetriever.CheckPasswordIsSet(passwordEmpty, StudentID);
             if (emptyPassword != null)
             {
                 return false;
@@ -28,7 +24,7 @@ namespace COMP7211Assignment2.Model_Folder
         }
         public async Task<bool> ValidateID(string StudentIDEntryText)
         {
-            var student = await firebaseRetriever.RetrieveStudentID(StudentIDEntryText);
+            Student student = await firebaseRetriever.RetrieveStudentID(StudentIDEntryText);
             if (student != null)
             {
                 return true;
@@ -41,10 +37,10 @@ namespace COMP7211Assignment2.Model_Folder
         }
         public async Task<bool> ValidatePassword(string passwordEntryText, string studentID)
         {
-            
-            var password = await firebaseRetriever.RetrievePassword(passwordEntryText, studentID);
-           
-            if (password != null )
+
+            Student password = await firebaseRetriever.RetrievePassword(passwordEntryText, studentID);
+
+            if (password != null)
             {
                 return true;
 

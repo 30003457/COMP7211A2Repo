@@ -13,7 +13,7 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CoursesViewPage : ContentPage
     {
-        Course selectedCourse;
+        private Course selectedCourse;
         public CoursesViewPage()
         {
             InitializeComponent();

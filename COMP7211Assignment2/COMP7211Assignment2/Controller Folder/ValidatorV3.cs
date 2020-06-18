@@ -1,20 +1,18 @@
 ﻿using COMP7211Assignment2.Model_Folder;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
     //code by Min 30003457 and Lewis
-    class ValidatorV3
+    internal class ValidatorV3
     {
-        string digits = "0123456789";
+        private readonly string digits = "0123456789";
         public string errorMsg = null;
-        User matchingUser = null;
-        User dbUser;
-        int studentIdInt = 0;
+        private User matchingUser = null;
+        private User dbUser;
+        private int studentIdInt = 0;
         public async Task<bool> ValidateUser(string studentId)
         {
             //*** username
@@ -125,7 +123,7 @@ namespace COMP7211Assignment2.Controller_Folder
                 errorMsg = "Both passwords cannot blank!";
                 return false;
             }
-            else if(password1 != password2)
+            else if (password1 != password2)
             {
                 errorMsg = "Both passwords must match";
                 return false;

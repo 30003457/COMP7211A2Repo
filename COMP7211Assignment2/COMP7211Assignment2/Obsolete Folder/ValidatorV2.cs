@@ -1,16 +1,14 @@
 ﻿using COMP7211Assignment2.Model_Folder;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
     //code by Min 30003457
-    class ValidatorV2
+    internal class ValidatorV2
     {
-        string digits = "0123456789";
+        private readonly string digits = "0123456789";
         public string errorMsg = null;
         public async Task<bool> ValidateLogin(string studentId, string password)
         {
@@ -110,7 +108,7 @@ namespace COMP7211Assignment2.Controller_Folder
             {
                 if (password1.Length >= 15)
                 {
-                    bool containsNumbersAndLetters = password1.All(Char.IsLetterOrDigit);
+                    bool containsNumbersAndLetters = password1.All(char.IsLetterOrDigit);
                     if (containsNumbersAndLetters)
                     {
                         return true;

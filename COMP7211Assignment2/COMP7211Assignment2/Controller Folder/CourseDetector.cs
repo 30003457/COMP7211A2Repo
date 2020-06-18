@@ -1,5 +1,4 @@
-﻿using COMP7211Assignment2.Controller_Folder;
-using COMP7211Assignment2.Model_Folder;
+﻿using COMP7211Assignment2.Model_Folder;
 using System.Collections.Generic;
 
 //*********************

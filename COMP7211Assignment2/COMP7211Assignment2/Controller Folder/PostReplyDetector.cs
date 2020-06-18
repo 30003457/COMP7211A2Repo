@@ -27,7 +27,7 @@ namespace COMP7211Assignment2.Controller_Folder
             List<PostReply> tempList = await PageData.PManager.FBHelper.GetAllReplies();
 
             DetectedPostReplies = new List<PostReply>();
-            foreach (var item in tempList)
+            foreach (PostReply item in tempList)
             {
                 if (item.PostId == postId)
                 {

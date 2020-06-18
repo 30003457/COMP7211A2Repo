@@ -1,9 +1,7 @@
 ﻿using COMP7211Assignment2.Controller_Folder;
 using COMP7211Assignment2.Model_Folder;
 using System;
-using System.Security.Cryptography.X509Certificates;
 using Xamarin.Forms;
-using Xamarin.Forms.Markup;
 using Xamarin.Forms.Xaml;
 
 //********************
@@ -16,8 +14,8 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
-        ValidatorV3 vd;
-        ValidateLoginData Validator;
+        private readonly ValidatorV3 vd;
+        private readonly ValidateLoginData Validator;
         public int StudentID;
         public LogInPage()
         {
@@ -29,7 +27,7 @@ namespace COMP7211Assignment2
             PageData.PManager = new PageManager(); //initiate page manager
 
             //responsive ui event
-            this.SizeChanged += LogInPage_SizeChanged;
+            SizeChanged += LogInPage_SizeChanged;
         }
 
         private void LogInPage_SizeChanged(object sender, EventArgs e)
@@ -39,7 +37,7 @@ namespace COMP7211Assignment2
             {
                 Grid.SetRowSpan(LogoImage, 3);
                 Grid.SetColumnSpan(LogoImage, 1);
-                Grid.SetRow(LoginStack,0);
+                Grid.SetRow(LoginStack, 0);
                 Grid.SetRowSpan(LoginStack, 3);
                 LoginStack.Margin = new Thickness(20, 0);
                 LoginStack.VerticalOptions = LayoutOptions.Center;
@@ -149,7 +147,7 @@ namespace COMP7211Assignment2
                 await DisplayAlert("Invalid", _e.Message, "OK");
                 throw;
             }
-            
+
         }
     }
 }

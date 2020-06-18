@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using COMP7211Assignment2.Model_Folder;
-using Firebase.Database;
-using Firebase.Database.Query;
 
 //*********************
 //Code by Min 30003457
@@ -19,6 +16,6 @@ namespace COMP7211Assignment2
             records.Add(new Course("Artificial Intelligence", 7212));
         }
 
-      
+
     }
 }

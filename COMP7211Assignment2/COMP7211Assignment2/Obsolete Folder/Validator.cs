@@ -1,13 +1,10 @@
 ﻿using COMP7211Assignment2.Model_Folder;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
-    class Validator
+    internal class Validator
     {
-        string digits = "0123456789";
+        private readonly string digits = "0123456789";
         public string errorMsg = null;
         public bool ValidateLogin(string username, string password)
         {
@@ -17,7 +14,7 @@ namespace COMP7211Assignment2.Controller_Folder
             if (string.IsNullOrEmpty(username) == false)
             {
                 //8 digits - assumption based on the average student id's
-                if (username.Length>=8)
+                if (username.Length >= 8)
                 {
                     for (int i = 0; i < username.Length; i++)
                     {
@@ -30,7 +27,7 @@ namespace COMP7211Assignment2.Controller_Folder
                     }
 
                     //username is all numbers
-                    foreach (var item in PageData.PManager.UserRecords)
+                    foreach (User item in PageData.PManager.UserRecords)
                     {
                         if (item.StudentID.ToString("00000000") == username)
                         {
@@ -54,7 +51,7 @@ namespace COMP7211Assignment2.Controller_Folder
             if (string.IsNullOrEmpty(password) == false)
             {
                 //check existing database
-                foreach (var item in PageData.PManager.UserRecords)
+                foreach (User item in PageData.PManager.UserRecords)
                 {
                     //check it matches or if it exists
                     //if this is true then it is a successful login
@@ -68,7 +65,7 @@ namespace COMP7211Assignment2.Controller_Folder
                     }
                 }
 
-                if(matchingUser == null)
+                if (matchingUser == null)
                 {
                     errorMsg = "Student not found!";
                     return false;

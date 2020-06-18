@@ -1,10 +1,7 @@
-﻿using System;
-using Firebase.Database;
+﻿using Firebase.Database;
 using Firebase.Database.Query;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
-using Xamarin.Forms;
 using System.Threading.Tasks;
 // Code by Lewis Evans 27033957
 namespace COMP7211Assignment2.Model_Folder
@@ -15,10 +12,11 @@ namespace COMP7211Assignment2.Model_Folder
         public string Password { get; set; }
 
     }
-    class StudentLoginFirebaseRetriever
+
+    internal class StudentLoginFirebaseRetriever
     {
 
-        private FirebaseClient firebase = new FirebaseClient("https://student-rep-app.firebaseio.com/");
+        private readonly FirebaseClient firebase = new FirebaseClient("https://student-rep-app.firebaseio.com/");
 
         public async Task<List<Student>> GetAllPersons()
         {
@@ -34,15 +32,15 @@ namespace COMP7211Assignment2.Model_Folder
         }
         public async Task<Student> CheckPasswordIsSet(string emptyPassword, string studentID)
         {
-            var allPersons = await GetAllPersons();
+            List<Student> allPersons = await GetAllPersons();
             await firebase
              .Child("Students").Child(studentID).Child("Password:")
               .OnceAsync<Student>();
-            return allPersons.Where(word => word.Password == emptyPassword &&  word.StudentId == studentID).FirstOrDefault();
+            return allPersons.Where(word => word.Password == emptyPassword && word.StudentId == studentID).FirstOrDefault();
         }
         public async Task<Student> RetrievePassword(string password, string studentID)
         {
-            var allPersons = await GetAllPersons();
+            List<Student> allPersons = await GetAllPersons();
             await firebase
                 .Child("Students")
               .Child(studentID).Child("Password:")
@@ -51,7 +49,7 @@ namespace COMP7211Assignment2.Model_Folder
         }
         public async Task<Student> RetrieveStudentID(string studentId)
         {
-            var allPersons = await GetAllPersons();
+            List<Student> allPersons = await GetAllPersons();
             await firebase
               .Child("Students")
               .OnceAsync<Student>();
@@ -62,30 +60,30 @@ namespace COMP7211Assignment2.Model_Folder
 
 
 
-            //            var Students = await firebase.Child("Students")
-            //            .OnceAsync<Student>();
-            //            foreach (var item in Students)
-            //            {
-            //                if (studentId == item.Key)
-            //                {
-            //                    StudentFound = true;
-            //                }
-            //                else
-            //                {
-            //                    StudentFound = false;
-            //                }
-            //            }
+        //            var Students = await firebase.Child("Students")
+        //            .OnceAsync<Student>();
+        //            foreach (var item in Students)
+        //            {
+        //                if (studentId == item.Key)
+        //                {
+        //                    StudentFound = true;
+        //                }
+        //                else
+        //                {
+        //                    StudentFound = false;
+        //                }
+        //            }
 
-            //Console.WriteLine($”{ dino.Key} is { dino.Object.Height } m high.”);
-            // await DisplayAlert("Success", item.Key, "word");
+        //Console.WriteLine($”{ dino.Key} is { dino.Object.Height } m high.”);
+        // await DisplayAlert("Success", item.Key, "word");
 
-            //var abc = await firebase
-            //  .Child("Students").OnceAsync<Student>();
-            //foreach (var item in abc)
-            //{
-            //    string word = Convert.ToString(item);
-            //    await DisplayAlert("Success", word, "word");
-            //}
+        //var abc = await firebase
+        //  .Child("Students").OnceAsync<Student>();
+        //foreach (var item in abc)
+        //{
+        //    string word = Convert.ToString(item);
+        //    await DisplayAlert("Success", word, "word");
+        //}
 
 
         //}

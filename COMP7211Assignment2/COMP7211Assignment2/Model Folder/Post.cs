@@ -8,6 +8,8 @@ namespace COMP7211Assignment2.Model_Folder
 {
     public class Post : IPost
     {
+        internal object post;
+
         public int Id { get; set; }
         public int CourseId { get; set; }
         public string CourseTitle { get; set; }

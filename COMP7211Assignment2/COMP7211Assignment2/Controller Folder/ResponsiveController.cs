@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace COMP7211Assignment2.Controller_Folder
 {
-    class ResponsiveController
+    internal class ResponsiveController
     {
         public StackLayout LandscapeStack(StackLayout stack)
         {

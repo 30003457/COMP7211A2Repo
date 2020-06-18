@@ -12,8 +12,14 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PostWithRepliesPage : ContentPage
     {
-        Vote newvote = new Vote();
-        Post clickedPost;
+        private readonly Vote newvote = new Vote();
+        private readonly Post clickedPost;
+        private int i;
+
+        public int Downvotes { get; private set; }
+        public int Upvotes { get; private set; }
+     
+
         public PostWithRepliesPage(Post _clickedPost)
         {
             InitializeComponent();
@@ -30,9 +36,9 @@ namespace COMP7211Assignment2
         private async void AddPostRepliesGUI(Post clickedPost)
         {
             List<Post> posts = await RetrieveUpdatedPosts();
-            foreach (var item in posts)
+            foreach (Post item in posts)
             {
-                if(item.Id == clickedPost.Id)
+                if (item.Id == clickedPost.Id)
                 {
                     if (item.Replies != null)
                     {
@@ -45,8 +51,7 @@ namespace COMP7211Assignment2
                 }
             }
         }
-        public int UpVote { get; private set; }
-        public int DwnVote { get; private set; }
+
 
         private async void HomeButton(object sender, EventArgs e)
         {
@@ -57,27 +62,64 @@ namespace COMP7211Assignment2
         {
             await Navigation.PushAsync(new ReplyPostPage(clickedPost));
         }
-
-        private void UpvoteADD (object sender, EventArgs e)   
+        //============================
+        //vote - patrick
+       
+        private void UpvoteADD(object sender, EventArgs e)
         {
-            newvote.AddUpVote(UpVote);
-            //UpVotes.Text = Upvote.ToString();
 
+            // newvote.AddUpVote(UpVote);
+
+            int UpVote = clickedPost.Upvotes;
+           UpVote++; 
+            Uvotes.Text = UpVote.ToString();
+   
+        }
+
+        private void DwnvoteADD(object sender, EventArgs e)
+        {
+            
+            int DwnVote = clickedPost.Downvotes; 
+            DwnVote++;
+
+            /* foreach (var item in Dvotes.Text )
+             {
+                  DwnVote++;
+             }*/
+                   
+           Dvotes.Text = DwnVote.ToString();
+
+            //  newvote.AddDwnvote(DwnVote);
+           
+        }
+        private void btndownvote(object sender, EventArgs e)
+        {
+
+            int DwnVote = clickedPost.Replies[i].Downvotes++;
+            DwnVote++;
+
+            clickedPost.Replies[i].Downvotes = DwnVote;
+
+        }
+        private void btnupvote (object sender, EventArgs e) 
+        {
+
+            // newvote.AddUpVote(UpVote);
+
+            int UpVote = clickedPost.Replies[i].Upvotes;
+            UpVote++;
+            clickedPost.Replies[i].Upvotes =  UpVote;
 
         }
 
-        private void DwnvoteADD(object sender, EventArgs e) 
-        {
-            newvote.addDwnvote(DwnVote);
-            //DWNVotes.Text = DwnVote.ToString();
-        }
-
+        //=======================================
         private StackLayout CreateStack(int i)
         {
             StackLayout stack = new StackLayout();
 
             Label lblcontent = new Label { Text = clickedPost.Replies[i].Content };
             Label lbldate = new Label { Text = clickedPost.Replies[i].TimeString };
+
 
             Grid gridvotes = new Grid
             {
@@ -168,5 +210,7 @@ namespace COMP7211Assignment2
         {
             ReplyButton1(sender, e);
         }
+
+
     }
 }
