@@ -16,13 +16,13 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
-        ValidatorV2 vd;
+        ValidatorV3 vd;
         ValidateLoginData Validator;
         public int StudentID;
         public LogInPage()
         {
             InitializeComponent();
-            vd = new ValidatorV2();
+            vd = new ValidatorV3();
             Validator = new ValidateLoginData();
             StudentID = Convert.ToInt32(StudentIDEntry.Text);
 
@@ -78,7 +78,7 @@ namespace COMP7211Assignment2
         }
         private async void CreateClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new FirstLoginPage());
+            //await Navigation.PushAsync(new FirstLoginPage());
         }
 
         private async void SignInClicked(object sender, EventArgs e)
@@ -106,17 +106,50 @@ namespace COMP7211Assignment2
             //}
 
             //min's older validator
-            if (await vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text) == true)
-            {
-                StudentIDEntry.Text = null;
-                PasswordEntry.Text = null;
-                await Navigation.PushAsync(new CoursesViewPage());
-            }
-            else
-            {
-                await DisplayAlert("Invalid", vd.errorMsg, "OK");
-            }
+            //if (await vd.ValidateLogin(StudentIDEntry.Text, PasswordEntry.Text) == true)
+            //{
+            //    StudentIDEntry.Text = null;
+            //    PasswordEntry.Text = null;
+            //    await Navigation.PushAsync(new CoursesViewPage());
+            //}
+            //else
+            //{
+            //    await DisplayAlert("Invalid", vd.errorMsg, "OK");
+            //}
 
+            try
+            {
+                if (await vd.ValidateUser(StudentIDEntry.Text) == true)
+                {
+                    if (vd.CheckFirstLogin() == true)
+                    {
+                        await Navigation.PushAsync(new FirstLoginPage(Convert.ToInt32(StudentIDEntry.Text)));
+                    }
+                    else
+                    {
+                        if (vd.ValidatePassword(PasswordEntry.Text) == true)
+                        {
+                            StudentIDEntry.Text = null;
+                            PasswordEntry.Text = null;
+                            await Navigation.PushAsync(new CoursesViewPage());
+                        }
+                        else
+                        {
+                            await DisplayAlert("Invalid", vd.errorMsg, "OK");
+                        }
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Invalid", vd.errorMsg, "OK");
+                }
+            }
+            catch (Exception _e)
+            {
+                await DisplayAlert("Invalid", _e.Message, "OK");
+                throw;
+            }
+            
         }
     }
 }

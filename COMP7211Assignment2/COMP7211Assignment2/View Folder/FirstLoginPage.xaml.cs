@@ -11,28 +11,29 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FirstLoginPage : ContentPage
     {
-        private ValidatorV2 vd;
-        public FirstLoginPage()
+        private ValidatorV3 vd;
+        int studentIdInt = 0;
+        public FirstLoginPage(int _studentIdInt)
         {
-            vd = new ValidatorV2();
+    
             InitializeComponent();
+            vd = new ValidatorV3();
+            studentIdInt = _studentIdInt;
         }
 
         private async void CreatePasswordClicked(object sender, EventArgs e)
         {
-
-            if (await vd.ValidateLogin(Password1.Text, Password2.Text))
+            if (await vd.ValidateNewPassword(Password1.Text, Password2.Text, studentIdInt))
             {
                 Password1.Text = null;
                 Password2.Text = null;
-                await DisplayAlert("Valid", "Password Correct Check", "OK");
-                await Navigation.PushAsync(new CoursesViewPage());
+                await DisplayAlert("Valid", "The password was created successfully", "OK");
+                await Navigation.PopAsync();
             }
             else
             {
                 await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
-
 
         }
     }

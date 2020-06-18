@@ -14,24 +14,44 @@ using Google.Api.Gax.Rest;
 
 namespace COMP7211Assignment2
 {
+    //Code by Lewis and Min 30003457
     public class FireBaseHelperv2
     {
         public FirebaseClient firebase = new FirebaseClient($"https://student-rep-app.firebaseio.com/");
 
+        public async void SetPassword(int studentId, string pw)
+        {
+            var users = await GetAllUsers();
+            foreach (var item in users)
+            {
+                if (item.StudentID == studentId)
+                    item.Password = pw;
+            }
+
+            await firebase.Child("Students").PutAsync(users);
+        }
+
         public async Task<List<User>> GetAllUsers()
         {
-            return (await firebase
-                .Child("Students")
-                .OnceAsync<User>()).Select(item => new User(item.Object.FName, item.Object.LName, item.Object.StudentID, item.Object.Password, item.Object.IsRep, item.Object.EnrolledCourses)).ToList();
+            //return (await firebase
+            //    .Child("Students")
+            //    .OnceAsync<User>()).Select(item => new User(item.Object.FName, item.Object.LName, item.Object.StudentID, item.Object.Password, item.Object.IsRep, item.Object.EnrolledCourses)).ToList();
+            return await firebase.Child("Students").OnceSingleAsync<List<User>>();
         }
 
         public async Task<User> GetUser(int studentId)
         {
             var users = await GetAllUsers();
-            await firebase
-              .Child("Students")
-              .OnceAsync<User>();
-            return users.Where(a => a.StudentID == studentId).FirstOrDefault();
+            foreach (var item in users)
+            {
+                if (item.StudentID == studentId)
+                    return item;
+            }
+            return null;
+            //await firebase
+            //  .Child("Students")
+            //  .OnceAsync<User>();
+            //return users.Where(a => a.StudentID == studentId).FirstOrDefault();
         }
 
         public async Task<List<Post>> GetAllPosts()
