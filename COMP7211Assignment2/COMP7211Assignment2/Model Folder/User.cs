@@ -15,13 +15,8 @@ namespace COMP7211Assignment2
         public bool IsRep { get; set; }
         public List<int> VotedPosts { get; set; } //add post id to this list and check this list of id's before voting so users can only vote once on same post
 
-        //private readonly PlaceholderCourseDatabase cdb;
-
-        //All students enrolled in same courses for now...
         public User(string fn, string ln, int studentId, string password, bool isRep, List<Course> enrolledCourses)
         {
-            //cdb = new PlaceholderCourseDatabase();
-
             FName = fn;
             LName = ln;
             StudentID = studentId;

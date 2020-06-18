@@ -9,15 +9,7 @@ namespace COMP7211Assignment2.Controller_Folder
         public static async void TestMethod()
         {
             FirebaseClient Firebase = new FirebaseClient("https://student-rep-app.firebaseio.com/");
-            //PageData.PManager = new PageManager();
-            //TESTER.Login();
 
-            //foreach (Course _course in PageData.PManager.CDetector.DetectedCourses)
-            //{
-            //    await Firebase.Child("student-rep-app").Child("Courses").PostAsync(_course);
-            //}
-
-            //initialise databases
             PlaceholderCourseDatabase cdb = new PlaceholderCourseDatabase();
             PlaceholderUserDatabase udb = new PlaceholderUserDatabase();
             PlaceholderPostDatabase pdb = new PlaceholderPostDatabase();

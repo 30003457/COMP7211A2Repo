@@ -13,7 +13,6 @@ namespace COMP7211Assignment2.View_Folder
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PostsViewPage : ContentPage
     {
-        //PageManager pm;
         private readonly Sorter postSorter;
         public PostsViewPage()
         {
@@ -46,7 +45,6 @@ namespace COMP7211Assignment2.View_Folder
             {
                 fListview.FlowColumnCount = 2;
                 SortUI.Orientation = StackOrientation.Horizontal;
-                //LoggedUserUI.Orientation = StackOrientation.Horizontal;
                 FooterUI.Orientation = StackOrientation.Horizontal;
                 BtnActivity.HeightRequest = 80;
                 BtnVotes.HeightRequest = 80;
@@ -56,7 +54,6 @@ namespace COMP7211Assignment2.View_Folder
             {
                 fListview.FlowColumnCount = 1;
                 SortUI.Orientation = StackOrientation.Vertical;
-                //LoggedUserUI.Orientation = StackOrientation.Vertical;
                 FooterUI.Orientation = StackOrientation.Vertical;
                 BtnActivity.HeightRequest = 60;
                 BtnVotes.HeightRequest = 60;

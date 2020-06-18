@@ -60,30 +60,30 @@ namespace COMP7211Assignment2.Model_Folder
 
 
 
-        //            var Students = await firebase.Child("Students")
-        //            .OnceAsync<Student>();
-        //            foreach (var item in Students)
-        //            {
-        //                if (studentId == item.Key)
-        //                {
-        //                    StudentFound = true;
-        //                }
-        //                else
-        //                {
-        //                    StudentFound = false;
-        //                }
-        //            }
+            //            var Students = await firebase.Child("Students")
+            //            .OnceAsync<Student>();
+            //            foreach (var item in Students)
+            //            {
+            //                if (studentId == item.Key)
+            //                {
+            //                    StudentFound = true;
+            //                }
+            //                else
+            //                {
+            //                    StudentFound = false;
+            //                }
+            //            }
 
-        //Console.WriteLine($”{ dino.Key} is { dino.Object.Height } m high.”);
-        // await DisplayAlert("Success", item.Key, "word");
+            //Console.WriteLine($”{ dino.Key} is { dino.Object.Height } m high.”);
+            // await DisplayAlert("Success", item.Key, "word");
 
-        //var abc = await firebase
-        //  .Child("Students").OnceAsync<Student>();
-        //foreach (var item in abc)
-        //{
-        //    string word = Convert.ToString(item);
-        //    await DisplayAlert("Success", word, "word");
-        //}
+            //var abc = await firebase
+            //  .Child("Students").OnceAsync<Student>();
+            //foreach (var item in abc)
+            //{
+            //    string word = Convert.ToString(item);
+            //    await DisplayAlert("Success", word, "word");
+            //}
 
 
         //}

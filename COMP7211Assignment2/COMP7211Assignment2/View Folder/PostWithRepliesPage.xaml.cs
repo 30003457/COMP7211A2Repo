@@ -78,38 +78,8 @@ namespace COMP7211Assignment2
 
         private void DwnvoteADD(object sender, EventArgs e)
         {
-            
-            int DwnVote = clickedPost.Downvotes; 
-            DwnVote++;
-
-            /* foreach (var item in Dvotes.Text )
-             {
-                  DwnVote++;
-             }*/
-                   
-           Dvotes.Text = DwnVote.ToString();
-
-            //  newvote.AddDwnvote(DwnVote);
-           
-        }
-        private void btndownvote(object sender, EventArgs e)
-        {
-
-            int DwnVote = clickedPost.Replies[i].Downvotes++;
-            DwnVote++;
-
-            clickedPost.Replies[i].Downvotes = DwnVote;
-
-        }
-        private void btnupvote (object sender, EventArgs e) 
-        {
-
-            // newvote.AddUpVote(UpVote);
-
-            int UpVote = clickedPost.Replies[i].Upvotes;
-            UpVote++;
-            clickedPost.Replies[i].Upvotes =  UpVote;
-
+            newvote.addDwnvote(DwnVote);
+            //DWNVotes.Text = DwnVote.ToString();
         }
 
         //=======================================

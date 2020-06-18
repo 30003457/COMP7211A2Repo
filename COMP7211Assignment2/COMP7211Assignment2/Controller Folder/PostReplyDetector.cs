@@ -10,7 +10,6 @@ namespace COMP7211Assignment2.Controller_Folder
     public class PostReplyDetector
     {
         public List<PostReply> DetectedPostReplies { get; set; }
-        //private List<PostReply> tempList;
         public PostReplyDetector(Post post)
         {
             AddRepliesToPost(post);

@@ -13,11 +13,10 @@
                 </Grid.RowDefinitions>
 
                 <Button Text="HOME" VerticalOptions="Start" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="HomeButton"></Button>
-                <Label Text="COMP1231" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Title" Padding="10"></Label>
+                <Label Text="{Binding CurrentTitle}" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Title" Padding="10"></Label>
 
             </Grid>
 
-            <Label Text="Subject Name 1" VerticalOptions="Start" HorizontalOptions="Center" TextColor="Black" FontSize="Body"></Label>
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -43,8 +42,6 @@
                 <Button Text="Create" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="CreatePostButton"></Button>
 
             </Grid>
-
-            <Label Text="Signed in as Bob" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" TextColor="Black"></Label>
 
         </StackLayout>
     </ContentPage.Content>

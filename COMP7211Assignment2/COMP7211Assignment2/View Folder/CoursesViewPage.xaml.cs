@@ -17,16 +17,10 @@ namespace COMP7211Assignment2
         public CoursesViewPage()
         {
             InitializeComponent();
-            //PageData.PManager = new PageManager(); //initiate page manager
-            //TESTER.Login(); //random login
+
             lblStatus.Text = PageData.PManager.UpdateStatusText(); //set footer status text
             PageData.PManager.CDetector = new CourseDetector(LoginSystem.LoggedInUser.StudentID);
             BindingContext = PageData.PManager.CDetector;
-
-            //TESTER.AddRandomPosts(100); //add random posts
-            //TESTER.RandomVotes(); //add random votes
-
-            //lblStatus.Text = PageData.PManager.UpdateStatusText();
 
             //responsive ui
             //SizeChanged += CoursesViewPage_SizeChanged;
@@ -36,6 +30,7 @@ namespace COMP7211Assignment2
         {
             //responsive ui section
             //this is currently doing nothing but the layout is there so we can implement something in the future
+
             //landscape
             if (Width > Height)
             {
