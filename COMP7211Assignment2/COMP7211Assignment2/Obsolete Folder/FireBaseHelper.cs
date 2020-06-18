@@ -1,11 +1,8 @@
 ﻿
 using Firebase.Database;
-using Firebase.Database.Query;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System;
 namespace COMP7211Assignment2
 {
     public class Person
@@ -16,7 +13,7 @@ namespace COMP7211Assignment2
 
     public class FireBaseHelper
     {
-        FirebaseClient firebase = new FirebaseClient("https://student-rep-app.firebaseio.com/");
+        private readonly FirebaseClient firebase = new FirebaseClient("https://student-rep-app.firebaseio.com/");
 
         public async Task<List<Person>> GetAllUsers()
         {
@@ -40,7 +37,7 @@ namespace COMP7211Assignment2
 
         public async Task<Person> GetPerson(int personId)
         {
-            var allPersons = await GetAllUsers();
+            List<Person> allPersons = await GetAllUsers();
             await firebase
               .Child("User")
               .OnceAsync<Person>();

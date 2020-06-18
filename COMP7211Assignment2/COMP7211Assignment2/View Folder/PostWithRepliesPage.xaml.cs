@@ -15,7 +15,8 @@ namespace COMP7211Assignment2
         private readonly Vote newvote = new Vote();
         private readonly Post clickedPost;
         private int i;
-
+        Label lbldownvote = new Label();
+        Label lblupvote = new Label();
         public int Downvotes { get; private set; }
         public int Upvotes { get; private set; }
      
@@ -65,23 +66,45 @@ namespace COMP7211Assignment2
         }
         //============================
         //vote - patrick
-       
+
         private void UpvoteADD(object sender, EventArgs e)
         {
-
             // newvote.AddUpVote(UpVote);
-
             int UpVote = clickedPost.Upvotes;
-           UpVote++; 
+            UpVote++;
             Uvotes.Text = UpVote.ToString();
-   
+
         }
 
         private void DwnvoteADD(object sender, EventArgs e)
         {
-            newvote.addDwnvote(DwnVote);
+            int DwnVote = clickedPost.Downvotes; 
+            DwnVote++;
+            Dvotes.Text = DwnVote.ToString();
+            
             //DWNVotes.Text = DwnVote.ToString();
         }
+
+       
+
+        private void Btndownvote_Clicked(object sender, EventArgs e)
+        {
+
+            int DwnVote = clickedPost.Replies[i].Downvotes;
+            DwnVote++;
+            lbldownvote.Text = DwnVote.ToString(); 
+        }
+
+        private void Btnupvote_Clicked(object sender, EventArgs e)
+        {
+            
+                int UpVote = clickedPost.Replies[i].Upvotes;
+                UpVote++;
+                lblupvote.Text = UpVote.ToString();
+            
+        }
+
+
 
         //=======================================
         private StackLayout CreateStack(int i)
@@ -134,7 +157,9 @@ namespace COMP7211Assignment2
                 HorizontalOptions = LayoutOptions.Center,
                 FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Button)),
                 TextColor = Color.Black,
-                WidthRequest = 70
+                WidthRequest = 70,
+                
+                
             };
             Grid.SetRow(btndownvote, 1);
 
@@ -163,7 +188,10 @@ namespace COMP7211Assignment2
             Grid.SetRow(btnreply, 1);
             Grid.SetColumn(btnreply, 2);
 
-            btnreply.Clicked += Btnreply_Clicked; ;
+            btnreply.Clicked += Btnreply_Clicked; 
+            btnupvote.Clicked += Btnupvote_Clicked;
+            btndownvote.Clicked += Btndownvote_Clicked;
+          
 
             stack.Children.Add(lblcontent);
             stack.Children.Add(lbldate);
@@ -176,6 +204,8 @@ namespace COMP7211Assignment2
 
             return stack;
         }
+
+
 
         private void Btnreply_Clicked(object sender, EventArgs e)
         {

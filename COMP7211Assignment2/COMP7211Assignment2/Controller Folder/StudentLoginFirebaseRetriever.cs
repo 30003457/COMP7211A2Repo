@@ -56,34 +56,30 @@ namespace COMP7211Assignment2.Model_Folder
             return allPersons.Where(word => word.StudentId == studentId).FirstOrDefault();
         }
 
+        //            var Students = await firebase.Child("Students")
+        //            .OnceAsync<Student>();
+        //            foreach (var item in Students)
+        //            {
+        //                if (studentId == item.Key)
+        //                {
+        //                    StudentFound = true;
+        //                }
+        //                else
+        //                {
+        //                    StudentFound = false;
+        //                }
+        //            }
 
+        //Console.WriteLine($”{ dino.Key} is { dino.Object.Height } m high.”);
+        // await DisplayAlert("Success", item.Key, "word");
 
-
-
-            //            var Students = await firebase.Child("Students")
-            //            .OnceAsync<Student>();
-            //            foreach (var item in Students)
-            //            {
-            //                if (studentId == item.Key)
-            //                {
-            //                    StudentFound = true;
-            //                }
-            //                else
-            //                {
-            //                    StudentFound = false;
-            //                }
-            //            }
-
-            //Console.WriteLine($”{ dino.Key} is { dino.Object.Height } m high.”);
-            // await DisplayAlert("Success", item.Key, "word");
-
-            //var abc = await firebase
-            //  .Child("Students").OnceAsync<Student>();
-            //foreach (var item in abc)
-            //{
-            //    string word = Convert.ToString(item);
-            //    await DisplayAlert("Success", word, "word");
-            //}
+        //var abc = await firebase
+        //  .Child("Students").OnceAsync<Student>();
+        //foreach (var item in abc)
+        //{
+        //    string word = Convert.ToString(item);
+        //    await DisplayAlert("Success", word, "word");
+        //}
 
 
         //}
@@ -108,7 +104,6 @@ namespace COMP7211Assignment2.Model_Folder
 
         //      .PutAsync(new Student() { StudentId = studentId, Password = "" });
         //}
-
 
 
 
