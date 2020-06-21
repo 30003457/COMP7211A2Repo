@@ -8,23 +8,6 @@
              x:Class="COMP7211Assignment2.PostWithRepliesPage">
     <!-- Code by Tama, edits by Min 30003457 -->
     <ContentPage.Content>
-        <!-- <StackLayout>
-            
-            <flv:FlowListView FlowColumnCount="1" SeparatorVisibility="None" HasUnevenRows="True"
-                                  FlowItemsSource="{Binding DetectedPostRecords}" x:Name="fListview" Margin="15,0"
-                                  TranslationY="10">
-                <flv:FlowListView.FlowColumnTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="2" Margin="5,5" BackgroundColor="Teal">
-                            <Label Text="{Binding Title}" FontSize="Medium"  TextColor="White" Margin="5,0"/>
-                            <Label Text="{Binding Time}" FontSize="Small"  TextColor="White" Margin="5,0"/>
-                            <Label Text="{Binding UpvotesTxt}" FontSize="Small" TextColor="White" Margin="5,0"/>
-                            <Label Text="{Binding DownvotesTxt}" FontSize="Small" TextColor="White" Margin="5,0"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </flv:FlowListView.FlowColumnTemplate>
-            </flv:FlowListView>
-        </StackLayout> -->
         <StackLayout>
             <ScrollView>
                 <StackLayout x:Name="mainStack">
@@ -86,68 +69,6 @@
 
                     </Grid>
 
-
-                    <!-- Replies done by back-end code -->
-
-                    <!--
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-
-                    <StackLayout Orientation="Horizontal">
-
-
-
-                    </StackLayout>
-
-
-                </Grid>
-
-
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-
-                    <Label Text="Aenean erat nulla, iaculis in ipsum sit amet, varius gravida tortor!" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
-                </Grid>
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="   1/1/2020" TextColor="Black" VerticalOptions="Start"></Label>
-                        <Label Text="   1:01pm" TextColor="Black" VerticalOptions="Start"></Label>
-                    </StackLayout>
-                </Grid>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="0" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
-                    <Label Text="                           21" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
-
-                </StackLayout>
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-
-                    <StackLayout Orientation="Horizontal">
-
-                        <Button Text="Downvote" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
-                        <Button Text="Upvote" VerticalOptions="Center" HorizontalOptions="Start" FontSize="Small" TextColor="Black" BorderWidth="1" BorderColor="Black"></Button>
-
-                    </StackLayout>
-                    <Button Text="Reply" VerticalOptions="End" HorizontalOptions="End" BorderWidth="1" BorderColor="Black" Clicked="ReplyButton2"></Button>
-
-                </Grid>
-
-
--->
                 </StackLayout>
             </ScrollView>
 

@@ -57,13 +57,5 @@ namespace COMP7211Assignment2.Controller_Folder
             DetectedPostReplyRecords = PRDetector.DetectedPostReplies;
         }
 
-        public void BackToHomePage(int currentPageIndex)
-        {
-            //for (var counter = 1; counter < BackCount; counter++)
-            //{
-            //    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-            //}
-            //await Navigation.PopAsync();
-        }
     }
 }
