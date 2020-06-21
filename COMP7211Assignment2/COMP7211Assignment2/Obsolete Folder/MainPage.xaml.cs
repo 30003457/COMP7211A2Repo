@@ -1,4 +1,5 @@
-﻿using COMP7211Assignment2.Controller_Folder;
+﻿using Android.Runtime;
+using COMP7211Assignment2.Controller_Folder;
 using COMP7211Assignment2.Model_Folder;
 using Firebase.Database.Query;
 using System;
@@ -68,7 +69,7 @@ namespace COMP7211Assignment2
         private async void Button_Clicked_3(object sender, EventArgs e)
         {
             List<User> testList = await PageData.PManager.FBHelper.GetAllUsers();
-            foreach (User item in testList)
+            foreach (var item in testList)
             {
                 lblUsers.Text += (item.StudentID.ToString("00000000") + "\n");
             }
@@ -79,7 +80,7 @@ namespace COMP7211Assignment2
             try
             {
                 List<Post> testList = await PageData.PManager.FBHelper.GetAllPosts();
-                foreach (Post item in testList)
+                foreach (var item in testList)
                 {
                     lblUsers.Text += (item.Title.ToString() + "\n");
                 }
@@ -100,7 +101,7 @@ namespace COMP7211Assignment2
             try
             {
                 List<PostReply> testList = await PageData.PManager.FBHelper.GetAllReplies();
-                foreach (PostReply item in testList)
+                foreach (var item in testList)
                 {
                     lblUsers.Text += (item.Content + "\n");
                 }
@@ -146,10 +147,10 @@ namespace COMP7211Assignment2
 
         public async void GetNullPasswordUsers()
         {
-            List<User> users = await PageData.PManager.FBHelper.GetAllUsers();
-            foreach (User item in users)
+            var users = await PageData.PManager.FBHelper.GetAllUsers();
+            foreach (var item in users)
             {
-                if (string.IsNullOrEmpty(item.Password))
+                if(string.IsNullOrEmpty(item.Password))
                 {
                     lblUsers.Text += $"{item.FName} {item.StudentID} has no password\n";
                 }
@@ -158,16 +159,16 @@ namespace COMP7211Assignment2
 
         public async void UpdatePostReplies()
         {
-            List<Post> posts = await PageData.PManager.FBHelper.GetAllPosts();
-            List<PostReply> postreplies = await PageData.PManager.FBHelper.GetAllReplies();
-            foreach (Post post in posts)
+            var posts = await PageData.PManager.FBHelper.GetAllPosts();
+            var postreplies = await PageData.PManager.FBHelper.GetAllReplies();
+            foreach (var post in posts)
             {
                 //lblUsers.Text = "";
                 lblUsers.Text += "Updating replies for post " + post.Id + "\n";
                 //lblUsers.Text += ".";
                 //PageData.PManager.PRDetector = new PostReplyDetector(item);
                 post.Replies = new List<PostReply>();
-                foreach (PostReply reply in postreplies)
+                foreach (var reply in postreplies)
                 {
                     if (reply.PostId == post.Id)
                     {
@@ -183,24 +184,22 @@ namespace COMP7211Assignment2
         {
             List<Post> posts = new List<Post>();
             List<PostReply> replies = await PageData.PManager.FBHelper.GetAllReplies();
-            lblUsers.Text += "course id: " + PageData.PManager.UserRecords[0].EnrolledCourses[0].ID.ToString() + "\n";
-            foreach (Post item in PageData.PManager.PostRecords)
+            lblUsers.Text += "course id: "+PageData.PManager.UserRecords[0].EnrolledCourses[0].ID.ToString()+"\n";
+            foreach (var item in PageData.PManager.PostRecords)
             {
                 if (item.CourseId == PageData.PManager.UserRecords[0].EnrolledCourses[0].ID)
                 {
                     posts.Add(item);
-                    lblUsers.Text += "contains post: " + item.Id + "\n";
-                }
+                    lblUsers.Text += "contains post: " + item.Id+"\n";
+                }   
             }
 
-            foreach (PostReply reply in replies)
+            foreach (var reply in replies)
             {
-                foreach (Post post in posts)
+                foreach (var post in posts)
                 {
                     if (reply.PostId == post.Id)
-                    {
                         lblUsers.Text += $"post {post.Id} contains reply {reply.Id}\n";
-                    }
                 }
             }
         }
