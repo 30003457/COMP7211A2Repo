@@ -103,11 +103,6 @@ namespace COMP7211Assignment2.View_Folder
         private async void Home_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CoursesViewPage());
-            //for (var counter = 1; counter < BackCount; counter++)
-            //{
-            //    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-            //}
-            //await Navigation.PopAsync();
         }
 
         private async void Create_Button_Clicked(object sender, EventArgs e)

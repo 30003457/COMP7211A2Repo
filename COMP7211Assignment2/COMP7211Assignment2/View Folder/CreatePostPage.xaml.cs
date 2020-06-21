@@ -27,7 +27,6 @@ namespace COMP7211Assignment2
         private async void HomeButton(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CoursesViewPage());
-            //await Navigation.PushAsync(new PostViewPageTama());
         }
 
         private async void CreatePostButton(object sender, EventArgs e)
