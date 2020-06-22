@@ -3,6 +3,8 @@ using COMP7211Assignment2.Model_Folder;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using COMP7211Assignment2.View_Folder;
+using COMP7211Assignment2.Controller_Folder;
 
 //********************
 //Code by Min 30003457
@@ -108,6 +110,17 @@ namespace COMP7211Assignment2
             {
                 await DisplayAlert("Invalid", _e.Message, "OK");
                 throw;
+            }
+
+            PlaceholderUserDatabase users = new PlaceholderUserDatabase();
+            LoginSystem.LoggedInUser = users.records.Where(i => i.IsRep = true).First();
+            if (LoginSystem.LoggedInUser.IsRep == true)
+            {
+                Navigation.PushAsync(new CoursesViewRepPage());
+            }
+            else if (LoginSystem.LoggedInUser.IsRep == false)
+            {
+                Navigation.PushAsync(new CoursesViewPage());
             }
 
         }

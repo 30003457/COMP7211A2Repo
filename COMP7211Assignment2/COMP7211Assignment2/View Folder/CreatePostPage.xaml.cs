@@ -1,4 +1,5 @@
 ﻿using COMP7211Assignment2.Model_Folder;
+using COMP7211Assignment2.View_Folder;
 using System;
 
 using Xamarin.Forms;

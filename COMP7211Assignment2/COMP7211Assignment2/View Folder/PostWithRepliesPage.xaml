@@ -6,7 +6,7 @@
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.PostWithRepliesPage">
-    <!-- Code by Tama, edits by Min 30003457 -->
+    <!-- Code by Tama, some edits by Min 30003457 and agassi 30015804 -->
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
@@ -21,15 +21,15 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="1" Text="{Binding CourseTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="Title"></Label>
-                        <Button Grid.Column="2" Text="HOME" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="LightGray" WidthRequest="70" HeightRequest="40" Clicked="HomeButton"></Button>
-                    </Grid>
+<ImageButton Grid.Column="2" Source="homeicon.png" BackgroundColor="Black" VerticalOptions="Center" HorizontalOptions="Center"  WidthRequest="70" HeightRequest="40" Clicked="HomeButton"></ImageButton>                    </Grid>
 
 
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
-                        <Label Text="{Binding Title}" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
+
+                        <Label Text="{Binding Title}" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large"  Padding="5"></Label>
                     </Grid>
 
                     <Grid>
@@ -38,7 +38,7 @@
                         </Grid.RowDefinitions>
 
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Time}" TextColor="Black" VerticalOptions="Start"></Label>
+                            <Label Text="{Binding Time}" TextColor="White" VerticalOptions="Start"></Label>
                         </StackLayout>
                     </Grid>
 
@@ -47,7 +47,7 @@
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
 
-                        <Label Text="{Binding Content}" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
+                        <Label Text="{Binding Content}" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large"  BackgroundColor="DarkGray" Padding="8"></Label>
                     </Grid>
 
                     <Grid>
@@ -60,12 +60,40 @@
                             <RowDefinition Height="20"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label x:Name="Dvotes" HorizontalOptions="Center" Text="{Binding Downvotes}" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
-                        <Label x:Name="Uvotes" HorizontalOptions="Center" Grid.Column="1" Text="{Binding Upvotes}" TextColor="Black" VerticalOptions="Start" FontAttributes="Bold"></Label>
-                        <Button Grid.Row="1" Text="Downvote" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Small" TextColor="Black" BackgroundColor="LightGray" WidthRequest="70" Clicked="DwnvoteADD" ></Button>
-                        <Button Grid.Row="1" Grid.Column="1" Text="Upvote" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Small" TextColor="Black" BackgroundColor="LightGray" WidthRequest="70" Clicked="UpvoteADD" ></Button>
-                        <Button Grid.Row="1" Grid.Column="2" Text="Reply" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="LightGray" WidthRequest="70" Clicked="ReplyButton1" TranslationX="-10"></Button>
+                        <Label HorizontalOptions="Start" Text="{Binding Downvotes}" TextColor="White" VerticalOptions="Start" FontAttributes="Bold"></Label>
+                        <Label HorizontalOptions="End" Grid.Column="1"  Text="{Binding Upvotes}" TextColor="White" VerticalOptions="End" FontAttributes="Bold"></Label>
+                        <ImageButton Grid.Row="1" Source="dislike1.png" BackgroundColor="Black" VerticalOptions="Start" HorizontalOptions="Start" ></ImageButton>
+                        <ImageButton Source="like1.png" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"  BackgroundColor="Black" WidthRequest="70"></ImageButton>
+                        
+                        <Button Grid.Row="1" Grid.Column="2" Text="Reply" CornerRadius="20"  HeightRequest="40" WidthRequest="80" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="LightGray" Clicked="ReplyButton1" TranslationX="-10"></Button>
+                    </Grid>
 
+
+
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Orientation="Horizontal">
+
+
+
+                        </StackLayout>
+
+
+                    </Grid>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Time}" TextColor="White" VerticalOptions="Start"></Label>
+                        </StackLayout>
+                    </Grid>
 
                     </Grid>
 
@@ -79,5 +107,8 @@
 
 
         </StackLayout>
+                </StackLayout>
+        </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
