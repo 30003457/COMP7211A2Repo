@@ -4,7 +4,7 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using COMP7211Assignment2.View_Folder;
-using COMP7211Assignment2.Controller_Folder;
+using Firebase.Database.Query;
 
 //********************
 //Code by Min 30003457
@@ -17,13 +17,12 @@ namespace COMP7211Assignment2
     public partial class LogInPage : ContentPage
     {
         private readonly ValidatorV3 vd;
-        private readonly ValidateLoginData Validator;
         public int StudentID;
         public LogInPage()
         {
             InitializeComponent();
+
             vd = new ValidatorV3();
-            Validator = new ValidateLoginData();
             StudentID = Convert.ToInt32(StudentIDEntry.Text);
 
             PageData.PManager = new PageManager(); //initiate page manager
@@ -31,6 +30,7 @@ namespace COMP7211Assignment2
             //responsive ui event
             SizeChanged += LogInPage_SizeChanged;
         }
+
 
         private void LogInPage_SizeChanged(object sender, EventArgs e)
         {
@@ -93,7 +93,7 @@ namespace COMP7211Assignment2
                         {
                             StudentIDEntry.Text = null;
                             PasswordEntry.Text = null;
-                            await Navigation.PushAsync(new CoursesViewPage());
+                            CheckRep();
                         }
                         else
                         {
@@ -110,19 +110,19 @@ namespace COMP7211Assignment2
             {
                 await DisplayAlert("Invalid", _e.Message, "OK");
                 throw;
-            }
+            } 
+        }
 
-            PlaceholderUserDatabase users = new PlaceholderUserDatabase();
-            LoginSystem.LoggedInUser = users.records.Where(i => i.IsRep = true).First();
+        private async void CheckRep()
+        {
             if (LoginSystem.LoggedInUser.IsRep == true)
             {
-                Navigation.PushAsync(new CoursesViewRepPage());
+                await Navigation.PushAsync(new CoursesViewRepPage());
             }
             else if (LoginSystem.LoggedInUser.IsRep == false)
             {
-                Navigation.PushAsync(new CoursesViewPage());
+                await Navigation.PushAsync(new CoursesViewPage());
             }
-
         }
     }
 }

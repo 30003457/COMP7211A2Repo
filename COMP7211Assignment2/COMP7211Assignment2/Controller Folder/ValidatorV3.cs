@@ -108,9 +108,7 @@ namespace COMP7211Assignment2.Controller_Folder
             }
         }
 
-
-
-        public async Task<bool> ValidateNewPassword(string password1, string password2, int _studentIdInt)
+        public bool ValidateNewPassword(string password1, string password2, int _studentIdInt)
         {
             //all characters allowed
             //at least 1 digit and 1 letter

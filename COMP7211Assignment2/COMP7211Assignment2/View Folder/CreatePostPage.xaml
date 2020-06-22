@@ -14,7 +14,7 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-               
+
                     <ImageButton  Source="homeicon.png" VerticalOptions="End" HorizontalOptions="End" WidthRequest="40" HeightRequest="50" BackgroundColor="Black" Clicked="HomeButton"></ImageButton>
                     <Label Text="{Binding CurrentTitle}" VerticalOptions="Start" HorizontalOptions="Center" TextColor="White" FontSize="Title" Padding="10"></Label>
 
@@ -26,13 +26,19 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-                <Entry x:Name="PostTitle" Placeholder="Enter title here" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray"></Entry>
-            </Grid>
+                    <Entry x:Name="PostTitle" Placeholder="Enter title here" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray"></Entry>
+                </Grid>
 
-                <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
 
-                <Editor x:Name="PostContent" Placeholder="Enter text here" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Body" BackgroundColor="DarkGray"></Editor>
-            </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+
+                        <Editor x:Name="PostContent" Placeholder="Enter text here" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Body" BackgroundColor="DarkGray"></Editor>
+                    </StackLayout>
+                </Grid>
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -43,6 +49,7 @@
 
                 </Grid>
 
-        </StackLayout>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

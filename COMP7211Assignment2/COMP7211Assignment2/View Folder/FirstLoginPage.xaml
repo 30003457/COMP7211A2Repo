@@ -18,20 +18,25 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.3*"/>
                 <RowDefinition Height="3*" />
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <Image Source="wallpaper.png" Grid.ColumnSpan="3" Grid.RowSpan="3" Aspect="AspectFill" x:Name="WallpaperImage"/>
 
 
-            <Image Source="logo.png" Grid.ColumnSpan="3" Grid.Row="0" x:Name="LogoImage"/>
+
             <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical" x:Name="LoginStack">
 
                 <StackLayout>
+                    <Label Text="We've noticed this is your first time using this app. Please create a new password to login."
+                           TextColor="White"
+                           FontSize="Medium"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,30"/>
                     <Label  Text=" New Password" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1"  TextColor="White" FontSize="20" />
                     <Entry  x:Name="Password1"   Grid.Column="1" TextColor="Black" FontSize="17" BackgroundColor="White"
-                        HeightRequest="40"/>
+                        HeightRequest="40" IsPassword="True"/>
                     <Label  Text="Confirm Password" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1"  TextColor="White" FontSize="20" />
                     <Entry  x:Name="Password2" IsPassword="True" Grid.Column="1" TextColor="Black" FontSize="17" BackgroundColor="White"
                         HeightRequest="40"/>

@@ -23,7 +23,7 @@ namespace COMP7211Assignment2
 
         private async void CreatePasswordClicked(object sender, EventArgs e)
         {
-            if (await vd.ValidateNewPassword(Password1.Text, Password2.Text, studentIdInt))
+            if (vd.ValidateNewPassword(Password1.Text, Password2.Text, studentIdInt))
             {
                 Password1.Text = null;
                 Password2.Text = null;

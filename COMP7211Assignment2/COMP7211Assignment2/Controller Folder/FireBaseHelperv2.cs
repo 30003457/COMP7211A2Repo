@@ -19,6 +19,36 @@ namespace COMP7211Assignment2
     {
         public FirebaseClient firebase = new FirebaseClient($"https://student-rep-app.firebaseio.com/");
 
+        public async Task<int> GetUpvotes(int id)
+        {
+            var posts = await PageData.PManager.FBHelper.GetAllPosts();
+            foreach (var post in posts)
+            {
+                if(post.Id == id)
+                {
+                    return post.Upvotes;
+                }
+            }
+
+            //return 0 otherwise
+            return 0;
+        }
+
+        public async Task<int> GetDownvotes(int id)
+        {
+            var posts = await PageData.PManager.FBHelper.GetAllPosts();
+            foreach (var post in posts)
+            {
+                if (post.Id == id)
+                {
+                    return post.Downvotes;
+                }
+            }
+
+            //return 0 otherwise
+            return 0;
+        }
+
         public async Task<List<Post>> GetAllPersons()
         {
             return (await firebase
@@ -42,7 +72,7 @@ namespace COMP7211Assignment2
         }
 
 
-        public async Task AddReply(string content, int id, int postId, DateTime time, string timeString, int upvotes, int downvotes)
+        public async Task AddReply(string content, int id, int postId, DateTime time, int upvotes, int downvotes)
         {
 
             await firebase

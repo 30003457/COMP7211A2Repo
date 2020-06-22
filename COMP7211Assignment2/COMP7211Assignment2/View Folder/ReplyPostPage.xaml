@@ -19,43 +19,39 @@
                     <Label Text="{Binding CourseTitle}" VerticalOptions="Center" HorizontalOptions="Center"  Grid.Row="0" TextColor="White" FontSize="Title"></Label>
                 </Grid>
                 <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-                <Label Text="{Binding Title}" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
-            </Grid>
+                    <Label Text="{Binding Title}" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large" BackgroundColor="Teal" Padding="5"></Label>
+                </Grid>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-                <Label Text="{Binding Content}" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
-            </Grid>
+                    <Label Text="{Binding Content}" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large" BackgroundColor="Teal" Padding="8"></Label>
+                </Grid>
 
                 <StackLayout>
-                    <Editor x:Name="editorReply" Placeholder="Reply here..." HeightRequest="100"/>
+                    <Editor x:Name="editorReply" Placeholder="Reply here..." PlaceholderColor="White" HeightRequest="100" TextColor="White" BackgroundColor="DarkGray"/>
                 </StackLayout>
 
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
 
-                <StackLayout Orientation="Horizontal">
-                        <ImageButton Source="dislike1.png" BackgroundColor="Black" VerticalOptions="Center"  HorizontalOptions="Start"></ImageButton>
-                        <ImageButton Source="like1.png" VerticalOptions="Center" HorizontalOptions="Start" BackgroundColor="Black"></ImageButton>
-                    </StackLayout>
-                <Button Text="Reply" VerticalOptions="End" HorizontalOptions="End" CornerRadius="20"></Button>
+                    <Button Text="Reply" VerticalOptions="End" HorizontalOptions="End" CornerRadius="20" Clicked="Button_Clicked"></Button>
 
-            </Grid>
+                </Grid>
 
-            
 
-        </StackLayout>
-        </ScrollView>
+
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
             
 </ContentPage>

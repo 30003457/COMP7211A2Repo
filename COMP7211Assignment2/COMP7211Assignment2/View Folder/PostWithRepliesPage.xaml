@@ -9,106 +9,78 @@
     <!-- Code by Tama, some edits by Min 30003457 and agassi 30015804 -->
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView>
-                <StackLayout x:Name="mainStack">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Text="{Binding CourseTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="Title"></Label>
-<ImageButton Grid.Column="2" Source="homeicon.png" BackgroundColor="Black" VerticalOptions="Center" HorizontalOptions="Center"  WidthRequest="70" HeightRequest="40" Clicked="HomeButton"></ImageButton>                    </Grid>
+            <Grid>
+                <Image Source="wallpaper.png" Aspect="AspectFill"/>
+                <ScrollView>
+                    <StackLayout x:Name="mainStack">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1" Text="{Binding CourseTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Title"></Label>
+                            <ImageButton Grid.Column="2" Source="homeicon.png" BackgroundColor="Black" VerticalOptions="Center" HorizontalOptions="Center"  WidthRequest="70" HeightRequest="40" Clicked="HomeButton"></ImageButton>
+                        </Grid>
 
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
 
-                        <Label Text="{Binding Title}" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large"  Padding="5"></Label>
-                    </Grid>
+                            <Label Text="{Binding Title}" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large"  Padding="5" BackgroundColor="Teal"></Label>
+                        </Grid>
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
 
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Time}" TextColor="White" VerticalOptions="Start"></Label>
-                        </StackLayout>
-                    </Grid>
+                            <Label Text="{Binding Content}" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large"  BackgroundColor="Teal" Padding="8"></Label>
+                        </Grid>
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label x:Name="Dvotes" HorizontalOptions="Center" Text="{Binding Downvotes}" TextColor="White" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                            <Label x:Name="Uvotes" HorizontalOptions="Center" Grid.Column="1"  Text="{Binding Upvotes}" TextColor="White" VerticalOptions="Center" FontAttributes="Bold"></Label>
+                            <ImageButton Grid.Row="1" Source="dislike1.png" BackgroundColor="Black" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="70" Clicked="DwnvoteADD"></ImageButton>
+                            <ImageButton Source="like1.png" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"  BackgroundColor="Black" Clicked="UpvoteADD"></ImageButton>
 
-                        <Label Text="{Binding Content}" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large"  BackgroundColor="DarkGray" Padding="8"></Label>
-                    </Grid>
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"/>
-                            <ColumnDefinition Width="80"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="20"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Label HorizontalOptions="Start" Text="{Binding Downvotes}" TextColor="White" VerticalOptions="Start" FontAttributes="Bold"></Label>
-                        <Label HorizontalOptions="End" Grid.Column="1"  Text="{Binding Upvotes}" TextColor="White" VerticalOptions="End" FontAttributes="Bold"></Label>
-                        <ImageButton Grid.Row="1" Source="dislike1.png" BackgroundColor="Black" VerticalOptions="Start" HorizontalOptions="Start" ></ImageButton>
-                        <ImageButton Source="like1.png" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"  BackgroundColor="Black" WidthRequest="70"></ImageButton>
-                        
-                        <Button Grid.Row="1" Grid.Column="2" Text="Reply" CornerRadius="20"  HeightRequest="40" WidthRequest="80" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="LightGray" Clicked="ReplyButton1" TranslationX="-10"></Button>
-                    </Grid>
+                            <Button Grid.Row="1" Grid.Column="2" Text="Reply" CornerRadius="20"  HeightRequest="40" WidthRequest="80" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="LightGray" Clicked="ReplyButton1" TranslationX="-10"></Button>
+                        </Grid>
 
 
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
 
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Time}" TextColor="White" VerticalOptions="Start"></Label>
+                            </StackLayout>
+                        </Grid>
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <StackLayout Orientation="Horizontal">
-
-
-
-                        </StackLayout>
-
-
-                    </Grid>
-
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Time}" TextColor="White" VerticalOptions="Start"></Label>
-                        </StackLayout>
-                    </Grid>
-
-                    </Grid>
-
-                </StackLayout>
-            </ScrollView>
-
-            <!-- footer -->
-            <StackLayout Margin="0,10">
-                <Label x:Name="lblStatus" Text="Placeholder" TextColor="White" HorizontalOptions="Center"/>
-            </StackLayout>
-
-
+                    </StackLayout>
+                </ScrollView>
+<!--
+                
+                <StackLayout Margin="0,10">
+                    <Label x:Name="lblStatus" Text="Placeholder" TextColor="White" HorizontalOptions="Center"/>
+                </StackLayout>-->
+            </Grid>
         </StackLayout>
-                </StackLayout>
-        </ScrollView>
-        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

@@ -36,7 +36,7 @@ namespace COMP7211Assignment2
             await Navigation.PushAsync(new MainPage());
         }
 
-        private async void FirstPostButton(object sender, EventArgs e)
+        private void FirstPostButton(object sender, EventArgs e)
         {
             //await Navigation.PushAsync(new PostWithRepliesPage());
         }
@@ -112,7 +112,7 @@ namespace COMP7211Assignment2
             }
         }
 
-        private async void Button_Clicked_7(object sender, EventArgs e)
+        private void Button_Clicked_7(object sender, EventArgs e)
         {
             //TESTER.AddRandomPosts(100);
             //TESTER.RandomVotes();

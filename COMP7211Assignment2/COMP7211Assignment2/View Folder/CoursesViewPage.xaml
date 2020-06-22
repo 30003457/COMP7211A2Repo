@@ -23,7 +23,7 @@
                        VerticalOptions="Center" TextColor="White" FontSize="24"/>
                     <Button Text="LOGOUT" Grid.Column="2" HorizontalOptions="End" FontSize="Micro" CornerRadius="20"
                         TranslationX="-5" TranslationY="5" Clicked="Button_Clicked" BackgroundColor="LightGray"
-                            WidthRequest="70" FontSize="Micro"/>
+                            WidthRequest="70"/>
                 </Grid>
             </StackLayout>
 

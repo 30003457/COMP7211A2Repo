@@ -1,5 +1,6 @@
 ﻿using COMP7211Assignment2.Controller_Folder;
 using COMP7211Assignment2.Model_Folder;
+using Java.Lang;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,11 +14,23 @@ namespace COMP7211Assignment2.View_Folder
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PostsViewPage : ContentPage
     {
-        private readonly Sorter postSorter;
+        private Sorter postSorter;
         public PostsViewPage()
         {
             InitializeComponent();
 
+            LoadPageData();
+
+            SizeChanged += PostsViewPage_SizeChanged;
+        }
+
+        protected override void OnAppearing()
+        {
+            LoadPageData();
+        }
+
+        private void LoadPageData()
+        {
             //retrieve from post db
             RetrievePostDB();
 
@@ -28,8 +41,6 @@ namespace COMP7211Assignment2.View_Folder
             SortByVotes();
             lblStatus.Text = PageData.PManager.UpdateStatusText(); //set footer status text
             BindingContext = PageData.PManager;
-
-            SizeChanged += PostsViewPage_SizeChanged;
         }
 
         private async void RetrievePostDB()

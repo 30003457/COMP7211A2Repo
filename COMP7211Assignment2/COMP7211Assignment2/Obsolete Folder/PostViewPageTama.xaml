@@ -37,7 +37,7 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-                    <Button Text="Blah's accent" VerticalOptions="FillAndExpand" FontAttributes="Bold" BorderWidth="1" BorderColor="Black" Clicked="FirstPostButton"></Button>
+                    <Button Text="Blah's accent" VerticalOptions="FillAndExpand" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
                 </Grid>
 
                 <Label Text="111 Upvotes" VerticalOptions="Start" TextColor="White" HorizontalOptions="End"></Label>

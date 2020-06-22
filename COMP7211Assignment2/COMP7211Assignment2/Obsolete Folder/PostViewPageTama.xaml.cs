@@ -10,7 +10,7 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PostViewPageTama : ContentPage
     {
-        Sorter postSorter;
+        readonly Sorter postSorter;
         public PostViewPageTama()
         {
             InitializeComponent();
@@ -59,11 +59,6 @@ namespace COMP7211Assignment2
         private async void HomeButton(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
-        }
-
-        private async void FirstPostButton(object sender, EventArgs e)
-        {
-            //await Navigation.PushAsync(new PostWithRepliesPage());
         }
     }
 }

@@ -45,7 +45,7 @@ namespace COMP7211Assignment2.Controller_Folder
 
         public string UpdateStatusText()
         {
-            return $"Logged in as {LoginSystem.LoggedInUser.FName} {LoginSystem.LoggedInUser.StudentID.ToString("00000000")}";
+            return $"Logged in as {LoginSystem.LoggedInUser.FName} {LoginSystem.LoggedInUser.StudentID:00000000}";
         }
         public void DetectPosts()
         {
@@ -57,5 +57,14 @@ namespace COMP7211Assignment2.Controller_Folder
             DetectedPostReplyRecords = PRDetector.DetectedPostReplies;
         }
 
+        public string UpdateUpvoteText(int upvotes)
+        {
+            return $"Upvotes: {upvotes}";
+        }
+
+        public string UpdateDownvoteText(int downvotes)
+        {
+            return $"Downvotes: {downvotes}";
+        }
     }
 }

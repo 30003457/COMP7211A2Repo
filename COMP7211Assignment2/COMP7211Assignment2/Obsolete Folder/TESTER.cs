@@ -222,7 +222,7 @@ namespace COMP7211Assignment2.Controller_Folder
             {
                 int num = rnd.Next(101);
                 string temppass = null;
-                bool randomBool = false;
+                bool randomBool;
                 if (num >= 90)
                 {
                     randomBool = true;

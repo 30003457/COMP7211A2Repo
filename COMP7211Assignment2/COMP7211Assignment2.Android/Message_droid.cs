@@ -11,7 +11,7 @@ namespace COMP7211Assignment2.Droid
             Toast.MakeText(Android.App.Application.Context, message, ToastLength.Long).Show();
         }
 
-        public void shorttime(string message)
+        public void Shorttime(string message)
         {
             Toast.MakeText(Android.App.Application.Context, message, ToastLength.Short).Show();
         }

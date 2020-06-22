@@ -46,7 +46,7 @@
                 <!--Contact Management Button is here-->
                 <StackLayout>
                     <Button HorizontalOptions="Start" 
-                        Text="Contact Management" CornerRadius="20" FontSize="9" BackgroundColor="LightGray" WidthRequest="130" HeightRequest="30"/>
+                        Text="Contact Management" CornerRadius="20" FontSize="9" BackgroundColor="LightGray" WidthRequest="130" HeightRequest="30" Clicked="Contact_Clicked"/>
                 </StackLayout>
                 
                 <!-- footer status text -->

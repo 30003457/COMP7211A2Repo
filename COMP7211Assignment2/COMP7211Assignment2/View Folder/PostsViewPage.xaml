@@ -23,9 +23,6 @@
                             <RowDefinition Height="35" ></RowDefinition>
                             <RowDefinition Height="35"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <!-- might not need a back button, since navigation pages give one
-                    <Button Text="BACK" Grid.Column="0" HorizontalOptions="Start"
-                        TranslationX="5" TranslationY="5" Clicked="Back_Button_Clicked"/> -->
                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1">
                             <Label Text="{Binding CurrentTitle}" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
                             <Label Text="{Binding CurrentSubtext}" HorizontalTextAlignment="Center" TextColor="White"/>

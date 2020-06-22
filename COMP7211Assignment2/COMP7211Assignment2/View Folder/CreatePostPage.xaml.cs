@@ -11,7 +11,7 @@ namespace COMP7211Assignment2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreatePostPage : ContentPage
     {
-        FireBaseHelperv2 firebaseHelper = new FireBaseHelperv2();
+        readonly FireBaseHelperv2 firebaseHelper = new FireBaseHelperv2();
         public CreatePostPage()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace COMP7211Assignment2
         {
 
             base.OnAppearing();
-            var allPersons = await firebaseHelper.GetAllPersons();
+            _ = await firebaseHelper.GetAllPersons();
         }
 
         private async void HomeButton(object sender, EventArgs e)
@@ -36,8 +36,8 @@ namespace COMP7211Assignment2
             PostTitle.Text = string.Empty;
             PostContent.Text = string.Empty;
             await DisplayAlert("Success", "Post Created", "OK");
-            var allPersons = await firebaseHelper.GetAllPersons();
-            
+            _ = await firebaseHelper.GetAllPersons();
+
         }
     }
 }
