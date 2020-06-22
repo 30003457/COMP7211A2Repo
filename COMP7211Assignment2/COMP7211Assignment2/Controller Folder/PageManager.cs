@@ -1,14 +1,12 @@
 ﻿using COMP7211Assignment2.Model_Folder;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 //*********************
 //Code by Min 30003457
 //*********************
 namespace COMP7211Assignment2.Controller_Folder
 {
-    class PageManager
+    internal class PageManager
     {
         public string CurrentTitle { get; set; }
         public string CurrentSubtext { get; set; }
@@ -16,20 +14,33 @@ namespace COMP7211Assignment2.Controller_Folder
         public List<User> UserRecords { get; set; } //Have to have lists here from the DB's for bindings
         public List<Post> PostRecords { get; set; }
         public List<Post> DetectedPostRecords { get; set; }
+        public List<PostReply> DetectedPostReplyRecords { get; set; }
         public CourseDetector CDetector { get; set; }
         public PostDetector PDetector { get; set; }
-        PlaceholderUserDatabase userDb;
-        PlaceholderPostDatabase postDb;
+        public PostReplyDetector PRDetector { get; set; }
+        public FireBaseHelperv2 FBHelper { get; set; }
+        public ResponsiveController Responsive { get; set; }
+
         public int SortSettings { get; set; }
         public PageManager()
         {
-            userDb = new PlaceholderUserDatabase();
-            postDb = new PlaceholderPostDatabase();
-
-            UserRecords = userDb.records;
-            PostRecords = postDb.records;
+            Responsive = new ResponsiveController();
 
             SortSettings = 1; //default to votes
+
+            FBHelper = new FireBaseHelperv2();
+            RetrieveUsersFromDB();
+            RetrievePostsFromDB();
+        }
+
+        private async void RetrieveUsersFromDB()
+        {
+            UserRecords = await FBHelper.GetAllUsers();
+        }
+
+        private async void RetrievePostsFromDB()
+        {
+            PostRecords = await FBHelper.GetAllPosts();
         }
 
         public string UpdateStatusText()
@@ -41,13 +52,10 @@ namespace COMP7211Assignment2.Controller_Folder
             DetectedPostRecords = PDetector.DetectedPosts;
         }
 
-        public void BackToHomePage(int currentPageIndex)
+        public void DetectPostReplies()
         {
-            //for (var counter = 1; counter < BackCount; counter++)
-            //{
-            //    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-            //}
-            //await Navigation.PopAsync();
+            DetectedPostReplyRecords = PRDetector.DetectedPostReplies;
         }
+
     }
 }

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMP7211Assignment2.Android
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMP7211Assignment2.iOS", "COMP7211Assignment2.iOS\COMP7211Assignment2.iOS.csproj", "{281B085E-D2C3-4D65-AA76-89FBB8BDC662}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMP7211Assignment2", "COMP7211Assignment2\COMP7211Assignment2.csproj", "{462D4FF8-F700-49F2-B238-74BCF96DC6BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "COMP7211Assignment2", "COMP7211Assignment2\COMP7211Assignment2.csproj", "{462D4FF8-F700-49F2-B238-74BCF96DC6BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

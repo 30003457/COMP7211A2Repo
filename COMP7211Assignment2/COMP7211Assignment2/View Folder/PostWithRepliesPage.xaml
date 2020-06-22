@@ -3,16 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.PostWithRepliesPage">
     <!-- Code by Tama, some edits by Min 30003457 and agassi 30015804 -->
     <ContentPage.Content>
-        <Grid>
-            <Image Source="wallpaper.png" Aspect="AspectFill"/>
-        
-        <ScrollView>
-                <StackLayout>
-
+        <StackLayout>
+            <ScrollView>
+                <StackLayout x:Name="mainStack">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="60" />
@@ -22,9 +20,8 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Text="{Binding CourseTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Title"></Label>
-                        <ImageButton Grid.Column="2" Source="homeicon.png" BackgroundColor="Black" VerticalOptions="Center" HorizontalOptions="Center"  WidthRequest="70" HeightRequest="40" Clicked="HomeButton"></ImageButton>
-                    </Grid>
+                        <Label Grid.Column="1" Text="{Binding CourseTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="Black" FontSize="Title"></Label>
+<ImageButton Grid.Column="2" Source="homeicon.png" BackgroundColor="Black" VerticalOptions="Center" HorizontalOptions="Center"  WidthRequest="70" HeightRequest="40" Clicked="HomeButton"></ImageButton>                    </Grid>
 
 
                     <Grid>
@@ -67,7 +64,7 @@
                         <Label HorizontalOptions="End" Grid.Column="1"  Text="{Binding Upvotes}" TextColor="White" VerticalOptions="End" FontAttributes="Bold"></Label>
                         <ImageButton Grid.Row="1" Source="dislike1.png" BackgroundColor="Black" VerticalOptions="Start" HorizontalOptions="Start" ></ImageButton>
                         <ImageButton Source="like1.png" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"  BackgroundColor="Black" WidthRequest="70"></ImageButton>
-                        <Label Text="Posted by Bob" VerticalOptions="EndAndExpand" Grid.Column="2" TextColor="White" HorizontalOptions="End"></Label>
+                        
                         <Button Grid.Row="1" Grid.Column="2" Text="Reply" CornerRadius="20"  HeightRequest="40" WidthRequest="80" VerticalOptions="End" HorizontalOptions="End" BackgroundColor="LightGray" Clicked="ReplyButton1" TranslationX="-10"></Button>
                     </Grid>
 
@@ -98,54 +95,18 @@
                         </StackLayout>
                     </Grid>
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <Label Text="Aenean erat nulla, iaculis in ipsum sit amet, varius gravida tortor!" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
-                    </Grid>
-                    <!-- <Label Text="0" TextColor="White" VerticalOptions="Start" FontAttributes="Bold"></Label>
-                    <Label Text="                           21" TextColor="White" VerticalOptions="Start" FontAttributes="Bold"></Label> -->
-                    <Grid WidthRequest="30">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"/>
-                            <ColumnDefinition Width="80"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-
-                        <Label HorizontalOptions="Start" Text="{Binding Downvotes}" TextColor="White" VerticalOptions="Start" FontAttributes="Bold"></Label>
-                        <Label HorizontalOptions="Center" Grid.Column="1" Text="{Binding Upvotes}" TextColor="White" VerticalOptions="Center" FontAttributes="Bold"></Label>
                     </Grid>
 
-                    <Label Text="Posted by Bob" VerticalOptions="End" TextColor="White"  HorizontalOptions="EndAndExpand"></Label>
+                </StackLayout>
+            </ScrollView>
 
-                    
-
-
-
-                    <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="80"/>
-                            </Grid.ColumnDefinitions>
-                             <ImageButton Source="dislike1.png" BackgroundColor="Black" VerticalOptions="Start" Grid.Column="0" HorizontalOptions="Start"></ImageButton>
-                            <ImageButton Source="like1.png" VerticalOptions="End" HorizontalOptions="End" Grid.Column="1" BackgroundColor="Black"></ImageButton>
-                        </Grid>
-                        <Button Text="Reply" VerticalOptions="End" CornerRadius="20" HorizontalOptions="End"  HeightRequest="40" WidthRequest="80" Clicked="ReplyButton2"></Button>
-                    </Grid>
+            <!-- footer -->
+            <StackLayout Margin="0,10">
+                <Label x:Name="lblStatus" Text="Placeholder" TextColor="White" HorizontalOptions="Center"/>
+            </StackLayout>
 
 
-                    <Label x:Name="lblStatus" Text="Placeholder" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" TextColor="White"></Label>
-                   
-
+        </StackLayout>
                 </StackLayout>
         </ScrollView>
         </Grid>

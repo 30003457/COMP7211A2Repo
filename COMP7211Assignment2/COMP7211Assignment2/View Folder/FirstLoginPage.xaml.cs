@@ -1,36 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using COMP7211Assignment2.Controller_Folder;
+using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace COMP7211Assignment2
 {
+    //Code by Lewis Evans 27033957
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FirstLoginPage : ContentPage
     {
-        public FirstLoginPage()
+        private readonly ValidatorV3 vd;
+        private readonly int studentIdInt = 0;
+        public FirstLoginPage(int _studentIdInt)
         {
+
             InitializeComponent();
+            vd = new ValidatorV3();
+            studentIdInt = _studentIdInt;
         }
-        void SignInClicked(object sender, EventArgs e)
+
+        private async void CreatePasswordClicked(object sender, EventArgs e)
         {
-
-
-            if (StudentIDEntry.Text == null)
+            if (await vd.ValidateNewPassword(Password1.Text, Password2.Text, studentIdInt))
             {
-                DisplayAlert("Error", "No Student ID Entered please try again", "OK");
-            }
-            else if (PasswordEntry.Text == null)
-            {
-                DisplayAlert("Error", "No Password Entered please try again", "OK");
+                Password1.Text = null;
+                Password2.Text = null;
+                await DisplayAlert("Valid", "The password was created successfully", "OK");
+                await Navigation.PopAsync();
             }
             else
             {
-                DisplayAlert("Success", "You have successfully logged in", "OK");
+                await DisplayAlert("Invalid", vd.errorMsg, "OK");
             }
 
         }

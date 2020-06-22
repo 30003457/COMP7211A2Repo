@@ -14,25 +14,25 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
+               
                     <ImageButton  Source="homeicon.png" VerticalOptions="End" HorizontalOptions="End" WidthRequest="40" HeightRequest="50" BackgroundColor="Black" Clicked="HomeButton"></ImageButton>
-                    <Label Text="COMP1231" VerticalOptions="Start" HorizontalOptions="Center" TextColor="White" FontSize="Title" Padding="10"></Label>
+                    <Label Text="{Binding CurrentTitle}" VerticalOptions="Start" HorizontalOptions="Center" TextColor="White" FontSize="Title" Padding="10"></Label>
 
                 </Grid>
 
-                <Label Text="Subject Name 1" VerticalOptions="Start" HorizontalOptions="Center" TextColor="White" FontSize="Body"></Label>
 
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Text="Opinion on Blah's teaching" VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
-                </Grid>
+                <Entry x:Name="PostTitle" Placeholder="Enter title here" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray"></Entry>
+            </Grid>
 
                 <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
 
-                    <Entry Placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium imperdiet pretium. Nunc bibendum, nunc quis porttitor pharetra, sem eros fermentum ipsum, ac rutrum nisl odio id enim."  VerticalOptions="FillAndExpand" TextColor="White" FontSize="Large" BackgroundColor="DarkGray" ></Entry>
-                </StackLayout>
+                <Editor x:Name="PostContent" Placeholder="Enter text here" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Body" BackgroundColor="DarkGray"></Editor>
+            </Grid>
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -43,12 +43,6 @@
 
                 </Grid>
 
-                
-                <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="0,170,0,0">
-                    <Label x:Name="lblStatus" Text="Placeholder" TextColor="White" HorizontalOptions="Center"/>
-                </StackLayout>
-
-            </StackLayout>
-        </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

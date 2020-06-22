@@ -23,7 +23,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Label Text="Blah's Accent" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
+                <Label Text="{Binding Title}" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="5"></Label>
             </Grid>
 
             <Grid>
@@ -31,10 +31,13 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium imperdiet pretium. Nunc bibendum, nunc quis porttitor pharetra, sem eros fermentum ipsum, ac rutrum nisl odio id enim." VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
+                <Label Text="{Binding Content}" VerticalOptions="FillAndExpand" TextColor="Black" FontSize="Large" BackgroundColor="DarkGray" Padding="8"></Label>
             </Grid>
 
-            <Label Text="Posted by Bob" VerticalOptions="Start" HorizontalOptions="End" TextColor="White"></Label>
+                <StackLayout>
+                    <Editor x:Name="editorReply" Placeholder="Reply here..." HeightRequest="100"/>
+                </StackLayout>
+
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -49,10 +52,10 @@
 
             </Grid>
 
-                <Label x:Name="lblStatus" Text="Placeholder" VerticalOptions="CenterAndExpand"  HorizontalOptions="CenterAndExpand" TextColor="White"></Label>
+            
 
-            </StackLayout>
-        </Grid>
+        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
             
 </ContentPage>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>195977647269-vtk8g5efr3a0kg6mt95ttq2r164j5i36.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.195977647269-vtk8g5efr3a0kg6mt95ttq2r164j5i36</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBa3Qv9yQ5p7hmZ4DDHdun_c1dBHs3vakk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>195977647269</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.StudentRepApp</string>
+	<key>PROJECT_ID</key>
+	<string>student-rep-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>student-rep-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+</dict>
+</plist>

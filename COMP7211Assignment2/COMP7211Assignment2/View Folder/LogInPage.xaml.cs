@@ -1,48 +1,115 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
-
+﻿using COMP7211Assignment2.Controller_Folder;
+using COMP7211Assignment2.Model_Folder;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using COMP7211Assignment2.View_Folder;
 using COMP7211Assignment2.Controller_Folder;
 
+//********************
+//Code by Min 30003457
+//********************
 namespace COMP7211Assignment2
 {
+    //Code by Lewis Evans 27033957
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
     {
+        private readonly ValidatorV3 vd;
+        private readonly ValidateLoginData Validator;
+        public int StudentID;
         public LogInPage()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            vd = new ValidatorV3();
+            Validator = new ValidateLoginData();
+            StudentID = Convert.ToInt32(StudentIDEntry.Text);
+
+            PageData.PManager = new PageManager(); //initiate page manager
+
+            //responsive ui event
+            SizeChanged += LogInPage_SizeChanged;
         }
+
+        private void LogInPage_SizeChanged(object sender, EventArgs e)
+        {
+            //landscape
+            if (Width > Height)
+            {
+                Grid.SetRowSpan(LogoImage, 3);
+                Grid.SetColumnSpan(LogoImage, 1);
+                Grid.SetRow(LoginStack, 0);
+                Grid.SetRowSpan(LoginStack, 3);
+                LoginStack.Margin = new Thickness(20, 0);
+                LoginStack.VerticalOptions = LayoutOptions.Center;
+                LoginStack.HorizontalOptions = LayoutOptions.Center;
+                if (MainGrid.ColumnDefinitions.Count > 2)
+                {
+                    MainGrid.ColumnDefinitions.RemoveAt(0);
+                    MainGrid.ColumnDefinitions[0].Width = new GridLength(1.25, GridUnitType.Star);
+                    Grid.SetColumnSpan(WallpaperImage, 2);
+                }
+                LoginStack = PageData.PManager.Responsive.LandscapeStack(LoginStack);
+            }
+            //portrait
+            else
+            {
+                Grid.SetRowSpan(LogoImage, 1);
+                Grid.SetColumnSpan(LogoImage, 3);
+                Grid.SetRow(LoginStack, 1);
+                Grid.SetRowSpan(LoginStack, 1);
+                LoginStack.Margin = new Thickness(0, 0);
+                LoginStack.HorizontalOptions = LayoutOptions.Fill;
+                if (MainGrid.ColumnDefinitions.Count < 3)
+                {
+                    MainGrid.ColumnDefinitions.Insert(0, new ColumnDefinition());
+                    MainGrid.ColumnDefinitions[1].Width = new GridLength(2.5, GridUnitType.Star);
+                    Grid.SetColumnSpan(WallpaperImage, 3);
+                    Grid.SetColumn(LoginStack, 1);
+                }
+                LoginStack = PageData.PManager.Responsive.PortraitStack(LoginStack);
+            }
+        }
+
         private async void ForgotClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ResetPassword());
         }
-        private async void CreateClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new FirstLoginPage());
-        }
-       
-        void SignInClicked(object sender, EventArgs e)
-        {
 
-
-            if (StudentIDEntry.Text == null)
+        private async void SignInClicked(object sender, EventArgs e)
+        {
+            try
             {
-                DisplayAlert("Error", "No Student ID Entered please try again", "OK");
+                if (await vd.ValidateUser(StudentIDEntry.Text) == true)
+                {
+                    if (vd.CheckFirstLogin() == true)
+                    {
+                        await Navigation.PushAsync(new FirstLoginPage(Convert.ToInt32(StudentIDEntry.Text)));
+                    }
+                    else
+                    {
+                        if (vd.ValidatePassword(PasswordEntry.Text) == true)
+                        {
+                            StudentIDEntry.Text = null;
+                            PasswordEntry.Text = null;
+                            await Navigation.PushAsync(new CoursesViewPage());
+                        }
+                        else
+                        {
+                            await DisplayAlert("Invalid", vd.errorMsg, "OK");
+                        }
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Invalid", vd.errorMsg, "OK");
+                }
             }
-            else if (PasswordEntry.Text == null)
+            catch (Exception _e)
             {
-                DisplayAlert("Error", "No Password Entered please try again", "OK");
-            }
-            else
-            {
-                DisplayAlert("Success", "You have successfully logged in", "OK");
+                await DisplayAlert("Invalid", _e.Message, "OK");
+                throw;
             }
 
             PlaceholderUserDatabase users = new PlaceholderUserDatabase();
@@ -57,45 +124,5 @@ namespace COMP7211Assignment2
             }
 
         }
-    
-
-    //try
-    //{
-    //    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-    //    builder.DataSource = "mysqlserver-toiohomai.database.windows.net";
-    //    builder.UserID = "serveradmin";
-    //    builder.Password = "AdminAdmin1";
-    //    builder.InitialCatalog = "ToiohomaiStudentsDB";
-
-    //    using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
-    //    {
-
-    //        StringBuilder sb = new StringBuilder();
-    //        sb.Append("SELECT * FROM [StudentLogin] ");
-    //        sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-    //        sb.Append("JOIN [SalesLT].[Product] p ");
-    //        sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-    //        String sql = sb.ToString();
-
-    //        using (SqlCommand command = new SqlCommand(sql, connection))
-    //        {
-    //            connection.Open();
-    //            using (SqlDataReader reader = command.ExecuteReader())
-    //            {
-    //                while (reader.Read())
-    //                {
-    //                    Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
-    //catch (SqlException e)
-    //{
-    //    Console.WriteLine(e.ToString());
-    //}
-    //Console.ReadLine();
-
-
-}
+    }
 }

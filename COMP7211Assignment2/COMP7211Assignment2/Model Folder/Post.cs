@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 //*********************
 //Code by Min 30003457
@@ -9,6 +8,8 @@ namespace COMP7211Assignment2.Model_Folder
 {
     public class Post : IPost
     {
+        internal object post;
+
         public int Id { get; set; }
         public int CourseId { get; set; }
         public string CourseTitle { get; set; }

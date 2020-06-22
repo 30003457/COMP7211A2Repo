@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace COMP7211Assignment2
 {
     //***************
     //by Min 30003457
     //***************
-    class CourseCard
+    internal class CourseCard
     {
         public Grid rowGrid;
-        StackLayout courseCardStack;
-        Grid labelGrid;
-        StackLayout labelStack;
+        private readonly StackLayout courseCardStack;
+        private readonly Grid labelGrid;
+        private readonly StackLayout labelStack;
+
         //CourseDetector courseDetector;
-        Image img;
+        private readonly Image img;
 
         public CourseCard()
         {
@@ -37,7 +35,7 @@ namespace COMP7211Assignment2
             courseCardStack.BackgroundColor = Color.Gray;
 
             //detect if the card is on the left column or right column
-            if(col == 0)
+            if (col == 0)
             {
                 courseCardStack.HorizontalOptions = LayoutOptions.End;
             }
@@ -54,8 +52,9 @@ namespace COMP7211Assignment2
             labelGrid.RowDefinitions.Add(new RowDefinition());
 
             //image with recognizer - there were issues with using a button
-            var tapGestureRecognizer = new TapGestureRecognizer();
-            tapGestureRecognizer.Tapped += (s, e) => {
+            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) =>
+            {
                 // handle the tap
 
             };
@@ -66,7 +65,7 @@ namespace COMP7211Assignment2
             {
                 Text = $"COMP{courseId}",
                 TextColor = Color.White,
-                FontSize =  24
+                FontSize = 24
             });
 
             //course name

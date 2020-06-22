@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿using System.Collections.Generic;
 
 namespace COMP7211Assignment2
 {
-    class CourseCards
+    internal class CourseCards
     {
         //list of rows of course cards
         public List<CourseCard> courseCards { get; set; }

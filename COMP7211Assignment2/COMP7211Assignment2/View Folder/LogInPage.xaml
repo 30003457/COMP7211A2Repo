@@ -5,14 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.LogInPage">
+    
+    <!-- Code by Agassi, Min 30003457 and Lewis Evans 27033957 -->
     <ContentPage.Content>
-        <Grid>
+        <Grid x:Name="MainGrid">
+
+
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition  />
-                <ColumnDefinition Width="2.5*" />
-                <ColumnDefinition  />
-                
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
@@ -31,10 +34,12 @@
                          HeightRequest="40" BackgroundColor="Transparent"/>
                 <Button WidthRequest="100" HeightRequest="40" Text="SIGN IN" BorderRadius="20" TextColor="Black" FontSize="16" Grid.Column="1" Clicked="SignInClicked"
                         HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
-            </StackLayout>
+                </StackLayout>
 
 
 
+                
+            </StackLayout> 
         </Grid>
     </ContentPage.Content>
 </ContentPage>

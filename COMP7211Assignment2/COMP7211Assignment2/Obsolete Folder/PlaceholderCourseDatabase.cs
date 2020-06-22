@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 //*********************
 //Code by Min 30003457
 //*********************
 namespace COMP7211Assignment2
 {
-    class PlaceholderCourseDatabase
+    internal class PlaceholderCourseDatabase
     {
         public List<Course> records = new List<Course>();
         public PlaceholderCourseDatabase()
@@ -17,5 +15,7 @@ namespace COMP7211Assignment2
             records.Add(new Course("Advanced GUI", 7211));
             records.Add(new Course("Artificial Intelligence", 7212));
         }
+
+
     }
 }

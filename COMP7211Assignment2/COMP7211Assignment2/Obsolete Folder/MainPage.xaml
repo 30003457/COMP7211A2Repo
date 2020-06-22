@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="COMP7211Assignment2.MainPage">
+
+
+    <!--<Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>-->
+    <!-- Place new controls here -->
+    <Grid>
+        <Image Source="wallpaper.png" Aspect="AspectFill"/>
+
+
+
+        <StackLayout>
+            <Label x:Name="lblMain" Text="Test hub, main menu" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   TextColor="White"
+                   FontSize="Large"
+                   Grid.Row="0"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Login Page" HorizontalOptions="Center" VerticalOptions="Center"
+                    Clicked="Button_Clicked_1" BackgroundColor="White"
+                ></Button>
+                <Button Text="Course Page" HorizontalOptions="Center" VerticalOptions="Center"
+                    Clicked="Button_Clicked" BackgroundColor="White"
+                ></Button>
+                <Button Text="Database Test" Clicked="Button_Clicked_2" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Get Users Test" Clicked="Button_Clicked_3" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+                <Button Text="Get Posts Test" Clicked="Button_Clicked_4" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" />
+                <Button Text="Reset" Clicked="Button_Clicked_5" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Get Replies Test" Clicked="Button_Clicked_6" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+                <Button Text="Button" Clicked="Button_Clicked_7" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+            </StackLayout>
+            <ScrollView >
+                <Label x:Name="lblUsers" TextColor="White"/>
+            </ScrollView>
+
+        </StackLayout>
+
+
+
+
+    </Grid>
+</ContentPage>
+
+    

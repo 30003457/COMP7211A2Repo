@@ -1,33 +1,43 @@
 ﻿using COMP7211Assignment2.Model_Folder;
 using COMP7211Assignment2.View_Folder;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace COMP7211Assignment2
 {
+    //code by Tama and Min
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreatePostPage : ContentPage
     {
+        FireBaseHelperv2 firebaseHelper = new FireBaseHelperv2();
         public CreatePostPage()
         {
             InitializeComponent();
-            lblStatus.Text = PageData.PManager.UpdateStatusText();
+            BindingContext = PageData.PManager;
+        }
+
+        protected override async void OnAppearing()
+        {
+
+            base.OnAppearing();
+            var allPersons = await firebaseHelper.GetAllPersons();
         }
 
         private async void HomeButton(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PostsViewPage());
+            await Navigation.PushAsync(new CoursesViewPage());
         }
 
         private async void CreatePostButton(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new PostWithRepliesPage((Post)sender));
+            await firebaseHelper.AddPost(PostContent.Text,PostTitle.Text);
+            PostTitle.Text = string.Empty;
+            PostContent.Text = string.Empty;
+            await DisplayAlert("Success", "Post Created", "OK");
+            var allPersons = await firebaseHelper.GetAllPersons();
+            
         }
     }
 }

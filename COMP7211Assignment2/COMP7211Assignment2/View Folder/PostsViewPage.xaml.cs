@@ -1,11 +1,6 @@
 ﻿using COMP7211Assignment2.Controller_Folder;
 using COMP7211Assignment2.Model_Folder;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,11 +13,14 @@ namespace COMP7211Assignment2.View_Folder
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PostsViewPage : ContentPage
     {
-        //PageManager pm;
-        Sorter postSorter;
+        private readonly Sorter postSorter;
         public PostsViewPage()
         {
             InitializeComponent();
+
+            //retrieve from post db
+            RetrievePostDB();
+
             postSorter = new Sorter();
 
             PageData.PManager.PDetector = new PostDetector(PageData.PManager.CurrentCourseID);
@@ -30,7 +28,38 @@ namespace COMP7211Assignment2.View_Folder
             SortByVotes();
             lblStatus.Text = PageData.PManager.UpdateStatusText(); //set footer status text
             BindingContext = PageData.PManager;
+
+            SizeChanged += PostsViewPage_SizeChanged;
         }
+
+        private async void RetrievePostDB()
+        {
+            PageData.PManager.PostRecords = await PageData.PManager.FBHelper.GetAllPosts();
+        }
+
+
+        private void PostsViewPage_SizeChanged(object sender, EventArgs e)
+        {
+            //landscape
+            if (Width > Height)
+            {
+                fListview.FlowColumnCount = 2;
+                SortUI.Orientation = StackOrientation.Horizontal;
+                FooterUI.Orientation = StackOrientation.Horizontal;
+                BtnActivity.HeightRequest = 80;
+                BtnVotes.HeightRequest = 80;
+            }
+            //portrait
+            else
+            {
+                fListview.FlowColumnCount = 1;
+                SortUI.Orientation = StackOrientation.Vertical;
+                FooterUI.Orientation = StackOrientation.Vertical;
+                BtnActivity.HeightRequest = 60;
+                BtnVotes.HeightRequest = 60;
+            }
+        }
+
         private void RefreshBind()
         {
             BindingContext = null;
@@ -71,12 +100,8 @@ namespace COMP7211Assignment2.View_Folder
             PageData.PManager.DetectedPostRecords = postSorter.SortPosts(PageData.PManager.SortSettings, PageData.PManager.DetectedPostRecords);
         }
 
-        async  void Home_Button_Clicked(object sender, EventArgs e)
+        private async void Home_Button_Clicked(object sender, EventArgs e)
         {
-            //for (var counter = 1; counter < BackCount; counter++)
-            //{
-            //    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-            //}
             await Navigation.PushAsync(new CoursesViewPage());
         }
 

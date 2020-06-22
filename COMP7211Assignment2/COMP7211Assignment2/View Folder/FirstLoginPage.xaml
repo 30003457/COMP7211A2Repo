@@ -5,32 +5,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="COMP7211Assignment2.FirstLoginPage">
+
+    <!-- Code by Agassi, Min 30003457 and Lewis Evans 27033957 -->
     <ContentPage.Content>
-        <Grid>
-            <Image Source="wallpaper.png" Aspect="AspectFill"></Image>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="2.5*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="3*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="0.7*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="0.7*" />
-                    <RowDefinition Height="0.5*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-                <Label  Text="We have noticed that this is your first time LogIn" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.Row="0" TextColor="White" FontSize="20" />
-                <Label  Text="Student ID" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.Row="1" TextColor="White" FontSize="20" />
-                <Entry  x:Name="StudentIDEntry"  Grid.Row="2" Grid.Column="1"   TextColor="Black" BackgroundColor="White" FontSize="17" />
-                <Label  Text="Password" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" Grid.Row="3" TextColor="White" FontSize="20" />
-                <Entry  x:Name="PasswordEntry" Grid.Row="4" BackgroundColor="White"  Grid.Column="1" IsPassword="True" TextColor="black" FontSize="17"/>
-            
-            <Button Text="Create Account" CornerRadius="20" BackgroundColor="DarkGray" Grid.Column="1" Grid.Row="5" TextColor="Black" FontSize="12"  WidthRequest="20" HeightRequest="20"  Clicked="SignInClicked"/>
-            </Grid>
+        <Grid x:Name="MainGrid">
+
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Image Source="wallpaper.png" Grid.ColumnSpan="3" Grid.RowSpan="3" Aspect="AspectFill" x:Name="WallpaperImage"/>
+
+
+            <Image Source="logo.png" Grid.ColumnSpan="3" Grid.Row="0" x:Name="LogoImage"/>
+            <StackLayout Grid.Column="1" Grid.Row="1" Orientation="Vertical" x:Name="LoginStack">
+
+                <StackLayout>
+                    <Label  Text=" New Password" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1"  TextColor="White" FontSize="20" />
+                    <Entry  x:Name="Password1"   Grid.Column="1" TextColor="Black" FontSize="17" BackgroundColor="White"
+                        HeightRequest="40"/>
+                    <Label  Text="Confirm Password" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1"  TextColor="White" FontSize="20" />
+                    <Entry  x:Name="Password2" IsPassword="True" Grid.Column="1" TextColor="Black" FontSize="17" BackgroundColor="White"
+                        HeightRequest="40"/>
+                    <Button WidthRequest="100" HeightRequest="40" Text="Create" BorderRadius="20" TextColor="#212121" FontSize="16" Grid.Column="1" Clicked="CreatePasswordClicked"
+                        HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White"/>
+                </StackLayout>
+
+
+
+
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

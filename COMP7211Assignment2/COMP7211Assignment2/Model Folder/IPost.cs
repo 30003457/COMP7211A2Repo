@@ -5,7 +5,7 @@
 //*********************
 namespace COMP7211Assignment2.Model_Folder
 {
-    interface IPost
+    internal interface IPost
     {
         string Content { get; set; }
         int Downvotes { get; set; }
